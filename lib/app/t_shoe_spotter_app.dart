@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../core/routing/app_router.dart';
+import '../core/routing/routes.dart';
 import '../core/utils/constants/text_strings.dart';
 import '../core/utils/theme/theme.dart';
 
@@ -22,10 +24,8 @@ class TShoeSpotterApp extends StatelessWidget {
       themeMode: ThemeMode.system,
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
-      home: const Scaffold(
-          body: Center(
-        child: Text(AppTexts.appName),
-      )),
+      onGenerateRoute: AppRouter.onGenerateRoute,
+      initialRoute: Routes.onBoardingScreen,
     );
   }
 }
