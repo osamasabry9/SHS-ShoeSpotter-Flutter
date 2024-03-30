@@ -23,7 +23,7 @@ class TAppBarTheme {
     scrolledUnderElevation: 0,
     backgroundColor: Colors.transparent,
     surfaceTintColor: Colors.transparent,
-    iconTheme: IconThemeData(color: AppColors.black, size: AppSizes.iconMd),
+    iconTheme: IconThemeData(color: AppColors.white, size: AppSizes.iconMd),
     actionsIconTheme:
         IconThemeData(color: AppColors.white, size: AppSizes.iconMd),
     titleTextStyle: TextStyle(

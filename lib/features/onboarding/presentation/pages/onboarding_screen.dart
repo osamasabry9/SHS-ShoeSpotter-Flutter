@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:shoe_spotter/features/onboarding/presentation/widgets/on_boarding_next_button_widget.dart';
-import 'package:shoe_spotter/features/onboarding/presentation/widgets/smooth_page_indicator_widget.dart';
+import '../widgets/on_boarding_next_button_widget.dart';
+import '../widgets/smooth_page_indicator_widget.dart';
 
 import '../../../../core/utils/constants/sizes.dart';
 import '../widgets/on_boarding_page_view_items.dart';

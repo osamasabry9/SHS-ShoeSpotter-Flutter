@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:shoe_spotter/core/utils/constants/text_strings.dart';
+import '../../../../core/utils/constants/text_strings.dart';
+import '../../../../core/utils/helpers/extensions.dart';
+
+import '../../../../core/routing/routes.dart';
 
 class OnBoardingSkipWidget extends StatelessWidget {
   const OnBoardingSkipWidget({
@@ -12,7 +15,9 @@ class OnBoardingSkipWidget extends StatelessWidget {
       alignment: Alignment.topRight,
       child: TextButton(
         onPressed: () {
-          
+          context.pushReplacementNamed(
+            Routes.loginScreen,
+          );
         },
         child: const Text(AppTexts.skip),
       ),
