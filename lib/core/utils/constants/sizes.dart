@@ -28,6 +28,8 @@ class AppSizes {
 
   // Image sizes
   static const double imageThumbSize = 80.0;
+  static const double imageLogoSize = 150.0;
+
 
   // Default spacing between sections
   static const double defaultSpace = 24.0;
@@ -38,6 +40,7 @@ class AppSizes {
   static const double borderRadiusSm = 4.0;
   static const double borderRadiusMd = 8.0;
   static const double borderRadiusLg = 12.0;
+  static const double borderRadiusCircular = 100.0;
 
   // Divider height
   static const double dividerHeight = 1.0;
