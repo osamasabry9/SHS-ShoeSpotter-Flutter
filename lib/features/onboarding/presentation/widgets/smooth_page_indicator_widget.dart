@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:shoe_spotter/core/utils/constants/colors.dart';
-import 'package:shoe_spotter/core/utils/helpers/helper_functions.dart';
-import 'package:shoe_spotter/features/onboarding/presentation/widgets/on_boarding_page_view_items.dart';
+import '../../../../core/utils/constants/colors.dart';
+import '../../../../core/utils/helpers/helper_functions.dart';
+import 'on_boarding_page_view_items.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class SmoothPageIndicatorWidget extends StatelessWidget {
