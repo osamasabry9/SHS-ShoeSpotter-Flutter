@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:shoe_spotter/core/routing/routes.dart';
+import 'package:shoe_spotter/core/utils/helpers/extensions.dart';
 
 import '../../../../core/utils/constants/sizes.dart';
 import '../../../../core/utils/constants/text_strings.dart';
@@ -89,11 +91,14 @@ class SignUpFormWidget extends StatelessWidget {
           const SizedBox(
             height: AppSizes.spaceBtwSections,
           ),
-          // create account
+          // create account button
           SizedBox(
             width: double.infinity,
             child: ElevatedButton(
-                onPressed: () {}, child: const Text(AppTexts.createAccount)),
+                onPressed: () {
+                  context.pushReplacementNamed(Routes.emailVerificationScreen);
+                },
+                child: const Text(AppTexts.createAccount)),
           )
         ],
       ),
