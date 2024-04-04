@@ -52,7 +52,9 @@ class LoginFormWidget extends StatelessWidget {
                 ),
                 // forget password
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    context.pushNamed(Routes.forgotPasswordScreen);
+                  },
                   child: const Text(AppTexts.forgetPassword),
                 ),
               ],

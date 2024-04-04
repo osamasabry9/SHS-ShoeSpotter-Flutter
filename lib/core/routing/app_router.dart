@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:shoe_spotter/core/utils/models/success_items_model.dart';
+
 import '../../features/auth/presentation/pages/email_verification_screen.dart';
+import '../../features/auth/presentation/pages/forgot_password_screen.dart';
+import '../../features/auth/presentation/pages/reset_password_screen.dart';
 import '../../features/auth/presentation/pages/sign_up_screen.dart';
 import '../../features/auth/presentation/pages/login_screen.dart';
 import '../../features/onboarding/presentation/pages/onboarding_screen.dart';
+import '../utils/models/success_items_model.dart';
 import '../widgets/not_found_page.dart';
 import '../widgets/success_screen.dart';
 import 'routes.dart';
@@ -40,6 +43,14 @@ class AppRouter {
             builder: (context) => const NotFoundPage(),
           );
         }
+      case Routes.forgotPasswordScreen:
+        return MaterialPageRoute(
+          builder: (context) => const ForgotPasswordScreen(),
+        );
+      case Routes.resetPasswordScreen:
+        return MaterialPageRoute(
+          builder: (context) => const ResetPasswordScreen(),
+        );
       default:
         return MaterialPageRoute(
           builder: (context) => const NotFoundPage(),
