@@ -7,7 +7,6 @@ import 'package:shoe_spotter/core/utils/helpers/helper_functions.dart';
 import '../../../../core/utils/constants/image_strings.dart';
 import '../../../../core/utils/constants/sizes.dart';
 import '../../../../core/utils/constants/text_strings.dart';
-import '../../../../core/utils/styles/spacing_styles.dart';
 
 class ResetPasswordScreen extends StatelessWidget {
   const ResetPasswordScreen({super.key});
@@ -25,7 +24,7 @@ class ResetPasswordScreen extends StatelessWidget {
       ]),
       body: SingleChildScrollView(
         child: Padding(
-            padding: AppSpacingStyle.paddingWithAppBarHeight * 2,
+            padding: const EdgeInsets.all(AppSizes.defaultSpace),
             child: Column(
               children: [
                 // Image
