@@ -69,4 +69,7 @@ class AppSizes {
 
   // Grid view spacing
   static const double gridViewSpacing = 16.0;
+
+  // Navigation bar height
+  static const double navigationBarHeight = 80;
 }
