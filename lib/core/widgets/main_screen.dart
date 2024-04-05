@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:shoe_spotter/core/utils/constants/sizes.dart';
 
+
+import '../../features/shop/presentation/pages/home_screen.dart';
+import '../../features/shop/presentation/pages/store_screen.dart';
+import '../../features/shop/presentation/pages/wishlist_screen.dart';
 import '../utils/constants/colors.dart';
+import '../utils/constants/sizes.dart';
 import '../utils/helpers/helper_functions.dart';
 
 class MainScreen extends StatefulWidget {
@@ -36,10 +40,10 @@ class _MainScreenState extends State<MainScreen>
       body: TabBarView(
         controller: _tabController,
         physics: const NeverScrollableScrollPhysics(),
-        children: const [
-          Center(child: Text('Home')),
-          Center(child: Text('Store')),
-          Center(child: Text('Wishlist')),
+        children:  const [
+          HomeScreen(),
+          StoreScreen(),
+          WishlistScreen(),
           Center(child: Text('Profile')),
         ],
       ),
