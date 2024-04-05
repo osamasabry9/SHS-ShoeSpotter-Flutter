@@ -66,7 +66,9 @@ class LoginFormWidget extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  context.pushReplacementNamed(Routes.mainScreen);
+                },
                 child: const Text(AppTexts.signIn),
               ),
             ),

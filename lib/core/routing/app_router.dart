@@ -7,6 +7,7 @@ import '../../features/auth/presentation/pages/sign_up_screen.dart';
 import '../../features/auth/presentation/pages/login_screen.dart';
 import '../../features/onboarding/presentation/pages/onboarding_screen.dart';
 import '../utils/models/success_items_model.dart';
+import '../widgets/main_screen.dart';
 import '../widgets/not_found_page.dart';
 import '../widgets/success_screen.dart';
 import 'routes.dart';
@@ -50,6 +51,10 @@ class AppRouter {
       case Routes.resetPasswordScreen:
         return MaterialPageRoute(
           builder: (context) => const ResetPasswordScreen(),
+        );
+      case Routes.mainScreen:
+        return MaterialPageRoute(
+          builder: (context) => const MainScreen(),
         );
       default:
         return MaterialPageRoute(
