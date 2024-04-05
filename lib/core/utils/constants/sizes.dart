@@ -72,4 +72,9 @@ class AppSizes {
 
   // Navigation bar height
   static const double navigationBarHeight = 80;
+
+  // circular container
+  static const double circularContainerRadius = 400;
+  static const double circularContainerWidth = 400;
+  static const double circularContainerHeight = 400;
 }
