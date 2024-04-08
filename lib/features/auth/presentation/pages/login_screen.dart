@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../../../../core/utils/constants/sizes.dart';
 import '../../../../core/utils/constants/text_strings.dart';
 import '../../../../core/utils/styles/spacing_styles.dart';
-import '../../../../core/widgets/form_divider_widget.dart';
-import '../../../../core/widgets/social_buttons_widget.dart';
+import '../../../../core/widgets/auth/form_divider_widget.dart';
+import '../../../../core/widgets/auth/social_buttons_widget.dart';
 import '../widgets/header_login_and_welcome_widget.dart';
 import '../widgets/login_form_widget.dart';
 
