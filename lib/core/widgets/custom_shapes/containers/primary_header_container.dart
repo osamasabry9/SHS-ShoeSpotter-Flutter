@@ -3,7 +3,7 @@ import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/sizes.dart';
 
 
-import '../curved_edge_widget.dart';
+import '../curved/curved_edge_widget.dart';
 import 'circular_container_widget.dart';
 
 class PrimaryHeaderContainer extends StatelessWidget {
