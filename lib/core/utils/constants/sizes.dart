@@ -30,6 +30,10 @@ class AppSizes {
   static const double imageThumbSize = 80.0;
   static const double imageLogoSize = 150.0;
 
+  // Rounded Image sizes
+  static const double roundedImageHeight = 158;
+  static const double roundedImageWidth = 150;
+
 
   // Default spacing between sections
   static const double defaultSpace = 24.0;
