@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shoe_spotter/core/utils/constants/colors.dart';
+import '../constants/colors.dart';
 
 class AppShadowStyle {
   static final verticalProductShadow = BoxShadow(

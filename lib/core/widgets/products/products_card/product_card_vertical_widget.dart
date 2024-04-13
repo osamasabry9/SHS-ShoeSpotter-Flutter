@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:shoe_spotter/core/utils/constants/image_strings.dart';
-import 'package:shoe_spotter/core/utils/constants/sizes.dart';
-import 'package:shoe_spotter/core/widgets/custom_shapes/containers/rounded_container_widget.dart';
-import 'package:shoe_spotter/core/widgets/icons/circular_icon_widget.dart';
-import 'package:shoe_spotter/core/widgets/texts/product_price_text_widget.dart';
-import 'package:shoe_spotter/core/widgets/texts/product_title_text_widget.dart';
+import '../../../utils/constants/image_strings.dart';
+import '../../../utils/constants/sizes.dart';
+import '../../custom_shapes/containers/rounded_container_widget.dart';
+import '../../icons/circular_icon_widget.dart';
+import '../../texts/product_price_text_widget.dart';
+import '../../texts/product_title_text_widget.dart';
 
 import '../../../utils/constants/colors.dart';
 import '../../../utils/helpers/helper_functions.dart';

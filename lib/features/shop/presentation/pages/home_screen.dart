@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:shoe_spotter/core/widgets/layouts/grid_layout_widget.dart';
+import '../../../../core/widgets/layouts/grid_layout_widget.dart';
 
-import 'package:shoe_spotter/core/widgets/products/products_card/product_card_vertical_widget.dart';
+import '../../../../core/widgets/products/products_card/product_card_vertical_widget.dart';
 
 import '../../../../core/utils/constants/image_strings.dart';
 import '../../../../core/utils/constants/sizes.dart';

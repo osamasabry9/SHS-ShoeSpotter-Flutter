@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shoe_spotter/core/utils/constants/colors.dart';
+import '../../utils/constants/colors.dart';
 import 'package:shoe_spotter/core/utils/constants/sizes.dart';
 import 'package:shoe_spotter/core/utils/helpers/helper_functions.dart';
 

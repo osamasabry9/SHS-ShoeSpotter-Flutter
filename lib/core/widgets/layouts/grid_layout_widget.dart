@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shoe_spotter/core/utils/constants/sizes.dart';
+import '../../utils/constants/sizes.dart';
 
 class GridLayoutWidget extends StatelessWidget {
   final int itemCount;

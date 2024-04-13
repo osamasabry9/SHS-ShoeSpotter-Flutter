@@ -1,9 +1,9 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:shoe_spotter/core/utils/constants/colors.dart';
-import 'package:shoe_spotter/core/utils/constants/sizes.dart';
-import 'package:shoe_spotter/core/widgets/custom_shapes/containers/circular_container_widget.dart';
-import 'package:shoe_spotter/core/widgets/images/rounded_image_widget.dart';
+import '../../../../core/utils/constants/colors.dart';
+import '../../../../core/utils/constants/sizes.dart';
+import '../../../../core/widgets/custom_shapes/containers/circular_container_widget.dart';
+import '../../../../core/widgets/images/rounded_image_widget.dart';
 
 class PromoSlider extends StatefulWidget {
   final List<String> banners;

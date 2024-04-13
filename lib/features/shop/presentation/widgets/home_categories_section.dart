@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:shoe_spotter/core/utils/constants/colors.dart';
-import 'package:shoe_spotter/core/utils/constants/image_strings.dart';
-import 'package:shoe_spotter/core/utils/constants/sizes.dart';
-import 'package:shoe_spotter/core/widgets/image_text_widget/vertical_image_text_widget.dart';
-import 'package:shoe_spotter/core/widgets/texts/section_heading.dart';
+import '../../../../core/utils/constants/colors.dart';
+import '../../../../core/utils/constants/image_strings.dart';
+import '../../../../core/utils/constants/sizes.dart';
+import '../../../../core/widgets/image_text_widget/vertical_image_text_widget.dart';
+import '../../../../core/widgets/texts/section_heading.dart';
 
 class HomeCategoriesSection extends StatelessWidget {
   const HomeCategoriesSection({

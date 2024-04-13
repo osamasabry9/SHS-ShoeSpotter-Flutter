@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:shoe_spotter/core/utils/constants/colors.dart';
-import 'package:shoe_spotter/core/utils/constants/sizes.dart';
+
+import '../../../utils/constants/colors.dart';
+import '../../../utils/constants/sizes.dart';
 
 class RoundedContainerWidget extends StatelessWidget {
   final Color backgroundColor;
