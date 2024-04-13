@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:shoe_spotter/core/routing/routes.dart';
-import 'package:shoe_spotter/core/utils/helpers/extensions.dart';
-import 'package:shoe_spotter/core/utils/helpers/helper_functions.dart';
 
+import '../../../../core/routing/routes.dart';
 import '../../../../core/utils/constants/image_strings.dart';
 import '../../../../core/utils/constants/sizes.dart';
 import '../../../../core/utils/constants/text_strings.dart';
+import '../../../../core/utils/helpers/extensions.dart';
+import '../../../../core/utils/helpers/helper_functions.dart';
 
 class ResetPasswordScreen extends StatelessWidget {
   const ResetPasswordScreen({super.key});

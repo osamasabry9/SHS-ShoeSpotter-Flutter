@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/utils/constants/sizes.dart';
 import '../../../../core/utils/constants/text_strings.dart';
-import '../../../../core/widgets/form_divider_widget.dart';
-import '../../../../core/widgets/social_buttons_widget.dart';
+import '../../../../core/widgets/auth/form_divider_widget.dart';
+import '../../../../core/widgets/auth/social_buttons_widget.dart';
 import '../widgets/sign_up_form_widget.dart';
 
 class SignUpScreen extends StatelessWidget {

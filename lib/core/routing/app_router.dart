@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 
 import '../../features/auth/presentation/pages/email_verification_screen.dart';
 import '../../features/auth/presentation/pages/forgot_password_screen.dart';
+import '../../features/auth/presentation/pages/login_screen.dart';
 import '../../features/auth/presentation/pages/reset_password_screen.dart';
 import '../../features/auth/presentation/pages/sign_up_screen.dart';
-import '../../features/auth/presentation/pages/login_screen.dart';
 import '../../features/onboarding/presentation/pages/onboarding_screen.dart';
 import '../utils/models/success_items_model.dart';
-import '../widgets/not_found_page.dart';
-import '../widgets/success_screen.dart';
+import '../widgets/screens/main_screen.dart';
+import '../widgets/screens/not_found_page.dart';
+import '../widgets/screens/success_screen.dart';
 import 'routes.dart';
 
 class AppRouter {
@@ -50,6 +51,10 @@ class AppRouter {
       case Routes.resetPasswordScreen:
         return MaterialPageRoute(
           builder: (context) => const ResetPasswordScreen(),
+        );
+      case Routes.mainScreen:
+        return MaterialPageRoute(
+          builder: (context) => const MainScreen(),
         );
       default:
         return MaterialPageRoute(

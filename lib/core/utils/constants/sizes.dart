@@ -30,6 +30,10 @@ class AppSizes {
   static const double imageThumbSize = 80.0;
   static const double imageLogoSize = 150.0;
 
+  // Rounded Image sizes
+  static const double roundedImageHeight = 158;
+  static const double roundedImageWidth = 150;
+
 
   // Default spacing between sections
   static const double defaultSpace = 24.0;
@@ -69,4 +73,12 @@ class AppSizes {
 
   // Grid view spacing
   static const double gridViewSpacing = 16.0;
+
+  // Navigation bar height
+  static const double navigationBarHeight = 80;
+
+  // circular container
+  static const double circularContainerRadius = 400;
+  static const double circularContainerWidth = 400;
+  static const double circularContainerHeight = 400;
 }

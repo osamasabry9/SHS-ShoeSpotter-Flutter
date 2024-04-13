@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import '../widgets/on_boarding_next_button_widget.dart';
-import '../widgets/smooth_page_indicator_widget.dart';
 
 import '../../../../core/utils/constants/sizes.dart';
+import '../widgets/on_boarding_next_button_widget.dart';
 import '../widgets/on_boarding_page_view_items.dart';
 import '../widgets/on_boarding_skip_widget.dart';
+import '../widgets/smooth_page_indicator_widget.dart';
 
 class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({super.key});
