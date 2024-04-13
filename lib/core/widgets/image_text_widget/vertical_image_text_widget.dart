@@ -14,7 +14,7 @@ class VerticalImageTextWidget extends StatelessWidget {
     required this.image,
     required this.title,
     this.textColor = AppColors.white,
-    this.backgroundColor = AppColors.white,
+    this.backgroundColor,
     this.onTap,
   });
 
@@ -34,17 +34,13 @@ class VerticalImageTextWidget extends StatelessWidget {
               padding: const EdgeInsets.all(AppSizes.sm),
               decoration: BoxDecoration(
                   color: backgroundColor ??
-                      (dark
-                          ? AppColors.black
-                          : AppColors.white),
+                      (dark ? AppColors.black : AppColors.white),
                   borderRadius: BorderRadius.circular(100)),
               child: Center(
                 child: Image(
                   image: AssetImage(image),
                   fit: BoxFit.cover,
-                  color: (dark
-                      ? AppColors.light
-                      : AppColors.black),
+                  color: (dark ? AppColors.light : AppColors.black),
                 ),
               ),
             ),
