@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../features/shop/presentation/pages/home_screen.dart';
 
 import '../../features/auth/presentation/pages/email_verification_screen.dart';
 import '../../features/auth/presentation/pages/forgot_password_screen.dart';
@@ -55,6 +56,10 @@ class AppRouter {
       case Routes.mainScreen:
         return MaterialPageRoute(
           builder: (context) => const MainScreen(),
+        );
+      case Routes.homeScreen:
+        return MaterialPageRoute(
+          builder: (context) => const HomeScreen(),
         );
       default:
         return MaterialPageRoute(
