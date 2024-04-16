@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../utils/constants/colors.dart';
-import 'package:shoe_spotter/core/utils/constants/sizes.dart';
-import 'package:shoe_spotter/core/utils/helpers/helper_functions.dart';
+import '../../utils/constants/sizes.dart';
+import '../../utils/helpers/helper_functions.dart';
 
 class CircularIconWidget extends StatelessWidget {
   final Color? color, backgroundColor;
