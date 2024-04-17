@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
+import '../../../features/Personalization/presentation/pages/settings/settings_screen.dart';
 import '../../../features/shop/presentation/pages/home_screen.dart';
 import '../../../features/shop/presentation/pages/store_screen.dart';
 import '../../../features/shop/presentation/pages/wishlist_screen.dart';
@@ -44,7 +45,7 @@ class _MainScreenState extends State<MainScreen>
           HomeScreen(),
           StoreScreen(),
           WishlistScreen(),
-          Center(child: Text('Profile')),
+          SettingsScreen(),
         ],
       ),
       bottomNavigationBar: NavigationBar(

@@ -40,10 +40,7 @@ class CircularImageWidget extends StatelessWidget {
           image: isNetworkImage
               ? NetworkImage(imageUrl)
               : AssetImage(imageUrl) as ImageProvider,
-          color: overLayerColor ??
-              (AppHelperFunctions.isDarkMode(context)
-                  ? AppColors.white
-                  : AppColors.dark),
+          color: overLayerColor,
         ));
   }
 }
