@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../utils/constants/colors.dart';
-
 class SectionHeading extends StatelessWidget {
   final String title, buttonTitle;
   final void Function()? onPressed;
@@ -19,16 +17,17 @@ class SectionHeading extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
           title,
-          style: Theme.of(context).textTheme.headlineSmall!.apply(
-                color: textColor ?? AppColors.white,
-              ),
+          style: Theme.of(context)
+              .textTheme
+              .headlineSmall!
+              .apply(color: textColor),
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
         ),
-        const Spacer(),
         if (showActionButton)
           TextButton(onPressed: onPressed, child: Text(buttonTitle)),
       ],
