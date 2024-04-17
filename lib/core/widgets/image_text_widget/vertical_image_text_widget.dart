@@ -27,6 +27,7 @@ class VerticalImageTextWidget extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.only(left: AppSizes.spaceBtwItems),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             // category icon
             Container(
@@ -59,6 +60,7 @@ class VerticalImageTextWidget extends StatelessWidget {
                     .apply(color: textColor),
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
+                textAlign: TextAlign.center,
               ),
             )
           ],
