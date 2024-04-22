@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:shoe_spotter/core/utils/constants/sizes.dart';
-import 'package:shoe_spotter/core/widgets/list_tiles/settings_menu_tile.dart';
-import 'package:shoe_spotter/core/widgets/texts/section_heading.dart';
+
+import '../../../../../../core/utils/constants/sizes.dart';
+import '../../../../../../core/widgets/list_tiles/settings_menu_tile.dart';
+import '../../../../../../core/widgets/texts/section_heading.dart';
 
 class AccountSettingsSection extends StatelessWidget {
   const AccountSettingsSection({
