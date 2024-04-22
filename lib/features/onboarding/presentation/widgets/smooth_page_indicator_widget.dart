@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+
 import '../../../../core/utils/constants/colors.dart';
 import '../../../../core/utils/helpers/helper_functions.dart';
 import 'on_boarding_page_view_items.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class SmoothPageIndicatorWidget extends StatelessWidget {
   const SmoothPageIndicatorWidget({

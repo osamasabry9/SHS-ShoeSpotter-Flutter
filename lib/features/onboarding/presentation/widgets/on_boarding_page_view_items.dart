@@ -1,6 +1,5 @@
-import '../../../../core/utils/constants/text_strings.dart';
-
 import '../../../../core/utils/constants/image_strings.dart';
+import '../../../../core/utils/constants/text_strings.dart';
 import 'on_boarding_page_view_widget.dart';
 
 class OnBoardingPageViewItems {
