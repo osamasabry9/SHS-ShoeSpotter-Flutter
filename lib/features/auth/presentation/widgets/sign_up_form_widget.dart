@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-import '../../../../core/routing/routes.dart';
-import '../../../../core/utils/helpers/extensions.dart';
 
+import '../../../../core/routing/routes.dart';
 import '../../../../core/utils/constants/sizes.dart';
 import '../../../../core/utils/constants/text_strings.dart';
+import '../../../../core/utils/helpers/extensions.dart';
 import 'terms_and_conditions_widget.dart';
 
 class SignUpFormWidget extends StatelessWidget {
