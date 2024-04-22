@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import '../../../../core/utils/constants/text_strings.dart';
-import '../../../../core/utils/helpers/extensions.dart';
 
 import '../../../../core/routing/routes.dart';
+import '../../../../core/utils/constants/colors.dart';
+import '../../../../core/utils/constants/text_strings.dart';
+import '../../../../core/utils/helpers/extensions.dart';
 
 class OnBoardingSkipWidget extends StatelessWidget {
   const OnBoardingSkipWidget({
@@ -19,7 +20,7 @@ class OnBoardingSkipWidget extends StatelessWidget {
             Routes.loginScreen,
           );
         },
-        child: const Text(AppTexts.skip),
+        child: const Text(AppTexts.skip , style: TextStyle(color: AppColors.primary),),
       ),
     );
   }

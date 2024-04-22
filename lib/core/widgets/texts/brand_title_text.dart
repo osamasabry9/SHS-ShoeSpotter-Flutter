@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../utils/constants/enums.dart';
 
 class BrandTitleText extends StatelessWidget {

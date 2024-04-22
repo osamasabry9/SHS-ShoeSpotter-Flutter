@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shoe_spotter/core/utils/constants/colors.dart';
+import '../../utils/constants/colors.dart';
 
 class SettingsMenuTile extends StatelessWidget {
   const SettingsMenuTile({super.key, required this.title, required this.subTitle, required this.icon, this.onTap, this.trailing});

@@ -9,7 +9,6 @@ import '../../utils/constants/colors.dart';
 import '../../utils/constants/sizes.dart';
 import '../../utils/helpers/helper_functions.dart';
 
-
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
 
@@ -41,7 +40,7 @@ class _MainScreenState extends State<MainScreen>
       body: TabBarView(
         controller: _tabController,
         physics: const NeverScrollableScrollPhysics(),
-        children:  const [
+        children: const [
           HomeScreen(),
           StoreScreen(),
           WishlistScreen(),

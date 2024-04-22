@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+
+import '../../../features/shop/presentation/widgets/brand_card_widget.dart';
 import '../../utils/constants/colors.dart';
 import '../../utils/constants/sizes.dart';
 import '../../utils/helpers/helper_functions.dart';
 import '../custom_shapes/containers/rounded_container_widget.dart';
-import '../../../features/shop/presentation/widgets/brand_card_widget.dart';
 
 class BrandShowCaseWidget extends StatelessWidget {
   const BrandShowCaseWidget({
