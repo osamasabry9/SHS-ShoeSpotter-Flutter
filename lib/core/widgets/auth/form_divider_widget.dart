@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/utils.dart';
-import '../../utils/constants/colors.dart';
 
 import '../../../../core/utils/helpers/helper_functions.dart';
+import '../../utils/constants/colors.dart';
 
 class FormDividerWidget extends StatelessWidget {
   final String dividerText;

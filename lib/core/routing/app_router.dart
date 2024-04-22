@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 
 import '../../features/Personalization/presentation/pages/profile/profile_screen.dart';
-import '../../features/shop/presentation/pages/home_screen.dart';
-
 import '../../features/auth/presentation/pages/email_verification_screen.dart';
 import '../../features/auth/presentation/pages/forgot_password_screen.dart';
 import '../../features/auth/presentation/pages/login_screen.dart';
 import '../../features/auth/presentation/pages/reset_password_screen.dart';
 import '../../features/auth/presentation/pages/sign_up_screen.dart';
 import '../../features/onboarding/presentation/pages/onboarding_screen.dart';
+import '../../features/shop/presentation/pages/home_screen.dart';
 import '../utils/models/success_items_model.dart';
 import '../widgets/screens/main_screen.dart';
 import '../widgets/screens/not_found_page.dart';
