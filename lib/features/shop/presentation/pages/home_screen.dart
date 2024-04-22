@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import '../../../../core/widgets/layouts/grid_layout_widget.dart';
-
-import '../../../../core/widgets/products/products_card/product_card_vertical_widget.dart';
 
 import '../../../../core/utils/constants/image_strings.dart';
 import '../../../../core/utils/constants/sizes.dart';
 import '../../../../core/widgets/custom_shapes/containers/custom_search_container.dart';
 import '../../../../core/widgets/custom_shapes/containers/primary_header_container.dart';
+import '../../../../core/widgets/layouts/grid_layout_widget.dart';
+import '../../../../core/widgets/products/products_card/product_card_vertical_widget.dart';
 import '../../../../core/widgets/texts/section_heading.dart';
 import '../widgets/home_app_bar.dart';
 import '../widgets/home_categories_section.dart';
