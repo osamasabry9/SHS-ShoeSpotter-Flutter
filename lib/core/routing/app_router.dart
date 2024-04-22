@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import '../../features/Personalization/presentation/pages/profile/profile_screen.dart';
 import '../../features/shop/presentation/pages/home_screen.dart';
 
 import '../../features/auth/presentation/pages/email_verification_screen.dart';
@@ -60,6 +62,10 @@ class AppRouter {
       case Routes.homeScreen:
         return MaterialPageRoute(
           builder: (context) => const HomeScreen(),
+        );
+      case Routes.profileScreen:
+        return MaterialPageRoute(
+          builder: (context) => const ProfileScreen(),
         );
       default:
         return MaterialPageRoute(
