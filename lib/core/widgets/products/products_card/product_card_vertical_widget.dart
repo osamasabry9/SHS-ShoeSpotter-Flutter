@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
+import '../../../routing/routes.dart';
+import '../../../utils/helpers/extensions.dart';
 import '../../../utils/constants/image_strings.dart';
 import '../../../utils/constants/sizes.dart';
 import '../../custom_shapes/containers/rounded_container_widget.dart';
@@ -22,7 +24,7 @@ class ProductCardVerticalWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final dark = AppHelperFunctions.isDarkMode(context);
     return GestureDetector(
-      onTap: () {},
+      onTap: () => context.pushNamed(Routes.productDetailsScreen),
       child: Container(
         width: 180,
         padding: const EdgeInsets.all(1),
@@ -98,7 +100,7 @@ class ProductCardVerticalWidget extends StatelessWidget {
               ),
             ),
             const Spacer(),
-
+/// Price & Add to cart
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
