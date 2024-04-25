@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/utils/constants/image_strings.dart';
-import '../../../../core/utils/constants/sizes.dart';
-import '../../../../core/widgets/brands/brand_show_case_widget.dart';
-import '../../../../core/widgets/layouts/grid_layout_widget.dart';
-import '../../../../core/widgets/products/products_card/product_card_vertical_widget.dart';
-import '../../../../core/widgets/texts/section_heading.dart';
+import '../../../../../../core/utils/constants/image_strings.dart';
+import '../../../../../../core/utils/constants/sizes.dart';
+import '../../../../../../core/widgets/brands/brand_show_case_widget.dart';
+import '../../../../../../core/widgets/layouts/grid_layout_widget.dart';
+import '../../../../../../core/widgets/products/products_card/product_card_vertical_widget.dart';
+import '../../../../../../core/widgets/texts/section_heading.dart';
 
 class CategoryTabWidget extends StatelessWidget {
   const CategoryTabWidget({

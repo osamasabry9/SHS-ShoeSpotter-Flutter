@@ -7,7 +7,8 @@ import '../../features/auth/presentation/pages/login_screen.dart';
 import '../../features/auth/presentation/pages/reset_password_screen.dart';
 import '../../features/auth/presentation/pages/sign_up_screen.dart';
 import '../../features/onboarding/presentation/pages/onboarding_screen.dart';
-import '../../features/shop/presentation/pages/home_screen.dart';
+import '../../features/shop/presentation/pages/home/home_screen.dart';
+import '../../features/shop/presentation/pages/product_details/product_details.dart';
 import '../utils/models/success_items_model.dart';
 import '../widgets/screens/main_screen.dart';
 import '../widgets/screens/not_found_page.dart';
@@ -61,6 +62,10 @@ class AppRouter {
       case Routes.homeScreen:
         return MaterialPageRoute(
           builder: (context) => const HomeScreen(),
+        );
+      case Routes.productDetailsScreen:
+        return MaterialPageRoute(
+          builder: (context) => const ProductDetailsScreen(),
         );
       case Routes.profileScreen:
         return MaterialPageRoute(

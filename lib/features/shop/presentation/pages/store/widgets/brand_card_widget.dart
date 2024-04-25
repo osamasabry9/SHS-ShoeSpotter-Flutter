@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/utils/constants/enums.dart';
-import '../../../../core/utils/constants/image_strings.dart';
-import '../../../../core/utils/constants/sizes.dart';
-import '../../../../core/widgets/custom_shapes/containers/rounded_container_widget.dart';
-import '../../../../core/widgets/images/circular_image_widget.dart';
-import '../../../../core/widgets/texts/brand_title_with_verified_icon.dart';
+import '../../../../../../core/utils/constants/enums.dart';
+import '../../../../../../core/utils/constants/image_strings.dart';
+import '../../../../../../core/utils/constants/sizes.dart';
+import '../../../../../../core/widgets/custom_shapes/containers/rounded_container_widget.dart';
+import '../../../../../../core/widgets/images/circular_image_widget.dart';
+import '../../../../../../core/widgets/texts/brand_title_with_verified_icon.dart';
 
 class BrandCardWidget extends StatelessWidget {
   final bool showBorder;
