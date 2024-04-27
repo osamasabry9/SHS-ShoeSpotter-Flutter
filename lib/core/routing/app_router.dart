@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../features/Personalization/presentation/pages/address/add_new_address_screen.dart';
+import '../../features/Personalization/presentation/pages/address/addresses_screen.dart';
 import '../../features/Personalization/presentation/pages/profile/profile_screen.dart';
 import '../../features/auth/presentation/pages/email_verification_screen.dart';
 import '../../features/auth/presentation/pages/forgot_password_screen.dart';
@@ -68,13 +70,21 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (context) => const ProductDetailsScreen(),
         );
-        case Routes.productReviewsScreen:
+      case Routes.productReviewsScreen:
         return MaterialPageRoute(
           builder: (context) => const ProductReviewsScreen(),
         );
       case Routes.profileScreen:
         return MaterialPageRoute(
           builder: (context) => const ProfileScreen(),
+        );
+      case Routes.addressesScreen:
+        return MaterialPageRoute(
+          builder: (context) => const AddressesScreen(),
+        );
+      case Routes.addNewAddressScreen:
+        return MaterialPageRoute(
+          builder: (context) => const AddNewAddressScreen(),
         );
       default:
         return MaterialPageRoute(
