@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import '../../../../../../core/utils/helpers/helper_functions.dart';
-import '../../../../../../core/widgets/images/circular_image_widget.dart';
-import '../../../../../../core/widgets/texts/brand_title_with_verified_icon.dart';
-import '../../../../../../core/widgets/texts/product_price_text_widget.dart';
-import '../../../../../../core/widgets/texts/product_title_text_widget.dart';
 
 import '../../../../../../core/utils/constants/colors.dart';
 import '../../../../../../core/utils/constants/enums.dart';
 import '../../../../../../core/utils/constants/image_strings.dart';
 import '../../../../../../core/utils/constants/sizes.dart';
+import '../../../../../../core/utils/helpers/helper_functions.dart';
 import '../../../../../../core/widgets/custom_shapes/containers/rounded_container_widget.dart';
+import '../../../../../../core/widgets/images/circular_image_widget.dart';
+import '../../../../../../core/widgets/texts/brand_title_with_verified_icon.dart';
+import '../../../../../../core/widgets/texts/product_price_text_widget.dart';
+import '../../../../../../core/widgets/texts/product_title_text_widget.dart';
 
 class ProductMetaDataWidget extends StatelessWidget {
   const ProductMetaDataWidget({

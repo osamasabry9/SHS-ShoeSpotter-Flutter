@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:shoe_spotter/core/utils/constants/colors.dart';
-import 'package:shoe_spotter/core/utils/device/device_utility.dart';
+import '../../../../../../core/utils/constants/colors.dart';
+import '../../../../../../core/utils/device/device_utility.dart';
 
 class RatingProgressIndicatorWidget extends StatelessWidget {
   const RatingProgressIndicatorWidget({

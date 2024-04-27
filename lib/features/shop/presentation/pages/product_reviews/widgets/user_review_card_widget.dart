@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:readmore/readmore.dart';
-import 'package:shoe_spotter/core/utils/constants/colors.dart';
-import 'package:shoe_spotter/core/utils/constants/image_strings.dart';
-import 'package:shoe_spotter/core/widgets/custom_shapes/containers/rounded_container_widget.dart';
-import 'package:shoe_spotter/core/widgets/products/ratings/rating_bar_indicator_widget.dart';
+import '../../../../../../core/utils/constants/colors.dart';
+import '../../../../../../core/utils/constants/image_strings.dart';
+import '../../../../../../core/widgets/custom_shapes/containers/rounded_container_widget.dart';
+import '../../../../../../core/widgets/products/ratings/rating_bar_indicator_widget.dart';
 
 import '../../../../../../core/utils/constants/sizes.dart';
 import '../../../../../../core/utils/helpers/helper_functions.dart';
