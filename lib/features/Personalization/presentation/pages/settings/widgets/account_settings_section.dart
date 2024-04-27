@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
+import '../../../../../../core/utils/helpers/extensions.dart';
 
+import '../../../../../../core/routing/routes.dart';
 import '../../../../../../core/utils/constants/sizes.dart';
 import '../../../../../../core/widgets/list_tiles/settings_menu_tile.dart';
 import '../../../../../../core/widgets/texts/section_heading.dart';
@@ -22,7 +24,7 @@ class AccountSettingsSection extends StatelessWidget {
         icon: Iconsax.safe_home,
         title: "My Addresses",
         subTitle: "Set shopping delivery address",
-        onTap: () {},
+        onTap: () => context.pushNamed(Routes.addressesScreen),
       ),
       SettingsMenuTile(
         icon: Iconsax.shopping_cart,

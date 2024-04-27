@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shoe_spotter/features/shop/presentation/pages/product_reviews/widgets/rating_progress_indicator_widget.dart';
+import 'rating_progress_indicator_widget.dart';
 
 class OverallProductRatingsWidget extends StatelessWidget {
   const OverallProductRatingsWidget({
