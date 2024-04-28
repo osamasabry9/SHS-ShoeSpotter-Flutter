@@ -13,4 +13,5 @@ class Routes {
   static const String addNewAddressScreen = '/addNewAddressScreen';
   static const String productDetailsScreen = '/productDetailsScreen';
   static const String productReviewsScreen = '/productReviewsScreen';
+  static const String cartScreen = '/cartScreen';
 }
