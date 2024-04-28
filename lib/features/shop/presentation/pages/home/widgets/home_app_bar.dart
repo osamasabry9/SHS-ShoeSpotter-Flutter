@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:shoe_spotter/core/utils/helpers/extensions.dart';
 
+import '../../../../../../core/routing/routes.dart';
 import '../../../../../../core/widgets/appBar/custom_app_bar.dart';
 import '../../../../../../core/utils/constants/colors.dart';
 import '../../../../../../core/utils/constants/text_strings.dart';
@@ -36,7 +38,7 @@ class HomeAppBar extends StatelessWidget {
       actions: [
         CartMenuIcon(
           iconColor: AppColors.white,
-          onPressed: () {},
+          onPressed: ()=> context.pushNamed(Routes.cartScreen),
         ),
       ],
     );
