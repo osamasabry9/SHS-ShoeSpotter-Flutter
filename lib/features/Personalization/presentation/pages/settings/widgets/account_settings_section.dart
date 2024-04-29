@@ -36,7 +36,7 @@ class AccountSettingsSection extends StatelessWidget {
         icon: Iconsax.bag_tick,
         title: "My Orders",
         subTitle: "In-progress, completed and cancelled orders",
-        onTap: () {},
+        onTap: () => context.pushNamed(Routes.orderScreen),
       ),
       SettingsMenuTile(
         icon: Iconsax.bank,
