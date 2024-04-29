@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shoe_spotter/core/utils/helpers/extensions.dart';
+import '../../../../../../core/utils/helpers/extensions.dart';
 
 import '../../../../../../core/routing/routes.dart';
 import '../../../../../../core/widgets/appBar/custom_app_bar.dart';
