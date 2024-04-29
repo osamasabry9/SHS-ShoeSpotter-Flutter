@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../../../../../core/widgets/texts/section_heading.dart';
 
 import '../../../../../../core/utils/constants/sizes.dart';
+import '../../../../../../core/widgets/texts/section_heading.dart';
 
 class BillingAddressSectionWidget extends StatelessWidget {
   const BillingAddressSectionWidget({

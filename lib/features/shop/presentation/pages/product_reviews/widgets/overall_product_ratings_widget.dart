@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'rating_progress_indicator_widget.dart';
 
 class OverallProductRatingsWidget extends StatelessWidget {
