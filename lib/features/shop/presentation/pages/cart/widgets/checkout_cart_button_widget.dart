@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:shoe_spotter/core/utils/constants/sizes.dart';
+import '../../../../../../core/utils/constants/sizes.dart';
+import '../../../../../../core/utils/helpers/extensions.dart';
+
+import '../../../../../../core/routing/routes.dart';
 
 class CheckoutCartButtonWidget extends StatelessWidget {
   const CheckoutCartButtonWidget({
@@ -11,7 +14,8 @@ class CheckoutCartButtonWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(AppSizes.defaultSpace),
       child: ElevatedButton(
-          onPressed: () {}, child: const Text("Checkout \$265.0")),
+          onPressed: () => context.pushNamed(Routes.checkoutScreen),
+          child: const Text("Checkout \$265.0")),
     );
   }
 }

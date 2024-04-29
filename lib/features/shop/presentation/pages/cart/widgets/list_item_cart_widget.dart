@@ -9,31 +9,35 @@ import '../../../../../../core/widgets/products/cart/cart_item_widget.dart';
 class ListItemCartWidget extends StatelessWidget {
   const ListItemCartWidget({
     super.key,
+    this.showAddRemoveButtons = true,
   });
+  final bool showAddRemoveButtons;
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       children: [
-        CartItemWidget(),
-        SizedBox(height: AppSizes.spaceBtwItems),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Row(
-              children: [
-                /// Extra space
-                SizedBox(width: 70),
+        const CartItemWidget(),
+        if (showAddRemoveButtons)
+          const SizedBox(height: AppSizes.spaceBtwItems),
+        if (showAddRemoveButtons)
+          const Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  /// Extra space
+                  SizedBox(width: 70),
 
-                /// add Remove Buttons
-                ProductQuantityWithAddRemoveButtonWidget(),
-              ],
-            ),
+                  /// add Remove Buttons
+                  ProductQuantityWithAddRemoveButtonWidget(),
+                ],
+              ),
 
-            /// Product total price
-            ProductPriceTextWidget(price: '256'),
-          ],
-        )
+              /// Product total price
+              ProductPriceTextWidget(price: '256'),
+            ],
+          )
       ],
     );
   }

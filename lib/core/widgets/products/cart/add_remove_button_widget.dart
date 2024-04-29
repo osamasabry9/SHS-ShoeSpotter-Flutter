@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:shoe_spotter/core/utils/constants/colors.dart';
-import 'package:shoe_spotter/core/utils/constants/sizes.dart';
-import 'package:shoe_spotter/core/utils/helpers/helper_functions.dart';
-import 'package:shoe_spotter/core/widgets/icons/circular_icon_widget.dart';
+import '../../../utils/constants/colors.dart';
+import '../../../utils/constants/sizes.dart';
+import '../../../utils/helpers/helper_functions.dart';
+import '../../icons/circular_icon_widget.dart';
 
 class ProductQuantityWithAddRemoveButtonWidget extends StatelessWidget {
   const ProductQuantityWithAddRemoveButtonWidget({
