@@ -12,6 +12,7 @@ import '../../features/onboarding/presentation/pages/onboarding_screen.dart';
 import '../../features/shop/presentation/pages/cart/cart_screen.dart';
 import '../../features/shop/presentation/pages/checkout/checkout_screen.dart';
 import '../../features/shop/presentation/pages/home/home_screen.dart';
+import '../../features/shop/presentation/pages/order/order_screen.dart';
 import '../../features/shop/presentation/pages/product_details/product_details.dart';
 import '../../features/shop/presentation/pages/product_reviews/product_reviews_screen.dart';
 import '../utils/models/success_items_model.dart';
@@ -84,6 +85,10 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (context) => const CheckoutScreen(),
         );
+      case Routes.orderScreen:
+        return MaterialPageRoute(
+          builder: (context) => const OrderScreen(),
+        );  
       case Routes.profileScreen:
         return MaterialPageRoute(
           builder: (context) => const ProfileScreen(),
