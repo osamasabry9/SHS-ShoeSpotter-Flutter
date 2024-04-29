@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/utils/helpers/extensions.dart';
-
-import '../../../../../core/widgets/products/cart/coupon_code_widget.dart';
-
 import '../../../../../core/routing/routes.dart';
 import '../../../../../core/utils/constants/image_strings.dart';
 import '../../../../../core/utils/constants/sizes.dart';
+import '../../../../../core/utils/helpers/extensions.dart';
 import '../../../../../core/utils/models/success_items_model.dart';
 import '../../../../../core/widgets/appBar/custom_app_bar.dart';
+import '../../../../../core/widgets/products/cart/coupon_code_widget.dart';
 import '../cart/widgets/list_view_cart_widget.dart';
 import 'widgets/billing_section_widget.dart';
 

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import '../../../../../../core/utils/helpers/extensions.dart';
 
 import '../../../../../../core/routing/routes.dart';
-import '../../../../../../core/widgets/appBar/custom_app_bar.dart';
 import '../../../../../../core/utils/constants/colors.dart';
 import '../../../../../../core/utils/constants/text_strings.dart';
+import '../../../../../../core/utils/helpers/extensions.dart';
+import '../../../../../../core/widgets/appBar/custom_app_bar.dart';
 import '../../../../../../core/widgets/products/cart/cart_menu_icon.dart';
 
 class HomeAppBar extends StatelessWidget {
