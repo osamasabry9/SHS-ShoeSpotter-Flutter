@@ -12,8 +12,8 @@ import '../../custom_shapes/containers/rounded_container_widget.dart';
 import '../../icons/circular_icon_widget.dart';
 import '../../images/rounded_image_widget.dart';
 import '../../texts/brand_title_with_verified_icon.dart';
-import '../../texts/product_price_text_widget.dart';
 import '../../texts/product_title_text_widget.dart';
+import 'price_and_add_to_cart_widget.dart';
 
 class ProductCardVerticalWidget extends StatelessWidget {
   const ProductCardVerticalWidget({
@@ -88,50 +88,20 @@ class ProductCardVerticalWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     ProductTitleTextWidget(
-                      title: 'Green Nike Air Shoes',
-                      smallSize: true,
-                    ),
+                        title: 'Green Nike Air Shoes', smallSize: true),
                     SizedBox(height: AppSizes.spaceBtwItems / 2),
-                    BrandTitleWithVerifiedIcon(
-                      title: " Nike",
-                    ),
+                    BrandTitleWithVerifiedIcon(title: " Nike"),
                   ],
                 ),
               ),
             ),
             const Spacer(),
-/// Price & Add to cart
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                /// Price
-                const Padding(
-                  padding: EdgeInsets.only(left: AppSizes.sm),
-                  child: ProductPriceTextWidget(price: "35.5"),
-                ),
 
-                /// Add to cart button
-                Container(
-                  decoration: const BoxDecoration(
-                    color: AppColors.dark,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(AppSizes.cardRadiusMd),
-                      bottomRight: Radius.circular(AppSizes.productImageRadius),
-                    ),
-                  ),
-                  child: const SizedBox(
-                    width: AppSizes.iconLg * 1.2,
-                    height: AppSizes.iconLg * 1.2,
-                    child: Center(
-                      child: Icon(
-                        Iconsax.add,
-                        color: AppColors.white,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
+            /// Price & Add to cart
+            const Padding(
+              padding: EdgeInsets.only(left: AppSizes.sm),
+              child: PriceAndAddToCartWidget(),
+            )
           ],
         ),
       ),
