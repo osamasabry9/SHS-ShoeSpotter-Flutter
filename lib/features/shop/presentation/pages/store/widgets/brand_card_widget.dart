@@ -9,16 +9,17 @@ import '../../../../../../core/widgets/texts/brand_title_with_verified_icon.dart
 
 class BrandCardWidget extends StatelessWidget {
   final bool showBorder;
+  final void Function()? onTap;
   const BrandCardWidget({
     super.key,
     this.showBorder = false,
+    this.onTap,
   });
-
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: onTap,
       child: RoundedContainerWidget(
         padding: const EdgeInsets.all(AppSizes.sm),
         showBorder: showBorder,
@@ -31,16 +32,13 @@ class BrandCardWidget extends StatelessWidget {
                 backgroundColor: Colors.transparent,
               ),
             ),
-            const SizedBox(
-                height: AppSizes.spaceBtwItems / 2),
-    
+            const SizedBox(height: AppSizes.spaceBtwItems / 2),
+
             /// Brand name
             Expanded(
               child: Column(
-                crossAxisAlignment:
-                    CrossAxisAlignment.start,
-                mainAxisAlignment:
-                    MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   const BrandTitleWithVerifiedIcon(
@@ -49,9 +47,7 @@ class BrandCardWidget extends StatelessWidget {
                   ),
                   Text(
                     "256 Products",
-                    style: Theme.of(context)
-                        .textTheme
-                        .labelMedium,
+                    style: Theme.of(context).textTheme.labelMedium,
                     overflow: TextOverflow.ellipsis,
                   )
                 ],
