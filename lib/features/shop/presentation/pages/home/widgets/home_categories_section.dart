@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import '../../../../../../core/utils/helpers/extensions.dart';
 
+import '../../../../../../core/routing/routes.dart';
 import '../../../../../../core/utils/constants/colors.dart';
 import '../../../../../../core/utils/constants/image_strings.dart';
 import '../../../../../../core/utils/constants/sizes.dart';
@@ -37,7 +39,7 @@ class HomeCategoriesSection extends StatelessWidget {
                 return VerticalImageTextWidget(
                   image: AppImages.shoeIcon,
                   title: "Shoes",
-                  onTap: () {},
+                  onTap: () => context.pushNamed(Routes.subCategoriesScreen),
                 );
               },
             ),

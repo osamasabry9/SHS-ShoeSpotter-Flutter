@@ -12,7 +12,7 @@ class CircularIconWidget extends StatelessWidget {
   const CircularIconWidget({
     super.key,
     this.color,
-    this.backgroundColor = Colors.transparent,
+    this.backgroundColor,
     this.size = AppSizes.lg,
     this.width,
     this.height,

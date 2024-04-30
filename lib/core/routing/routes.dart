@@ -8,12 +8,16 @@ class Routes {
   static const String resetPasswordScreen = '/resetPasswordScreen';
   static const String mainScreen = '/mainScreen';
   static const String homeScreen = '/homeScreen';
-  static const String profileScreen = '/profileScreen';
-  static const String addressesScreen = '/addressesScreen';
-  static const String addNewAddressScreen = '/addNewAddressScreen';
+  static const String subCategoriesScreen = '/subCategoriesScreen';
+  static const String allBrandsScreen = '/allBrandsScreen';
+  static const String brandProductsScreen = '/brandProductsScreen';
   static const String productDetailsScreen = '/productDetailsScreen';
   static const String productReviewsScreen = '/productReviewsScreen';
+  static const String allProductsScreen = '/allProductsScreen';
   static const String cartScreen = '/cartScreen';
   static const String checkoutScreen = '/checkoutScreen';
   static const String orderScreen = '/orderScreen';
+  static const String profileScreen = '/profileScreen';
+  static const String addressesScreen = '/addressesScreen';
+  static const String addNewAddressScreen = '/addNewAddressScreen';
 }

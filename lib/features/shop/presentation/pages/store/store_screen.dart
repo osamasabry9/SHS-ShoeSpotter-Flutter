@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../core/routing/routes.dart';
 import '../../../../../core/utils/constants/colors.dart';
 import '../../../../../core/utils/constants/sizes.dart';
+import '../../../../../core/utils/helpers/extensions.dart';
 import '../../../../../core/utils/helpers/helper_functions.dart';
 import '../../../../../core/widgets/appBar/custom_app_bar.dart';
 import '../../../../../core/widgets/appBar/custom_tab_bar.dart';
@@ -57,40 +59,30 @@ class StoreScreen extends StatelessWidget {
                           /// Featured Brands
                           SectionHeading(
                             title: "Featured Brands",
-                            onPressed: () {},
+                            onPressed: () =>
+                                context.pushNamed(Routes.allBrandsScreen),
                           ),
                           const SizedBox(height: AppSizes.spaceBtwItems / 1.5),
                           GridLayoutWidget(
                               itemCount: 4,
                               mainAxisExtent: 80,
                               itemBuilder: (_, index) {
-                                return const BrandCardWidget();
+                                return BrandCardWidget(
+                                    showBorder: true,
+                                    onTap: () => context
+                                        .pushNamed(Routes.brandProductsScreen));
                               }),
                         ],
                       ),
                     ),
                     bottom: const CustomTabBar(tabs: [
                       Tab(
-                        child: Text(
-                          "Sports",
-                        ),
+                        child: Text("Sports"),
                       ),
-                      Tab(
-                          child: Text(
-                        "Furniture",
-                      )),
-                      Tab(
-                          child: Text(
-                        "Electronics",
-                      )),
-                      Tab(
-                          child: Text(
-                        "Clothes",
-                      )),
-                      Tab(
-                          child: Text(
-                        "Cosmetics",
-                      ))
+                      Tab(child: Text("Furniture")),
+                      Tab(child: Text("Electronics")),
+                      Tab(child: Text("Clothes")),
+                      Tab(child: Text("Cosmetics"))
                     ]),
                   ),
                 ],
