@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../../core/widgets/products/cart/add_remove_button_widget.dart';
-import '../../../../../../core/widgets/texts/product_price_text_widget.dart';
-
 import '../../../../../../core/utils/constants/sizes.dart';
+import '../../../../../../core/widgets/products/cart/add_remove_button_widget.dart';
 import '../../../../../../core/widgets/products/cart/cart_item_widget.dart';
+import '../../../../../../core/widgets/texts/product_price_text_widget.dart';
 
 class ListItemCartWidget extends StatelessWidget {
   const ListItemCartWidget({
