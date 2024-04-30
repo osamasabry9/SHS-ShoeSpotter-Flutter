@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../utils/constants/colors.dart';
 
 class SectionHeading extends StatelessWidget {
   final String title, buttonTitle;
@@ -29,7 +30,13 @@ class SectionHeading extends StatelessWidget {
           overflow: TextOverflow.ellipsis,
         ),
         if (showActionButton)
-          TextButton(onPressed: onPressed, child: Text(buttonTitle)),
+          TextButton(
+              onPressed: onPressed,
+              child: Text(buttonTitle,
+                  style: Theme.of(context)
+                      .textTheme
+                      .labelLarge!
+                      .apply(color: AppColors.primary))),
       ],
     );
   }
