@@ -9,12 +9,16 @@ import '../../features/auth/presentation/pages/login_screen.dart';
 import '../../features/auth/presentation/pages/reset_password_screen.dart';
 import '../../features/auth/presentation/pages/sign_up_screen.dart';
 import '../../features/onboarding/presentation/pages/onboarding_screen.dart';
+import '../../features/shop/presentation/pages/all_products/all_products_screen.dart';
+import '../../features/shop/presentation/pages/brand/all_brands_screen.dart';
+import '../../features/shop/presentation/pages/brand/brand_products_screen.dart';
 import '../../features/shop/presentation/pages/cart/cart_screen.dart';
 import '../../features/shop/presentation/pages/checkout/checkout_screen.dart';
 import '../../features/shop/presentation/pages/home/home_screen.dart';
 import '../../features/shop/presentation/pages/order/order_screen.dart';
 import '../../features/shop/presentation/pages/product_details/product_details.dart';
 import '../../features/shop/presentation/pages/product_reviews/product_reviews_screen.dart';
+import '../../features/shop/presentation/pages/sub_categories/sub_categories_screen.dart';
 import '../utils/models/success_items_model.dart';
 import '../widgets/screens/main_screen.dart';
 import '../widgets/screens/not_found_page.dart';
@@ -69,6 +73,18 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (context) => const HomeScreen(),
         );
+      case Routes.subCategoriesScreen:
+       return MaterialPageRoute(
+          builder: (context) => const SubCategoriesScreen(),
+        );
+       case Routes.allBrandsScreen:
+        return MaterialPageRoute(
+          builder: (context) => const AllBrandsScreen(),
+        );
+      case Routes.brandProductsScreen:
+        return MaterialPageRoute(
+          builder: (context) => const BrandProductsScreen(),
+        );
       case Routes.productDetailsScreen:
         return MaterialPageRoute(
           builder: (context) => const ProductDetailsScreen(),
@@ -77,18 +93,22 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (context) => const ProductReviewsScreen(),
         );
+      case Routes.allProductsScreen:
+        return MaterialPageRoute(
+          builder: (context) => const AllProductsScreen(),
+        );
       case Routes.cartScreen:
         return MaterialPageRoute(
           builder: (context) => const CartScreen(),
         );
-       case Routes.checkoutScreen:
+      case Routes.checkoutScreen:
         return MaterialPageRoute(
           builder: (context) => const CheckoutScreen(),
         );
       case Routes.orderScreen:
         return MaterialPageRoute(
           builder: (context) => const OrderScreen(),
-        );  
+        );
       case Routes.profileScreen:
         return MaterialPageRoute(
           builder: (context) => const ProfileScreen(),
