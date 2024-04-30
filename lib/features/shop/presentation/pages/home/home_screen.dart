@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../core/routing/routes.dart';
 import '../../../../../core/utils/constants/image_strings.dart';
 import '../../../../../core/utils/constants/sizes.dart';
+import '../../../../../core/utils/helpers/extensions.dart';
 import '../../../../../core/widgets/custom_shapes/containers/custom_search_container.dart';
 import '../../../../../core/widgets/custom_shapes/containers/primary_header_container.dart';
 import '../../../../../core/widgets/layouts/grid_layout_widget.dart';
@@ -64,9 +66,9 @@ class HomeScreen extends StatelessWidget {
 
                   /// Heading
                   SectionHeading(
-                    title: "Popular Products",
-                    onPressed: () {},
-                  ),
+                      title: "Popular Products",
+                      onPressed: () =>
+                          context.pushNamed(Routes.allProductsScreen)),
                   const SizedBox(
                     height: AppSizes.spaceBtwItems,
                   ),
