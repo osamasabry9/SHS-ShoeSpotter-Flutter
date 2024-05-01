@@ -3,7 +3,7 @@ description: "A new Flutter project."
 
 publish_to: "none"
 
-version: 1.0.0+1
+version: 1.0.1+1
 
 environment:
   sdk: ">=3.2.3 <4.0.0"
@@ -49,6 +49,7 @@ dependencies:
   # Firebase
   firebase_storage: ^11.5.5
   get_storage: ^2.1.1
+  firebase_core: ^2.27.0
 
 dev_dependencies:
   flutter_test:

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "921117579238",
+    "project_id": "tshoe-spotter-flutter",
+    "storage_bucket": "tshoe-spotter-flutter.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:921117579238:android:ad43098cb093674c8f2827",
+        "android_client_info": {
+          "package_name": "com.example.shoe_spotter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDR8xSqxmt6m2hQ1ZVIw4bM51jkPe-UGCg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
