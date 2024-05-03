@@ -47,29 +47,29 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDmS_XPZMaxZmSAGDRY3xobR_2fdHVN4G8',
-    appId: '1:921117579238:web:20b4cbbf99190fa28f2827',
-    messagingSenderId: '921117579238',
-    projectId: 'tshoe-spotter-flutter',
-    authDomain: 'tshoe-spotter-flutter.firebaseapp.com',
-    storageBucket: 'tshoe-spotter-flutter.appspot.com',
-    measurementId: 'G-Z0S4CJZPCG',
+    apiKey: 'AIzaSyDcXq-tIiBC7QO3gqWYTny7VNW3AOHJuLE',
+    appId: '1:410563000793:web:84e0f8b8cf4b068dd401c8',
+    messagingSenderId: '410563000793',
+    projectId: 'tshoe-spotter-flutter-28e87',
+    authDomain: 'tshoe-spotter-flutter-28e87.firebaseapp.com',
+    storageBucket: 'tshoe-spotter-flutter-28e87.appspot.com',
+    measurementId: 'G-993GY57VCD',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDR8xSqxmt6m2hQ1ZVIw4bM51jkPe-UGCg',
-    appId: '1:921117579238:android:ad43098cb093674c8f2827',
-    messagingSenderId: '921117579238',
-    projectId: 'tshoe-spotter-flutter',
-    storageBucket: 'tshoe-spotter-flutter.appspot.com',
+    apiKey: 'AIzaSyBKC4dMludSfqHc0nXIN6PDpCrcyvEmh34',
+    appId: '1:410563000793:android:99f4e8b2383040f9d401c8',
+    messagingSenderId: '410563000793',
+    projectId: 'tshoe-spotter-flutter-28e87',
+    storageBucket: 'tshoe-spotter-flutter-28e87.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyCdL5waBqB_lOrr2BPV2n3xCvHEy3J53rg',
-    appId: '1:921117579238:ios:e27fa5e0f0f1f3bf8f2827',
-    messagingSenderId: '921117579238',
-    projectId: 'tshoe-spotter-flutter',
-    storageBucket: 'tshoe-spotter-flutter.appspot.com',
+    apiKey: 'AIzaSyC7RNKySatvk1Jh0ND9w394jqwv5molg1s',
+    appId: '1:410563000793:ios:55678a7b8ab83fe5d401c8',
+    messagingSenderId: '410563000793',
+    projectId: 'tshoe-spotter-flutter-28e87',
+    storageBucket: 'tshoe-spotter-flutter-28e87.appspot.com',
     iosBundleId: 'com.example.shoeSpotter',
   );
 
