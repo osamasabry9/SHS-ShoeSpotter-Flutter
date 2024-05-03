@@ -27,7 +27,7 @@ if (flutterVersionName == null) {
 
 android {
     namespace "com.example.shoe_spotter"
-    compileSdkVersion flutter.compileSdkVersion
+    compileSdkVersion 34
     ndkVersion flutter.ndkVersion
 
     compileOptions {
@@ -53,7 +53,7 @@ android {
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
-        flavorDimensions "default"
+    flavorDimensions "default"
     productFlavors {
       production {
           dimension "default"
