@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:shoe_spotter/core/local_storage/storage_utility.dart';
+import 'package:shoe_spotter/core/utils/constants/text_strings.dart';
 
+import '../../../../app/di.dart';
 import '../../../../core/utils/constants/sizes.dart';
 import '../widgets/on_boarding_next_button_widget.dart';
 import '../widgets/on_boarding_page_view_items.dart';
@@ -16,6 +19,14 @@ class OnBoardingScreen extends StatefulWidget {
 class _OnBoardingScreenState extends State<OnBoardingScreen> {
   final PageController onboardController = PageController();
   bool isLast = false;
+  final AppLocalStorage _appLocalStorage = instance<AppLocalStorage>();
+  @override
+  void initState() {
+    _appLocalStorage.saveData(
+        AppTexts.PREFS_KEY_ONBOARDING_SCREEN_VIEWED, true);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

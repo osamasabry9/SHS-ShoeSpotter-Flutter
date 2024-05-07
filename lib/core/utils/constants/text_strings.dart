@@ -68,4 +68,11 @@ class AppTexts {
   // -- Home
   static const String homeAppBarTitle = "Good day for shopping";
   static const String homeAppBarSubTitle = "Osama Sabry";
+
+  // Keys
+  static const String PREFS_KEY_LANG = "PREFS_KEY_LANG";
+  static const String PREFS_KEY_ONBOARDING_SCREEN_VIEWED =
+      "PREFS_KEY_ONBOARDING_SCREEN_VIEWED";
+  static const String PREFS_KEY_IS_USER_LOGGED_IN =
+      "PREFS_KEY_IS_USER_LOGGED_IN";
 }

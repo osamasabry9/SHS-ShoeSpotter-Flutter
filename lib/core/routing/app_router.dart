@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:shoe_spotter/app/di.dart';
+import 'package:shoe_spotter/core/utils/constants/text_strings.dart';
 
 import '../../features/Personalization/presentation/pages/address/add_new_address_screen.dart';
 import '../../features/Personalization/presentation/pages/address/addresses_screen.dart';
@@ -30,8 +33,13 @@ class AppRouter {
     var args = settings.arguments;
     switch (settings.name) {
       case Routes.onBoardingScreen:
+        bool onBoardingScreenViewed = instance<GetStorage>()
+                .read(AppTexts.PREFS_KEY_ONBOARDING_SCREEN_VIEWED) ??
+            false;
         return MaterialPageRoute(
-          builder: (context) => const OnBoardingScreen(),
+          builder: (_) => onBoardingScreenViewed
+              ? const LoginScreen()
+              : const OnBoardingScreen(),
         );
       case Routes.loginScreen:
         return MaterialPageRoute(
@@ -74,10 +82,10 @@ class AppRouter {
           builder: (context) => const HomeScreen(),
         );
       case Routes.subCategoriesScreen:
-       return MaterialPageRoute(
+        return MaterialPageRoute(
           builder: (context) => const SubCategoriesScreen(),
         );
-       case Routes.allBrandsScreen:
+      case Routes.allBrandsScreen:
         return MaterialPageRoute(
           builder: (context) => const AllBrandsScreen(),
         );
