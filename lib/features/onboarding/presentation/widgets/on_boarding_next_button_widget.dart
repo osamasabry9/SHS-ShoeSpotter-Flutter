@@ -25,6 +25,7 @@ class OnBoardingNextButtonWidget extends StatelessWidget {
           context.pushReplacementNamed(
             Routes.loginScreen,
           );
+          
         } else {
           onboardController.nextPage(
             duration: const Duration(seconds: 1),
