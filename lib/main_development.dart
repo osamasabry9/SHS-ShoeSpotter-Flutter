@@ -8,15 +8,18 @@ import 'firebase_options.dart';
 Future<void> main() async {
   // Widgets binding
   //final WidgetsBinding binding =
-   WidgetsFlutterBinding.ensureInitialized();
-// Initialize GetIt
-  await initAppModule();
-  // await Splash until other items are loaded
-  // FlutterNativeSplash.preserve(widgetsBinding: binding);
+  WidgetsFlutterBinding.ensureInitialized();
 
   // Initialize Firebase
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+// Initialize GetIt
+  await initAppModule();
+
+  // await Splash until other items are loaded
+  // FlutterNativeSplash.preserve(widgetsBinding: binding);
+
   runApp(TShoeSpotterApp());
 }

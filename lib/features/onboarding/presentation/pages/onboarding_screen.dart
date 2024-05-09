@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:shoe_spotter/core/local_storage/storage_utility.dart';
-import 'package:shoe_spotter/core/utils/constants/text_strings.dart';
+import '../../../../core/local_storage/storage_utility.dart';
+import '../../../../core/utils/constants/text_strings.dart';
 
 import '../../../../app/di.dart';
 import '../../../../core/utils/constants/sizes.dart';

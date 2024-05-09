@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:shoe_spotter/app/di.dart';
-import 'package:shoe_spotter/core/utils/constants/text_strings.dart';
+import '../../app/di.dart';
+import '../utils/constants/text_strings.dart';
 
 import '../../features/Personalization/presentation/pages/address/add_new_address_screen.dart';
 import '../../features/Personalization/presentation/pages/address/addresses_screen.dart';
