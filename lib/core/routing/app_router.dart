@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:shoe_spotter/app/di.dart';
 import 'package:shoe_spotter/core/utils/constants/text_strings.dart';
@@ -6,6 +7,7 @@ import 'package:shoe_spotter/core/utils/constants/text_strings.dart';
 import '../../features/Personalization/presentation/pages/address/add_new_address_screen.dart';
 import '../../features/Personalization/presentation/pages/address/addresses_screen.dart';
 import '../../features/Personalization/presentation/pages/profile/profile_screen.dart';
+import '../../features/auth/presentation/cubit/sign_up_cubit.dart';
 import '../../features/auth/presentation/pages/email_verification_screen.dart';
 import '../../features/auth/presentation/pages/forgot_password_screen.dart';
 import '../../features/auth/presentation/pages/login_screen.dart';
@@ -47,7 +49,11 @@ class AppRouter {
         );
       case Routes.signUpScreen:
         return MaterialPageRoute(
-          builder: (context) => const SignUpScreen(),
+          // builder: (_) => BlocProvider(
+          //   create: (context) => instance<SignUpCubit>(),
+          //   child: const SignUpScreen(),
+          // ),
+          builder: (_) => const SignUpScreen(),
         );
       case Routes.emailVerificationScreen:
         return MaterialPageRoute(
