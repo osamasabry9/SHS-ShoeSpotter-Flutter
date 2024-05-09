@@ -1,6 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:shoe_spotter/core/local_storage/storage_utility.dart';
+import '../core/local_storage/storage_utility.dart';
 
 final instance = GetIt.instance;
 
