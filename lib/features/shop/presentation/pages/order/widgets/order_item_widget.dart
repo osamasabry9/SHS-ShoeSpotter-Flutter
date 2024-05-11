@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../../core/utils/constants/colors.dart';
 import '../../../../../../core/utils/constants/sizes.dart';
 import '../../../../../../core/utils/helpers/helper_functions.dart';
 import '../../../../../../core/widgets/custom_shapes/containers/rounded_container_widget.dart';
-
-import '../../../../../../core/utils/constants/colors.dart';
 import 'order_number_widget.dart';
 import 'processing_section_widget.dart';
 import 'shipping_date_widget.dart';

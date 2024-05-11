@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get_storage/get_storage.dart';
-import '../../app/di.dart';
-import '../utils/constants/text_strings.dart';
 
 import '../../features/Personalization/presentation/pages/address/add_new_address_screen.dart';
 import '../../features/Personalization/presentation/pages/address/addresses_screen.dart';
@@ -33,13 +30,8 @@ class AppRouter {
     var args = settings.arguments;
     switch (settings.name) {
       case Routes.onBoardingScreen:
-        bool onBoardingScreenViewed = instance<GetStorage>()
-                .read(AppTexts.PREFS_KEY_ONBOARDING_SCREEN_VIEWED) ??
-            false;
         return MaterialPageRoute(
-          builder: (_) => onBoardingScreenViewed
-              ? const LoginScreen()
-              : const OnBoardingScreen(),
+          builder: (_) => const OnBoardingScreen(),
         );
       case Routes.loginScreen:
         return MaterialPageRoute(
