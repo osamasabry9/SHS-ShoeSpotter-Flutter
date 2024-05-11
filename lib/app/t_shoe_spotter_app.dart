@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../core/routing/app_router.dart';
 import '../core/routing/routes.dart';
@@ -18,7 +19,7 @@ class TShoeSpotterApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: AppTexts.appName,
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.system,
