@@ -5,6 +5,7 @@ import '../core/routing/app_router.dart';
 import '../core/routing/routes.dart';
 import '../core/utils/constants/text_strings.dart';
 import '../core/utils/theme/theme.dart';
+import 'general_bindings.dart';
 
 class TShoeSpotterApp extends StatelessWidget {
   // const ShoeSpotterApp({super.key}); // default constructor
@@ -25,8 +26,9 @@ class TShoeSpotterApp extends StatelessWidget {
       themeMode: ThemeMode.system,
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
+      initialBinding: GeneralBindings(),
       onGenerateRoute: AppRouter.onGenerateRoute,
-      initialRoute: Routes.onBoardingScreen,
+      initialRoute: Routes.loaderScreen,
     );
   }
 }
