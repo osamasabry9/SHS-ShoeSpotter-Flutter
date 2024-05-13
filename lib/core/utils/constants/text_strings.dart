@@ -1,4 +1,4 @@
-/// This class contains all the App Text in String formats.
+// ignore_for_file: constant_identifier_names
 class AppTexts {
   // -- GLOBAL Texts
   static const String and = "and";
@@ -69,10 +69,5 @@ class AppTexts {
   static const String homeAppBarTitle = "Good day for shopping";
   static const String homeAppBarSubTitle = "Osama Sabry";
 
-  // Keys
-  static const String PREFS_KEY_LANG = "PREFS_KEY_LANG";
-  static const String PREFS_KEY_ONBOARDING_SCREEN_VIEWED =
-      "PREFS_KEY_ONBOARDING_SCREEN_VIEWED";
-  static const String PREFS_KEY_IS_USER_LOGGED_IN =
-      "PREFS_KEY_IS_USER_LOGGED_IN";
+
 }

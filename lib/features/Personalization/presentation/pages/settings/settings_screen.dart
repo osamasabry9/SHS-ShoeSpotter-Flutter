@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
+import '../../../../../core/repositories/authentication/authentication_repository.dart';
 import '../../../../../core/routing/routes.dart';
 import '../../../../../core/utils/constants/colors.dart';
 import '../../../../../core/utils/constants/sizes.dart';
@@ -32,7 +34,7 @@ class SettingsScreen extends StatelessWidget {
                 ),
 
                 /// user profile card
-                 UserProfileTile(
+                UserProfileTile(
                   name: "Osama Sabry",
                   email: "osam@sabry.com",
                   onPressed: () => context.pushNamed(Routes.profileScreen),
@@ -54,7 +56,9 @@ class SettingsScreen extends StatelessWidget {
                   SizedBox(
                       width: double.infinity,
                       child: OutlinedButton(
-                          onPressed: () {}, child: const Text("Logout"))),
+                          onPressed: () =>
+                              Get.find<AuthenticationRepository>().logoutUser(),
+                          child: const Text("Logout"))),
                   const SizedBox(height: AppSizes.spaceBtwSections * 2.5),
                 ],
               ),

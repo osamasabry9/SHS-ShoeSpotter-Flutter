@@ -4,7 +4,7 @@ import 'package:get_storage/get_storage.dart';
 import '../../../core/routing/routes.dart';
 
 import '../../../app/di.dart';
-import '../../../core/utils/constants/text_strings.dart';
+import '../../../core/utils/constants/api_constants.dart';
 
 class OnBoardingController extends GetxController {
   static OnBoardingController get instance => Get.find();
@@ -16,7 +16,7 @@ class OnBoardingController extends GetxController {
   @override
   void onInit() {
     getIt<GetStorage>()
-        .write(AppTexts.PREFS_KEY_ONBOARDING_SCREEN_VIEWED, true);
+        .write(AppPrefsKeys.PREFS_KEY_ONBOARDING_SCREEN_VIEWED, true);
     super.onInit();
   }
 

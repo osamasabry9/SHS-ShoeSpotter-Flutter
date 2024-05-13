@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+
 import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/image_strings.dart';
 import '../../../utils/constants/sizes.dart';
+import '../../../utils/helpers/helper_functions.dart';
 import '../../../widgets/images/rounded_image_widget.dart';
 import '../../../widgets/texts/brand_title_with_verified_icon.dart';
 import '../../../widgets/texts/product_title_text_widget.dart';
-
-import '../../../utils/helpers/helper_functions.dart';
 
 class CartItemWidget extends StatelessWidget {
   const CartItemWidget({
