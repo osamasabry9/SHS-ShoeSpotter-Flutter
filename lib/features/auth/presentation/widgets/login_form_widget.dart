@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../../core/routing/routes.dart';
 import '../../../../core/utils/constants/sizes.dart';
 import '../../../../core/utils/constants/text_strings.dart';
 import '../../../../core/utils/helpers/extensions.dart';
+import '../../../../core/utils/validators/validation.dart';
+import '../controllers/login/login_controller.dart';
 
 class LoginFormWidget extends StatelessWidget {
   const LoginFormWidget({
@@ -13,30 +16,40 @@ class LoginFormWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(LoginController());
     return Form(
+      key: controller.loginFormKey,
       child: Padding(
         padding:
             const EdgeInsets.symmetric(vertical: AppSizes.spaceBtwSections),
         child: Column(
           children: [
             TextFormField(
+                validator: (value) => AppValidator.validateEmail(value),
+                controller: controller.emailController,
                 decoration: const InputDecoration(
-              labelText: AppTexts.email,
-              prefixIcon: Icon(Iconsax.direct_right),
-            )),
-            const SizedBox(
-              height: AppSizes.spaceBtwInputFields,
-            ),
-            TextFormField(
-                obscureText: true,
-                decoration: const InputDecoration(
-                  labelText: AppTexts.password,
-                  prefixIcon: Icon(Iconsax.password_check),
-                  suffixIcon: Icon(Iconsax.eye_slash),
+                  labelText: AppTexts.email,
+                  prefixIcon: Icon(Iconsax.direct_right),
                 )),
-            const SizedBox(
-              height: AppSizes.spaceBtwInputFields / 2,
+            const SizedBox(height: AppSizes.spaceBtwInputFields),
+            Obx(
+              () => TextFormField(
+                controller: controller.passwordController,
+                validator: (value) => AppValidator.validatePassword(value),
+                obscureText: controller.hidePassword.value,
+                decoration: InputDecoration(
+                  labelText: AppTexts.password,
+                  prefixIcon: const Icon(Iconsax.password_check),
+                  suffixIcon: IconButton(
+                      onPressed: () => controller.hidePassword.value =
+                          !controller.hidePassword.value,
+                      icon: Icon(controller.hidePassword.value
+                          ? Iconsax.eye_slash
+                          : Iconsax.eye)),
+                ),
+              ),
             ),
+            const SizedBox(height: AppSizes.spaceBtwInputFields / 2),
             // remember me and forget password
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -44,9 +57,11 @@ class LoginFormWidget extends StatelessWidget {
                 // remember me
                 Row(
                   children: [
-                    Checkbox(
-                      value: true,
-                      onChanged: (value) {},
+                    Obx(
+                      () => Checkbox(
+                          value: controller.rememberMe.value,
+                          onChanged: (value) => controller.rememberMe.value =
+                              !controller.rememberMe.value),
                     ),
                     const Text(AppTexts.rememberMe),
                   ],
@@ -60,22 +75,16 @@ class LoginFormWidget extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(
-              height: AppSizes.spaceBtwSections,
-            ),
+            const SizedBox(height: AppSizes.spaceBtwSections),
             // login button
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () {
-                  context.pushReplacementNamed(Routes.mainScreen);
-                },
+                onPressed: () => controller.login(),
                 child: const Text(AppTexts.signIn),
               ),
             ),
-            const SizedBox(
-              height: AppSizes.spaceBtwItems,
-            ),
+            const SizedBox(height: AppSizes.spaceBtwItems),
             // register button
             SizedBox(
               width: double.infinity,
@@ -83,9 +92,7 @@ class LoginFormWidget extends StatelessWidget {
                 onPressed: () {
                   context.pushNamed(Routes.signUpScreen);
                 },
-                child: const Text(
-                  AppTexts.createAccount,
-                ),
+                child: const Text(AppTexts.createAccount),
               ),
             )
           ],
