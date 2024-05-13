@@ -1,4 +1,4 @@
-/// This class contains all the App Text in String formats.
+// ignore_for_file: constant_identifier_names
 class AppTexts {
   // -- GLOBAL Texts
   static const String and = "and";
