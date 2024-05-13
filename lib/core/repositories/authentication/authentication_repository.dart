@@ -7,7 +7,7 @@ import '../../../features/auth/domain/usecases/logout_user_usecase.dart';
 
 import '../../../../../app/di.dart' as di;
 import '../../routing/routes.dart';
-import '../../utils/constants/text_strings.dart';
+import '../../utils/constants/api_constants.dart';
 
 class AuthenticationRepository extends GetxController {
   static AuthenticationRepository get instance => Get.find();
@@ -33,7 +33,7 @@ class AuthenticationRepository extends GetxController {
     } else {
       di
                   .getIt<GetStorage>()
-                  .read(AppTexts.PREFS_KEY_ONBOARDING_SCREEN_VIEWED) !=
+                  .read(AppPrefsKeys.PREFS_KEY_ONBOARDING_SCREEN_VIEWED) !=
               true
           ? Get.offAllNamed(Routes.onBoardingScreen)
           : Get.offAllNamed(Routes.loginScreen);

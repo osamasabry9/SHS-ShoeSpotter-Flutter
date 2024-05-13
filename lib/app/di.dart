@@ -12,7 +12,7 @@ import '../features/auth/domain/repository/auth_firebase_repository.dart';
 import '../features/auth/domain/usecases/delete_user_account_usecase.dart';
 import '../features/auth/domain/usecases/logout_user_usecase.dart';
 import '../features/auth/domain/usecases/send_email_verification_usecase.dart';
-import '../features/auth/domain/usecases/sign_in_user_usecase.dart';
+import '../features/auth/domain/usecases/login_user_usecase.dart';
 import '../features/auth/domain/usecases/sign_up_user_usecase.dart';
 
 final getIt = GetIt.instance;
@@ -28,8 +28,7 @@ Future<void> initAppModule() async {
 
   //++++++++++++++++++++++++++++++++  User +++++++++++++++++++++++++++++++
   getIt.registerLazySingleton(() => SignUpUseCase(repository: getIt.call()));
-  getIt
-      .registerLazySingleton(() => SignInUserUseCase(repository: getIt.call()));
+  getIt.registerLazySingleton(() => LogInUserUseCase(repository: getIt.call()));
   getIt.registerLazySingleton(
       () => SendEmailVerificationUseCase(repository: getIt.call()));
   getIt
