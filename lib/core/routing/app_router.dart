@@ -20,6 +20,7 @@ import '../../features/shop/presentation/pages/product_details/product_details.d
 import '../../features/shop/presentation/pages/product_reviews/product_reviews_screen.dart';
 import '../../features/shop/presentation/pages/sub_categories/sub_categories_screen.dart';
 import '../utils/models/success_items_model.dart';
+import '../widgets/screens/loader_screen.dart';
 import '../widgets/screens/main_screen.dart';
 import '../widgets/screens/not_found_page.dart';
 import '../widgets/screens/success_screen.dart';
@@ -29,6 +30,10 @@ class AppRouter {
   static Route onGenerateRoute(RouteSettings settings) {
     var args = settings.arguments;
     switch (settings.name) {
+      case Routes.loaderScreen:
+        return MaterialPageRoute(
+          builder: (_) => const LoaderScreen(),
+        );
       case Routes.onBoardingScreen:
         return MaterialPageRoute(
           builder: (_) => const OnBoardingScreen(),
@@ -43,7 +48,9 @@ class AppRouter {
         );
       case Routes.emailVerificationScreen:
         return MaterialPageRoute(
-          builder: (context) => const EmailVerificationScreen(),
+          builder: (context) => args is String
+              ? EmailVerificationScreen(email: args)
+              : const EmailVerificationScreen(),
         );
       case Routes.successScreen:
         if (args is SuccessItemsModel) {
