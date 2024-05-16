@@ -69,7 +69,7 @@ class LoginFormWidget extends StatelessWidget {
                 // forget password
                 TextButton(
                   onPressed: () {
-                    context.pushNamed(Routes.forgotPasswordScreen);
+                    context.pushNamed(Routes.forgetPasswordScreen);
                   },
                   child: const Text(AppTexts.forgetPassword),
                 ),
@@ -80,7 +80,7 @@ class LoginFormWidget extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () => controller.login(),
+                onPressed: () => controller.emailAndPasswordSignIn(),
                 child: const Text(AppTexts.signIn),
               ),
             ),
