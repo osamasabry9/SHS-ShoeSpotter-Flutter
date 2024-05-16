@@ -4,7 +4,7 @@ import '../../features/Personalization/presentation/pages/address/add_new_addres
 import '../../features/Personalization/presentation/pages/address/addresses_screen.dart';
 import '../../features/Personalization/presentation/pages/profile/profile_screen.dart';
 import '../../features/auth/presentation/pages/email_verification_screen.dart';
-import '../../features/auth/presentation/pages/forgot_password_screen.dart';
+import '../../features/auth/presentation/pages/forget_password_screen.dart';
 import '../../features/auth/presentation/pages/login_screen.dart';
 import '../../features/auth/presentation/pages/reset_password_screen.dart';
 import '../../features/auth/presentation/pages/sign_up_screen.dart';
@@ -64,13 +64,15 @@ class AppRouter {
             builder: (context) => const NotFoundPage(),
           );
         }
-      case Routes.forgotPasswordScreen:
+      case Routes.forgetPasswordScreen:
         return MaterialPageRoute(
-          builder: (context) => const ForgotPasswordScreen(),
+          builder: (context) => const ForgetPasswordScreen(),
         );
       case Routes.resetPasswordScreen:
         return MaterialPageRoute(
-          builder: (context) => const ResetPasswordScreen(),
+          builder: (context) => args is String
+              ? ResetPasswordScreen(email: args)
+              : const NotFoundPage(),
         );
       case Routes.mainScreen:
         return MaterialPageRoute(
