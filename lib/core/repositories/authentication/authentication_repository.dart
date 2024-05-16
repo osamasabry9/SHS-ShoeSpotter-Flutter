@@ -2,10 +2,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import '../../../features/auth/domain/usecases/delete_user_account_usecase.dart';
-import '../../../features/auth/domain/usecases/logout_user_usecase.dart';
 
 import '../../../../../app/di.dart' as di;
+import '../../../features/auth/domain/usecases/delete_user_account_usecase.dart';
+import '../../../features/auth/domain/usecases/logout_user_usecase.dart';
 import '../../routing/routes.dart';
 import '../../utils/constants/api_constants.dart';
 
@@ -40,7 +40,7 @@ class AuthenticationRepository extends GetxController {
     }
   }
 
-  // checks if user is logged in or not
+// 
 
   // Logout user - valid for any authentication.
   Future<void> logoutUser() async {
