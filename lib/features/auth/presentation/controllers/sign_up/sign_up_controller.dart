@@ -1,5 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import '../../../../Personalization/presentation/controllers/user/user_controller.dart';
+import '../../../data/models/user_model.dart';
 import '../../../../../core/utils/constants/image_strings.dart';
 import '../../../../../core/utils/popups/full_screen_loader.dart';
 import '../../../../../core/utils/popups/loaders.dart';
@@ -8,12 +10,12 @@ import '../../../domain/usecases/sign_up_user_usecase.dart';
 import '../../../../../core/routing/routes.dart';
 import '../../../../../core/utils/helpers/network_manager.dart';
 import '../../../../../app/di.dart' as di;
-import '../../../domain/entities/user_entity.dart';
 
 class SignUpController extends GetxController {
   static SignUpController get instance => Get.find();
 
   /// Variables
+  final userController = Get.put(UserController());
   final hidePassword = true.obs;
   final privacyPolicy = true.obs;
   final email = TextEditingController();
@@ -54,19 +56,21 @@ class SignUpController extends GetxController {
         return;
       }
 
-      // Register user in the Firebase authentication & Save user data in the firebase and save Authentication user data in the Firebase Firestore
-      await di.getIt<SignUpUseCase>().call(
-          user: UserEntity(
-              uid: '',
-              email: email.text.trim(),
-              firstName: firstName.text.trim(),
-              lastName: lastName.text.trim(),
-              phoneNumber: phoneNumber.text.trim(),
-              username: username.text.trim(),
-              profileUrl: ''),
+      // Register user in the Firebase authentication.
+      final userCredentials = await di
+          .getIt<SignUpUseCase>()
+          .call(email: email.text.trim(), password: password.text.trim());
+      // Parse user data to user model and save it in the firebase
+      final newUser = UserModel(
+          uid: userCredentials.user!.uid,
+          username: username.text.trim(),
+          firstName: firstName.text.trim(),
+          lastName: lastName.text.trim(),
+          phoneNumber: phoneNumber.text.trim(),
           email: email.text.trim(),
-          password: password.text.trim());
-
+          profileUrl: '');
+      //Save Authentication user data in the Firebase Firestore
+     await userController.saveUserRecordInFirestore(newUser);
       // Remove loading
       AppFullScreenLoader.closeLoadingDialog();
 

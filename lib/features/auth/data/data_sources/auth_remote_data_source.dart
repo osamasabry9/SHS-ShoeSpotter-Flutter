@@ -1,22 +1,19 @@
-import '../../domain/entities/user_entity.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 abstract class AuthRemoteDataSource {
   // Credential Features
   Future<void> logInUser({required String email, required String password});
-  Future<void> signUpUser(
-      {required UserEntity user,
-      required String email,
-      required String password});
+  Future<UserCredential> signUpUser(
+      {required String email, required String password});
 
-  Future<void> saveUserRecord(UserEntity user);
   Future<void> sendEmailVerification();
   Future<void> forgetPassword();
 
-  Future<void> resetPassword(String email);
+  Future<void> sendPasswordResetEmail(String email);
 
   // Social Sign In Features
-  Future<void> signInWithGoogle();
-  Future<void> signInWithFacebook();
+  Future<UserCredential> signInWithGoogle();
+  Future<UserCredential> signInWithFacebook();
 
   // User Features
   Future<String> getCurrentUid();

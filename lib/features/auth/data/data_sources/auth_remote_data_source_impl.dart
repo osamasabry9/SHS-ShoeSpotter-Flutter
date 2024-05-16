@@ -1,19 +1,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import '../../../../core/utils/exceptions/firebase_auth_exception.dart';
 import '../../../../core/utils/exceptions/firebase_exception.dart';
 import '../../../../core/utils/exceptions/format_exception.dart';
 import '../../../../core/utils/exceptions/platform_exception.dart';
-import '../../../../core/utils/popups/loaders.dart';
 
 import '../../../../core/routing/routes.dart';
-import '../../../../core/utils/constants/api_constants.dart';
-import '../../domain/entities/user_entity.dart';
-import '../models/user_model.dart';
 import 'auth_remote_data_source.dart';
 
 class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
@@ -30,43 +27,13 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   Future<String> getCurrentUid() async => firebaseAuth.currentUser!.uid;
 
   @override
-  Future<void> saveUserRecord(UserEntity user) async {
-    final userCollection =
-        firebaseFirestore.collection(FirebaseConst.USERS_COLLECTION);
-    final uid = await getCurrentUid();
-    userCollection.doc(uid).get().then((userDoc) {
-      final newUser = UserModel(
-              uid: uid,
-              email: user.email,
-              firstName: user.firstName,
-              lastName: user.lastName,
-              phoneNumber: user.phoneNumber,
-              username: user.username,
-              profileUrl: user.profileUrl)
-          .toJson();
-      if (!userDoc.exists) {
-        userCollection.doc(uid).set(newUser);
-      } else {
-        userCollection.doc(uid).update(newUser);
-      }
-    }).catchError((error) {
-      AppLoaders.errorSnackBar(title: "Error", message: error.toString());
-    });
-  }
-
-  @override
-  Future<void> signUpUser(
-      {required String email,
-      required String password,
-      required UserEntity user}) async {
+  Future<UserCredential> signUpUser({
+    required String email,
+    required String password,
+  }) async {
     try {
-      await firebaseAuth
-          .createUserWithEmailAndPassword(email: email, password: password)
-          .then((currentUser) async {
-        if (currentUser.user != null) {
-          saveUserRecord(user);
-        }
-      });
+      return await firebaseAuth.createUserWithEmailAndPassword(
+          email: email, password: password);
     } on FirebaseAuthException catch (e) {
       throw AppFirebaseAuthException(e.code).message;
     } on FirebaseException catch (e) {
@@ -104,15 +71,40 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   }
 
   @override
-  Future<void> signInWithFacebook() {
+  Future<UserCredential> signInWithFacebook() {
     // TODO: implement signInWithFacebook
     throw UnimplementedError();
   }
 
   @override
-  Future<void> signInWithGoogle() {
-    // TODO: implement signInWithGoogle
-    throw UnimplementedError();
+  Future<UserCredential> signInWithGoogle() async {
+    try {
+      // Trigger the authentication flow
+      final GoogleSignInAccount? userAccount = await GoogleSignIn().signIn();
+      // Obtain the auth details from the request
+      final GoogleSignInAuthentication? googleAuth =
+          await userAccount?.authentication;
+      // Create a new credential
+      final credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth?.accessToken,
+        idToken: googleAuth?.idToken,
+      );
+      // Once signed in, return the UserCredential
+      return await firebaseAuth.signInWithCredential(credential);
+    } on FirebaseAuthException catch (e) {
+      throw AppFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw AppFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const AppFormatException();
+    } on PlatformException catch (e) {
+      throw AppPlatformException(e.code).message;
+    } catch (e) {
+      if (kDebugMode) {
+        print("Something went wrong. : ${e.toString()}");
+      }
+      throw 'Something went wrong. please try again.';
+    }
   }
 
   @override
@@ -136,9 +128,20 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   }
 
   @override
-  Future<void> resetPassword(String email) {
-    // TODO: implement resetPassword
-    throw UnimplementedError();
+  Future<void> sendPasswordResetEmail(String email) async{
+    try {
+      await firebaseAuth.sendPasswordResetEmail(email: email);
+    } on FirebaseAuthException catch (e) {
+      throw AppFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw AppFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const AppFormatException();
+    } on PlatformException catch (e) {
+      throw AppPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. please try again.';
+    }
   }
 
   @override
@@ -150,6 +153,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   @override
   Future<void> logoutUser() async {
     try {
+      await GoogleSignIn().signOut();
       await firebaseAuth.signOut();
       Get.offAllNamed(Routes.loginScreen);
     } on FirebaseAuthException catch (e) {

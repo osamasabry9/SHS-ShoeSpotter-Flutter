@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:get_storage/get_storage.dart';
+import '../features/auth/domain/usecases/send_password_reset_email_usecase.dart';
 
 import '../core/local_storage/storage_utility.dart';
 import '../features/auth/data/data_sources/auth_remote_data_source.dart';
@@ -14,6 +15,8 @@ import '../features/auth/domain/usecases/logout_user_usecase.dart';
 import '../features/auth/domain/usecases/send_email_verification_usecase.dart';
 import '../features/auth/domain/usecases/login_user_usecase.dart';
 import '../features/auth/domain/usecases/sign_up_user_usecase.dart';
+import '../features/auth/domain/usecases/sign_with_facebook_usecase.dart';
+import '../features/auth/domain/usecases/sign_with_google_usecase.dart';
 
 final getIt = GetIt.instance;
 
@@ -30,7 +33,13 @@ Future<void> initAppModule() async {
   getIt.registerLazySingleton(() => SignUpUseCase(repository: getIt.call()));
   getIt.registerLazySingleton(() => LogInUserUseCase(repository: getIt.call()));
   getIt.registerLazySingleton(
+      () => SignWithGoogleUseCase(repository: getIt.call()));
+  getIt.registerLazySingleton(
+      () => SignWithFacebookUseCase(repository: getIt.call()));
+  getIt.registerLazySingleton(
       () => SendEmailVerificationUseCase(repository: getIt.call()));
+      getIt.registerLazySingleton(
+      () => SendPasswordResetEmailUseCase(repository: getIt.call()));
   getIt
       .registerLazySingleton(() => LogoutUserUseCase(repository: getIt.call()));
   getIt.registerLazySingleton(
