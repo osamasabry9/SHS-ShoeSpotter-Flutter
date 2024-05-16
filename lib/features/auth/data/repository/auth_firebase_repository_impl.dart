@@ -1,4 +1,5 @@
-import '../../domain/entities/user_entity.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
 import '../../domain/repository/auth_firebase_repository.dart';
 import '../data_sources/auth_remote_data_source.dart';
 
@@ -12,12 +13,9 @@ class AuthRepositoryImpl implements AuthRepository {
       userRemoteDataSource.logInUser(email: email, password: password);
 
   @override
-  Future<void> signUpUser(
-          {required UserEntity user,
-          required String email,
-          required String password}) async =>
-      userRemoteDataSource.signUpUser(
-          user: user, email: email, password: password);
+  Future<UserCredential> signUpUser(
+          {required String email, required String password}) async =>
+      userRemoteDataSource.signUpUser(email: email, password: password);
 
   @override
   Future<void> forgetPassword() async => userRemoteDataSource.forgetPassword();
@@ -27,15 +25,15 @@ class AuthRepositoryImpl implements AuthRepository {
       userRemoteDataSource.sendEmailVerification();
 
   @override
-  Future<void> resetPassword(String email) async =>
-      userRemoteDataSource.resetPassword(email);
+  Future<void> sendPasswordResetEmail(String email) async =>
+      userRemoteDataSource.sendPasswordResetEmail(email);
   // Social Sign In Features
   @override
-  Future<void> signInWithFacebook() async =>
+  Future<UserCredential> signInWithFacebook() async =>
       userRemoteDataSource.signInWithFacebook();
 
   @override
-  Future<void> signInWithGoogle() async =>
+  Future<UserCredential> signInWithGoogle() async =>
       userRemoteDataSource.signInWithGoogle();
   @override
   Future<void> logoutUser() async => userRemoteDataSource.logoutUser();
