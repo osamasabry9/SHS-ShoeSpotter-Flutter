@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../controller/onboarding_controller.dart';
 
 import '../../../../core/utils/constants/colors.dart';
 import '../../../../core/utils/constants/text_strings.dart';
+import '../../controller/onboarding_controller.dart';
 
 class OnBoardingSkipWidget extends StatelessWidget {
   const OnBoardingSkipWidget({
