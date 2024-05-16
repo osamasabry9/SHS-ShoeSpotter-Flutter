@@ -1,4 +1,5 @@
-import '../entities/user_entity.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
 import '../repository/auth_firebase_repository.dart';
 
 class SignUpUseCase {
@@ -6,10 +7,10 @@ class SignUpUseCase {
 
   SignUpUseCase({required this.repository});
 
-  Future<void> call(
-      {required UserEntity user,
+  Future<UserCredential> call(
+      {
       required String email,
       required String password}) {
-    return repository.signUpUser(user: user, email: email, password: password);
+    return repository.signUpUser( email: email, password: password);
   }
 }
