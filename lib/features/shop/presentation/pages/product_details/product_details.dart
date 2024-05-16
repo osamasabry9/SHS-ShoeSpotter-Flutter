@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../../../../core/utils/constants/sizes.dart';
 import 'widgets/bottom_add_cart_widget.dart';
 import 'widgets/product_attributes_widget.dart';
