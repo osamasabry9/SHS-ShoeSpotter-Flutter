@@ -7,14 +7,10 @@ abstract class AuthRepository {
       {required String email, required String password});
 
   Future<void> sendEmailVerification();
-  Future<void> forgetPassword();
 
   Future<void> sendPasswordResetEmail(String email);
 
   // Social Sign In Features
   Future<UserCredential> signInWithGoogle();
   Future<UserCredential> signInWithFacebook();
-
-  Future<void> logoutUser();
-  Future<void> deleteUserAccount();
 }
