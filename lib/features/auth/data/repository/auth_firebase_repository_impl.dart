@@ -17,8 +17,7 @@ class AuthRepositoryImpl implements AuthRepository {
           {required String email, required String password}) async =>
       userRemoteDataSource.signUpUser(email: email, password: password);
 
-  @override
-  Future<void> forgetPassword() async => userRemoteDataSource.forgetPassword();
+
 
   @override
   Future<void> sendEmailVerification() async =>
@@ -35,10 +34,4 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<UserCredential> signInWithGoogle() async =>
       userRemoteDataSource.signInWithGoogle();
-  @override
-  Future<void> logoutUser() async => userRemoteDataSource.logoutUser();
-
-  @override
-  Future<void> deleteUserAccount() async =>
-      userRemoteDataSource.deleteUserAccount();
 }

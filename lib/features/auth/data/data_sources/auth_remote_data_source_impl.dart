@@ -3,14 +3,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+
+
 import '../../../../core/utils/exceptions/firebase_auth_exception.dart';
 import '../../../../core/utils/exceptions/firebase_exception.dart';
 import '../../../../core/utils/exceptions/format_exception.dart';
 import '../../../../core/utils/exceptions/platform_exception.dart';
 
-import '../../../../core/routing/routes.dart';
 import 'auth_remote_data_source.dart';
 
 class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
@@ -144,47 +144,4 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     }
   }
 
-  @override
-  Future<void> forgetPassword() {
-    // TODO: implement forgetPassword
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<void> logoutUser() async {
-    try {
-      await GoogleSignIn().signOut();
-      await firebaseAuth.signOut();
-      Get.offAllNamed(Routes.loginScreen);
-    } on FirebaseAuthException catch (e) {
-      throw AppFirebaseAuthException(e.code).message;
-    } on FirebaseException catch (e) {
-      throw AppFirebaseException(e.code).message;
-    } on FormatException catch (_) {
-      throw const AppFormatException();
-    } on PlatformException catch (e) {
-      throw AppPlatformException(e.code).message;
-    } catch (e) {
-      throw 'Something went wrong. please try again.';
-    }
-  }
-
-  @override
-  Future<void> deleteUserAccount() async {
-    try {
-      await firebaseAuth.currentUser!.delete();
-      await firebaseAuth.signOut();
-      Get.offAllNamed(Routes.loginScreen);
-    } on FirebaseAuthException catch (e) {
-      throw AppFirebaseAuthException(e.code).message;
-    } on FirebaseException catch (e) {
-      throw AppFirebaseException(e.code).message;
-    } on FormatException catch (_) {
-      throw const AppFormatException();
-    } on PlatformException catch (e) {
-      throw AppPlatformException(e.code).message;
-    } catch (e) {
-      throw 'Something went wrong. please try again.';
-    }
-  }
 }

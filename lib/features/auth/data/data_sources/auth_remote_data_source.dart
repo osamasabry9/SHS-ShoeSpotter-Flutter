@@ -7,7 +7,6 @@ abstract class AuthRemoteDataSource {
       {required String email, required String password});
 
   Future<void> sendEmailVerification();
-  Future<void> forgetPassword();
 
   Future<void> sendPasswordResetEmail(String email);
 
@@ -17,6 +16,5 @@ abstract class AuthRemoteDataSource {
 
   // User Features
   Future<String> getCurrentUid();
-  Future<void> logoutUser();
-  Future<void> deleteUserAccount();
+
 }
