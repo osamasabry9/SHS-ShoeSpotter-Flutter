@@ -2,12 +2,13 @@ import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
-import '../../../../../core/utils/popups/loaders.dart';
+
 import '../../../../../app/di.dart' as di;
 import '../../../../../core/routing/routes.dart';
 import '../../../../../core/utils/constants/image_strings.dart';
 import '../../../../../core/utils/constants/text_strings.dart';
 import '../../../../../core/utils/models/success_items_model.dart';
+import '../../../../../core/utils/popups/loaders.dart';
 import '../../../domain/usecases/send_email_verification_usecase.dart';
 
 class VerifyEmailController extends GetxController {

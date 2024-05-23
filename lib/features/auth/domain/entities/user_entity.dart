@@ -1,32 +1,47 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:equatable/equatable.dart';
 
 class UserEntity extends Equatable {
   final String uid;
   final String username;
-  final String firstName;
-  final String lastName;
-  final String phoneNumber;
+  String firstName;
+  String lastName;
+  String phoneNumber;
   final String email;
-  final String profileUrl;
+  String profileUrl;
 
-  const UserEntity({
-    required this.uid,
-    required this.username,
-    required this.firstName,
-    required this.lastName,
-    required this.phoneNumber,
-    required this.email,
-    required this.profileUrl,
+  UserEntity({
+    this.uid = '',
+    this.username = '',
+    this.firstName = '',
+    this.lastName = '',
+    this.phoneNumber = '',
+    this.email = '',
+    this.profileUrl = '',
   });
 
+  UserEntity copyWith({
+    String? uid,
+    String? username,
+    String? firstName,
+    String? lastName,
+    String? phoneNumber,
+    String? email,
+    String? profileUrl,
+  }) {
+    return UserEntity(
+      uid: uid ?? this.uid,
+      username: username ?? this.username,
+      firstName: firstName ?? this.firstName,
+      lastName: lastName ?? this.lastName,
+      phoneNumber: phoneNumber ?? this.phoneNumber,
+      email: email ?? this.email,
+      profileUrl: profileUrl ?? this.profileUrl,
+    );
+  }
+
   @override
-  List<Object?> get props => [
-        uid,
-        username,
-        firstName,
-        lastName,
-        phoneNumber,
-        email,
-        profileUrl
-  ];
+  List<Object?> get props =>
+      [uid, username, firstName, lastName, phoneNumber, email, profileUrl];
 }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../domain/usecases/send_password_reset_email_usecase.dart';
 
 import '../../../../../app/di.dart' as di;
 import '../../../../../core/routing/routes.dart';
@@ -8,6 +7,7 @@ import '../../../../../core/utils/constants/image_strings.dart';
 import '../../../../../core/utils/helpers/network_manager.dart';
 import '../../../../../core/utils/popups/full_screen_loader.dart';
 import '../../../../../core/utils/popups/loaders.dart';
+import '../../../domain/usecases/send_password_reset_email_usecase.dart';
 
 class ForgetPasswordController extends GetxController {
   static ForgetPasswordController get instance =>
