@@ -1,10 +1,12 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../../../../core/utils/formatters/formatter.dart';
 
 import '../../domain/entities/user_entity.dart';
 
 class UserModel extends UserEntity {
-  const UserModel({
+   UserModel({
     required super.uid,
     required super.username,
     required super.firstName,
@@ -34,7 +36,7 @@ class UserModel extends UserEntity {
   }
 
 // static function to get initials from full name
-  static UserModel empty() => const UserModel(
+  static UserModel empty() =>  UserModel(
       uid: '',
       username: '',
       firstName: '',

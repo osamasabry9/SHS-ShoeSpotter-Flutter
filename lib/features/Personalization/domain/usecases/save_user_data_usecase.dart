@@ -1,10 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
-import '../../data/repositories/personalization_repository_impl.dart';
+import '../repositories/personalization_repository.dart';
 
-
-class SaveUserDataUseCase{
-  final PersonalizationRepositoryImpl repository;
+class SaveUserDataUseCase {
+  final PersonalizationRepository repository;
 
   SaveUserDataUseCase({required this.repository});
 

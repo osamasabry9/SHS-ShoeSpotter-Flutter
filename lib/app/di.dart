@@ -4,27 +4,30 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:get_storage/get_storage.dart';
 
-
 import '../core/local_storage/storage_utility.dart';
 import '../features/Personalization/data/datasources/personalization_remote_data_source.dart';
 import '../features/Personalization/data/datasources/personalization_remote_data_source_impl.dart';
 import '../features/Personalization/data/repositories/personalization_repository_impl.dart';
 import '../features/Personalization/domain/repositories/personalization_repository.dart';
 import '../features/Personalization/domain/usecases/delete_user_account_usecase.dart';
+import '../features/Personalization/domain/usecases/fetch_user_details_usecase.dart';
 import '../features/Personalization/domain/usecases/logout_user_usecase.dart';
+import '../features/Personalization/domain/usecases/re_authenticate_email_and_password_usecase.dart';
 import '../features/Personalization/domain/usecases/save_user_data_usecase.dart';
 import '../features/Personalization/domain/usecases/save_user_record_in_firestore_usecase.dart';
+import '../features/Personalization/domain/usecases/update_single_field_usecase.dart';
+import '../features/Personalization/domain/usecases/update_user_details_usecase.dart';
+import '../features/Personalization/domain/usecases/upload_image_usecase.dart';
 import '../features/auth/data/data_sources/auth_remote_data_source.dart';
 import '../features/auth/data/data_sources/auth_remote_data_source_impl.dart';
 import '../features/auth/data/repository/auth_firebase_repository_impl.dart';
 import '../features/auth/domain/repository/auth_firebase_repository.dart';
+import '../features/auth/domain/usecases/login_user_usecase.dart';
 import '../features/auth/domain/usecases/send_email_verification_usecase.dart';
 import '../features/auth/domain/usecases/send_password_reset_email_usecase.dart';
-import '../features/auth/domain/usecases/login_user_usecase.dart';
 import '../features/auth/domain/usecases/sign_up_user_usecase.dart';
 import '../features/auth/domain/usecases/sign_with_facebook_usecase.dart';
 import '../features/auth/domain/usecases/sign_with_google_usecase.dart';
-
 
 final getIt = GetIt.instance;
 
@@ -55,11 +58,25 @@ Future<void> initAppModule() async {
   getIt.registerLazySingleton(
       () => DeleteUserAccountUseCase(repository: getIt.call()));
 
-  getIt.registerLazySingleton(
-      () => SaveUserDataUseCase(repository: getIt.call()));
+  getIt.registerFactory<SaveUserDataUseCase>(() => SaveUserDataUseCase(
+        repository: getIt.call(),
+      ));
 
   getIt.registerLazySingleton(
       () => SaveUserRecordInFirestoreUseCase(repository: getIt.call()));
+  
+  getIt.registerLazySingleton(
+      () => UploadImageUseCase(repository: getIt.call()));
+
+  getIt.registerLazySingleton(
+      () => FetchUserDetailsUseCase(repository: getIt.call()));
+  getIt.registerLazySingleton(
+      () => UpdateUserDetailsUseCase(repository: getIt.call()));
+
+  getIt.registerLazySingleton(
+      () => UpdateSingleFieldUseCase(repository: getIt.call()));
+  getIt.registerLazySingleton(
+      () => ReAuthenticateEmailAndPasswordUseCase(repository: getIt.call()));
 
   // -----------------------------Repository-----------------------
   getIt.registerLazySingleton<AuthRepository>(
@@ -67,8 +84,9 @@ Future<void> initAppModule() async {
   );
 
   getIt.registerLazySingleton<PersonalizationRepository>(
-    () => PersonalizationRepositoryImpl(personalizationRemoteDataSource: getIt.call()),
-  );  
+    () => PersonalizationRepositoryImpl(
+        personalizationRemoteDataSource: getIt.call()),
+  );
 
   // -------------------------------- Remote Data Source
   getIt.registerLazySingleton<AuthRemoteDataSource>(

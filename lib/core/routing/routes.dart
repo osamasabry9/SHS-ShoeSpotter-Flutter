@@ -21,4 +21,6 @@ class Routes {
   static const String profileScreen = '/profileScreen';
   static const String addressesScreen = '/addressesScreen';
   static const String addNewAddressScreen = '/addNewAddressScreen';
+  static const String changeNameScreen = '/changeNameScreen';
+  static const String reAuthLoginFormScreen = '/reAuthLoginFormScreen';
 }
