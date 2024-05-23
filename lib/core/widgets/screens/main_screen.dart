@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
+import '../../../features/Personalization/presentation/controllers/user/user_controller.dart';
 import '../../../features/Personalization/presentation/pages/settings/settings_screen.dart';
 import '../../../features/shop/presentation/pages/home/home_screen.dart';
 import '../../../features/shop/presentation/pages/store/store_screen.dart';
@@ -24,6 +26,7 @@ class _MainScreenState extends State<MainScreen>
   void initState() {
     super.initState();
     _tabController = TabController(length: 4, vsync: this);
+    Get.put(UserController());
   }
 
   onTapChange(int index) {
