@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/constants/sizes.dart';
 
+import '../../controllers/user/user_controller.dart';
 import 'widgets/header_personal_info_section_widget.dart';
 import 'widgets/header_profile_info_section_widget.dart';
 
@@ -14,6 +15,7 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = UserController.instance;
     return Scaffold(
         appBar: const CustomAppBar(
           title: Text("Profile"),
@@ -26,7 +28,7 @@ class ProfileScreen extends StatelessWidget {
             padding: const EdgeInsets.all(AppSizes.defaultSpace),
             child: Column(children: [
               // profile picture
-              const ProfilePictureSectionWidget(),
+               const ProfilePictureSectionWidget( ),
 
               /// Details
               const SizedBox(height: AppSizes.spaceBtwItems / 2),
@@ -42,11 +44,9 @@ class ProfileScreen extends StatelessWidget {
               const SizedBox(height: AppSizes.spaceBtwItems),
               Center(
                 child: TextButton(
-                    onPressed: () {},
-                    child: const Text(
-                      "Close Account",
-                      style: TextStyle(color: Colors.red),
-                    )),
+                    onPressed: () => controller.deleteAccountWarning(),
+                    child: const Text("Close Account",
+                        style: TextStyle(color: Colors.red))),
               )
             ]),
           ),
