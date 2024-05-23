@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 import '../../features/Personalization/presentation/pages/address/add_new_address_screen.dart';
 import '../../features/Personalization/presentation/pages/address/addresses_screen.dart';
+import '../../features/Personalization/presentation/pages/profile/change_name_screen.dart';
 import '../../features/Personalization/presentation/pages/profile/profile_screen.dart';
+import '../../features/Personalization/presentation/pages/profile/re_auth_login_form_screen.dart';
 import '../../features/auth/presentation/pages/email_verification_screen.dart';
 import '../../features/auth/presentation/pages/forget_password_screen.dart';
 import '../../features/auth/presentation/pages/login_screen.dart';
@@ -121,6 +123,14 @@ class AppRouter {
       case Routes.profileScreen:
         return MaterialPageRoute(
           builder: (context) => const ProfileScreen(),
+        );
+      case Routes.changeNameScreen:
+        return MaterialPageRoute(
+          builder: (context) => const ChangeNameScreen(),
+        );
+        case Routes.reAuthLoginFormScreen:
+        return MaterialPageRoute(
+          builder: (context) => const ReAuthLoginFormScreen(),
         );
       case Routes.addressesScreen:
         return MaterialPageRoute(

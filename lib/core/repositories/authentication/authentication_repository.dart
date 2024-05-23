@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
 import '../../../../../app/di.dart' as di;
-import '../../../features/Personalization/domain/usecases/delete_user_account_usecase.dart';
+
 import '../../../features/Personalization/domain/usecases/logout_user_usecase.dart';
 import '../../routing/routes.dart';
 import '../../utils/constants/api_constants.dart';
@@ -40,15 +40,10 @@ class AuthenticationRepository extends GetxController {
     }
   }
 
-// 
+//
 
   // Logout user - valid for any authentication.
   Future<void> logoutUser() async {
     await di.getIt<LogoutUserUseCase>().call();
-  }
-
-  // Delete user account - Remove user Auth and data from firestore.
-  Future<void> deleteUserAccount() async {
-    await di.getIt<DeleteUserAccountUseCase>().call();
   }
 }
