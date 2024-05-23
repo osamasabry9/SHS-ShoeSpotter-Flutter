@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../helpers/helper_functions.dart';
 
 import '../../widgets/loaders/animation_loader.dart';
 import '../constants/colors.dart';
+import '../helpers/helper_functions.dart';
 
 class AppFullScreenLoader {
   static void openLoadingDialog(String text, String animation) {
