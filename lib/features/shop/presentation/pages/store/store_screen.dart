@@ -11,6 +11,7 @@ import '../../../../../core/widgets/custom_shapes/containers/custom_search_conta
 import '../../../../../core/widgets/layouts/grid_layout_widget.dart';
 import '../../../../../core/widgets/products/cart/cart_menu_icon.dart';
 import '../../../../../core/widgets/texts/section_heading.dart';
+import '../../controllers/category_controller.dart';
 import 'widgets/brand_card_widget.dart';
 import 'widgets/category_tab_widget.dart';
 
@@ -19,8 +20,9 @@ class StoreScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final categoryController = CategoryController.instance;
     return DefaultTabController(
-      length: 5,
+      length: categoryController.featuredCategories.length,
       child: Scaffold(
         appBar: CustomAppBar(
           showBackArrow: false,
@@ -75,20 +77,17 @@ class StoreScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                    bottom: const CustomTabBar(tabs: [
-                      Tab(
-                        child: Text("Sports"),
-                      ),
-                      Tab(child: Text("Furniture")),
-                      Tab(child: Text("Electronics")),
-                      Tab(child: Text("Clothes")),
-                      Tab(child: Text("Cosmetics"))
-                    ]),
+                    bottom: CustomTabBar(
+                        tabs: categoryController.featuredCategories
+                            .map((category) => Tab(child: Text(category.name)))
+                            .toList()),
                   ),
                 ],
             body: TabBarView(
-              children: [for (int i = 0; i < 5; i++) const CategoryTabWidget()],
-            )),
+                children: categoryController.featuredCategories
+                    .map((category) =>
+                        CategoryTabWidget(categoryModel: category))
+                    .toList())),
       ),
     );
   }

@@ -6,11 +6,14 @@ import '../../../../../../core/widgets/brands/brand_show_case_widget.dart';
 import '../../../../../../core/widgets/layouts/grid_layout_widget.dart';
 import '../../../../../../core/widgets/products/products_card/product_card_vertical_widget.dart';
 import '../../../../../../core/widgets/texts/section_heading.dart';
+import '../../../../data/models/category_model.dart';
 
 class CategoryTabWidget extends StatelessWidget {
   const CategoryTabWidget({
     super.key,
+    required this.categoryModel,
   });
+  final CategoryModel categoryModel;
 
   @override
   Widget build(BuildContext context) {
