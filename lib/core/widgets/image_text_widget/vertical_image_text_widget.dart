@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 import '../../utils/constants/colors.dart';
 import '../../utils/constants/sizes.dart';
 import '../../utils/helpers/helper_functions.dart';
+import '../images/circular_image_widget.dart';
 
 class VerticalImageTextWidget extends StatelessWidget {
   final String image, title;
   final Color textColor;
   final Color? backgroundColor;
+  final bool isNetworkImage;
   final void Function()? onTap;
 
   const VerticalImageTextWidget({
@@ -17,6 +19,7 @@ class VerticalImageTextWidget extends StatelessWidget {
     this.textColor = AppColors.white,
     this.backgroundColor,
     this.onTap,
+    this.isNetworkImage = true,
   });
 
   @override
@@ -30,38 +33,26 @@ class VerticalImageTextWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             // category icon
-            Container(
-              width: 56,
-              height: 56,
-              padding: const EdgeInsets.all(AppSizes.sm),
-              decoration: BoxDecoration(
-                  color: backgroundColor ??
-                      (dark ? AppColors.black : AppColors.white),
-                  borderRadius: BorderRadius.circular(100)),
-              child: Center(
-                child: Image(
-                  image: AssetImage(image),
-                  fit: BoxFit.cover,
-                  color: (dark ? AppColors.light : AppColors.black),
-                ),
-              ),
+            CircularImageWidget(
+              imageUrl: image,
+              fit: BoxFit.fitWidth,
+              padding: AppSizes.sm * 1.4,
+              isNetworkImage: isNetworkImage,
+              backgroundColor: backgroundColor,
+              overLayerColor: dark ? AppColors.light : AppColors.dark,
             ),
             // category name
-            const SizedBox(
-              height: AppSizes.spaceBtwItems / 2,
-            ),
+            const SizedBox(height: AppSizes.spaceBtwItems / 2),
             SizedBox(
               width: 55,
-              child: Text(
-                title,
-                style: Theme.of(context)
-                    .textTheme
-                    .labelMedium!
-                    .apply(color: textColor),
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                textAlign: TextAlign.center,
-              ),
+              child: Text(title,
+                  style: Theme.of(context)
+                      .textTheme
+                      .labelMedium!
+                      .apply(color: textColor),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  textAlign: TextAlign.center),
             )
           ],
         ),
