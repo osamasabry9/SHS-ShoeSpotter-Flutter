@@ -1,9 +1,32 @@
+import '../../../features/shop/data/models/banner_model.dart';
 import '../../../features/shop/data/models/category_model.dart';
+import '../../routing/routes.dart';
 import '../constants/image_strings.dart';
 
 class AppDummyData {
   // Banners
-
+  static final List<BannerModel> bannersDummyData = [
+    BannerModel(
+        imageUrl: AppImages.banner1,
+        targetScreen: Routes.orderScreen,
+        active: false),
+    BannerModel(
+        imageUrl: AppImages.banner2,
+        targetScreen: Routes.cartScreen,
+        active: true),
+    BannerModel(
+        imageUrl: AppImages.banner5,
+        targetScreen: Routes.profileScreen,
+        active: true),
+    BannerModel(
+        imageUrl: AppImages.banner6,
+        targetScreen: Routes.addressesScreen,
+        active: true),
+    BannerModel(
+        imageUrl: AppImages.banner8,
+        targetScreen: Routes.checkoutScreen,
+        active: false),
+  ];
 // categories
   static final List<CategoryModel> categoriesDummyData = [
     // Main Categories
