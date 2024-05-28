@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../core/routing/routes.dart';
-import '../../../../../core/utils/constants/image_strings.dart';
 import '../../../../../core/utils/constants/sizes.dart';
 import '../../../../../core/utils/helpers/extensions.dart';
 import '../../../../../core/widgets/custom_shapes/containers/custom_search_container.dart';
@@ -29,21 +28,13 @@ class HomeScreen extends StatelessWidget {
                   // app bar
                   const HomeAppBar(),
                   // search bar
-                  const SizedBox(
-                    height: AppSizes.spaceBtwSections,
-                  ),
+                  const SizedBox(height: AppSizes.spaceBtwSections),
                   CustomSearchContainer(
-                    hintText: "Search in Store",
-                    onTap: () {},
-                  ),
+                      hintText: "Search in Store", onTap: () {}),
                   // categories
-                  const SizedBox(
-                    height: AppSizes.spaceBtwSections,
-                  ),
+                  const SizedBox(height: AppSizes.spaceBtwSections),
                   const HomeCategoriesSection(),
-                  const SizedBox(
-                    height: AppSizes.spaceBtwSections,
-                  ),
+                  const SizedBox(height: AppSizes.spaceBtwSections),
                 ],
               ),
             ),
@@ -53,16 +44,8 @@ class HomeScreen extends StatelessWidget {
               child: Column(
                 children: [
                   // Carousel slider
-                  const PromoSlider(
-                    banners: [
-                      AppImages.promoBanner1,
-                      AppImages.promoBanner2,
-                      AppImages.promoBanner3,
-                    ],
-                  ),
-                  const SizedBox(
-                    height: AppSizes.spaceBtwSections,
-                  ),
+                  const PromoSlider(),
+                  const SizedBox(height: AppSizes.spaceBtwSections),
 
                   /// Heading
                   SectionHeading(

@@ -3,10 +3,8 @@ import 'package:iconsax/iconsax.dart';
 
 import '../../../../../../core/utils/constants/colors.dart';
 import '../../../../../../core/utils/constants/sizes.dart';
-import '../../../../../../core/utils/models/app_dummy_data.dart';
 import '../../../../../../core/widgets/list_tiles/settings_menu_tile.dart';
 import '../../../../../../core/widgets/texts/section_heading.dart';
-import '../../../../../shop/presentation/controllers/category_controller.dart';
 
 class AppSettingsSection extends StatelessWidget {
   const AppSettingsSection({
@@ -15,7 +13,6 @@ class AppSettingsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final categoryController = CategoryController.instance;
     return Column(children: [
       const SectionHeading(title: "App Settings", showActionButton: false),
       const SizedBox(height: AppSizes.spaceBtwItems),
@@ -23,8 +20,7 @@ class AppSettingsSection extends StatelessWidget {
         icon: Iconsax.document_upload,
         title: "Load Data",
         subTitle: "Upload data to your cloud firebase",
-        onTap: () => categoryController
-            .uploadDummyDataCategories(AppDummyData.categoriesDummyData),
+        onTap: () {}
       ),
       SettingsMenuTile(
         icon: Iconsax.location,

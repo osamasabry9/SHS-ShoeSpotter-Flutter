@@ -4,7 +4,6 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:get_storage/get_storage.dart';
 
-
 import '../core/local_storage/storage_utility.dart';
 import '../features/Personalization/data/datasources/personalization_remote_data_source.dart';
 import '../features/Personalization/data/datasources/personalization_remote_data_source_impl.dart';
@@ -29,14 +28,20 @@ import '../features/auth/domain/usecases/send_password_reset_email_usecase.dart'
 import '../features/auth/domain/usecases/sign_up_user_usecase.dart';
 import '../features/auth/domain/usecases/sign_with_facebook_usecase.dart';
 import '../features/auth/domain/usecases/sign_with_google_usecase.dart';
+import '../features/shop/data/datasources/banner_remote_data_source.dart';
+import '../features/shop/data/datasources/banner_remote_data_source_impl.dart';
 import '../features/shop/data/datasources/category_remote_data_source.dart';
 import '../features/shop/data/datasources/category_remote_data_source_impl.dart';
+import '../features/shop/data/repositories/banner_repository_imp.dart';
 import '../features/shop/data/repositories/category_repository_imp.dart';
+import '../features/shop/domain/repositories/banner_repository.dart';
 import '../features/shop/domain/repositories/category_repository.dart';
+import '../features/shop/domain/usecases/get_all_banners_usecase.dart';
 import '../features/shop/domain/usecases/get_all_categories_usecase.dart';
 import '../features/shop/domain/usecases/get_category_by_id_usecase.dart';
 import '../features/shop/domain/usecases/get_featured_categories_usecase.dart';
 import '../features/shop/domain/usecases/get_sub_categories_usecase.dart';
+import '../features/shop/domain/usecases/upload_banner_usecase.dart';
 import '../features/shop/domain/usecases/upload_category_usecase.dart';
 
 final getIt = GetIt.instance;
@@ -49,7 +54,6 @@ Future<void> initAppModule() async {
   // app prefs instance
   getIt.registerLazySingleton<AppLocalStorage>(() => AppLocalStorage());
 
-  
   // --------------------------Use Cases--------------------
 
   //++++++++++++++++++++++++++++  Auth Use Cases +++++++++++++++++++++++++++
@@ -76,7 +80,7 @@ Future<void> initAppModule() async {
 
   getIt.registerLazySingleton(
       () => SaveUserRecordInFirestoreUseCase(repository: getIt.call()));
-  
+
   getIt.registerLazySingleton(
       () => UploadImageUseCase(repository: getIt.call()));
 
@@ -90,9 +94,9 @@ Future<void> initAppModule() async {
   getIt.registerLazySingleton(
       () => ReAuthenticateEmailAndPasswordUseCase(repository: getIt.call()));
 
-    //+++++++++++++++++++++++  Category Use Cases +++++++++++++++++++++++
+  //+++++++++++++++++++++++  Category Use Cases +++++++++++++++++++++++
 
-     getIt.registerLazySingleton(
+  getIt.registerLazySingleton(
       () => GetAllCategoriesUseCase(repository: getIt.call()));
 
   getIt.registerLazySingleton(
@@ -105,8 +109,14 @@ Future<void> initAppModule() async {
 
   getIt.registerLazySingleton(
       () => UploadCategoryUseCase(repository: getIt.call()));
-  
 
+  //+++++++++++++++++++++++  Category Use Cases +++++++++++++++++++++++
+
+  getIt.registerLazySingleton(
+      () => GetAllBannersUseCase(repository: getIt.call()));
+
+  getIt.registerLazySingleton(
+      () => UploadBannerUseCase(repository: getIt.call()));
 
   // -----------------------------Repository-----------------------
   getIt.registerLazySingleton<AuthRepository>(
@@ -118,11 +128,12 @@ Future<void> initAppModule() async {
         personalizationRemoteDataSource: getIt.call()),
   );
 
-    getIt.registerLazySingleton<CategoryRepository>(
-    () => CategoryRepositoryImpl(
-        categoryRemoteDataSource: getIt.call()),
+  getIt.registerLazySingleton<CategoryRepository>(
+    () => CategoryRepositoryImpl(categoryRemoteDataSource: getIt.call()),
   );
-
+  getIt.registerLazySingleton<BannerRepository>(
+    () => BannerRepositoryImpl(bannerRemoteDataSource: getIt.call()),
+  );
   // -------------------------------- Remote Data Source
   getIt.registerLazySingleton<AuthRemoteDataSource>(
       () => AuthRemoteDataSourceImpl(
@@ -138,11 +149,16 @@ Future<void> initAppModule() async {
             firebaseStorage: getIt.call(),
           ));
 
-    getIt.registerLazySingleton<CategoryRemoteDataSource>(
+  getIt.registerLazySingleton<CategoryRemoteDataSource>(
       () => CategoryRemoteDataSourceImpl(
             firebaseFirestore: getIt.call(),
             firebaseAuth: getIt.call(),
             firebaseStorage: getIt.call(),
+          ));
+
+  getIt.registerLazySingleton<BannerRemoteDataSource>(
+      () => BannerRemoteDataSourceImpl(
+            firebaseFirestore: getIt.call(),
           ));
 
   //--------------------------- Externals-----------------------------------
