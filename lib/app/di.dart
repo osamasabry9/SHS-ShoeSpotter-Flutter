@@ -30,18 +30,25 @@ import '../features/auth/domain/usecases/sign_with_facebook_usecase.dart';
 import '../features/auth/domain/usecases/sign_with_google_usecase.dart';
 import '../features/shop/data/datasources/banner_remote_data_source.dart';
 import '../features/shop/data/datasources/banner_remote_data_source_impl.dart';
+import '../features/shop/data/datasources/brand_remote_data_source.dart';
+import '../features/shop/data/datasources/brand_remote_data_source_impl.dart';
 import '../features/shop/data/datasources/category_remote_data_source.dart';
 import '../features/shop/data/datasources/category_remote_data_source_impl.dart';
 import '../features/shop/data/repositories/banner_repository_imp.dart';
+import '../features/shop/data/repositories/brand_repository_imp.dart';
 import '../features/shop/data/repositories/category_repository_imp.dart';
 import '../features/shop/domain/repositories/banner_repository.dart';
+import '../features/shop/domain/repositories/brand_repository.dart';
 import '../features/shop/domain/repositories/category_repository.dart';
 import '../features/shop/domain/usecases/get_all_banners_usecase.dart';
+import '../features/shop/domain/usecases/get_all_brands_usecase.dart';
 import '../features/shop/domain/usecases/get_all_categories_usecase.dart';
+import '../features/shop/domain/usecases/get_brand_by_id_usecase.dart';
 import '../features/shop/domain/usecases/get_category_by_id_usecase.dart';
 import '../features/shop/domain/usecases/get_featured_categories_usecase.dart';
 import '../features/shop/domain/usecases/get_sub_categories_usecase.dart';
 import '../features/shop/domain/usecases/upload_banner_usecase.dart';
+import '../features/shop/domain/usecases/upload_brand_usecase.dart';
 import '../features/shop/domain/usecases/upload_category_usecase.dart';
 
 final getIt = GetIt.instance;
@@ -110,13 +117,26 @@ Future<void> initAppModule() async {
   getIt.registerLazySingleton(
       () => UploadCategoryUseCase(repository: getIt.call()));
 
-  //+++++++++++++++++++++++  Category Use Cases +++++++++++++++++++++++
+  //+++++++++++++++++++++++  Banners Use Cases +++++++++++++++++++++++
 
   getIt.registerLazySingleton(
       () => GetAllBannersUseCase(repository: getIt.call()));
 
   getIt.registerLazySingleton(
       () => UploadBannerUseCase(repository: getIt.call()));
+
+
+  //+++++++++++++++++++++++  Brands Use Cases +++++++++++++++++++++++
+
+  getIt.registerLazySingleton(
+      () => GetAllBrandsUseCase(repository: getIt.call()));
+
+  getIt.registerLazySingleton(
+      () => GetBrandByIdUseCase(repository: getIt.call()));
+  
+
+  getIt.registerLazySingleton(
+      () => UploadBrandUseCase(repository: getIt.call()));
 
   // -----------------------------Repository-----------------------
   getIt.registerLazySingleton<AuthRepository>(
@@ -132,8 +152,11 @@ Future<void> initAppModule() async {
     () => CategoryRepositoryImpl(categoryRemoteDataSource: getIt.call()),
   );
   getIt.registerLazySingleton<BannerRepository>(
-    () => BannerRepositoryImpl(bannerRemoteDataSource: getIt.call()),
-  );
+      () => BannerRepositoryImpl(bannerRemoteDataSource: getIt.call()));
+
+  getIt.registerLazySingleton<BrandRepository>(
+      () => BrandRepositoryImpl(brandRemoteDataSource: getIt.call()));
+
   // -------------------------------- Remote Data Source
   getIt.registerLazySingleton<AuthRemoteDataSource>(
       () => AuthRemoteDataSourceImpl(
@@ -157,10 +180,9 @@ Future<void> initAppModule() async {
           ));
 
   getIt.registerLazySingleton<BannerRemoteDataSource>(
-      () => BannerRemoteDataSourceImpl(
-            firebaseFirestore: getIt.call(),
-          ));
-
+      () => BannerRemoteDataSourceImpl(firebaseFirestore: getIt.call()));
+  getIt.registerLazySingleton<BrandRemoteDataSource>(
+      () => BrandRemoteDataSourceImpl(firebaseFirestore: getIt.call()));
   //--------------------------- Externals-----------------------------------
 
   final firebaseFirestore = FirebaseFirestore.instance;
