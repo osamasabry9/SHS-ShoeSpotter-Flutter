@@ -1,4 +1,5 @@
 import '../../../features/shop/data/models/banner_model.dart';
+import '../../../features/shop/data/models/brand_model.dart';
 import '../../../features/shop/data/models/category_model.dart';
 import '../../routing/routes.dart';
 import '../constants/image_strings.dart';
@@ -226,4 +227,79 @@ class AppDummyData {
         parentId: '8',
         isFeatured: false),
   ];
+
+// Brands 
+static final List<BrandModel> brands = [
+  BrandModel(
+    id: '1',
+    name: 'Nike',
+    isFeatured: true,
+    image: AppImages.nikeLogo,
+    productsCount: 150,
+  ),
+  BrandModel(
+    id: '2',
+    name: 'Adidas',
+    isFeatured: true,
+    image: AppImages.adidasLogo,
+    productsCount: 120,
+  ),
+  BrandModel(
+    id: '3',
+    name: 'Apple',
+    isFeatured: true,
+    image: AppImages.appleLogo,
+    productsCount: 180,
+  ),
+  BrandModel(
+    id: '4',
+    name: 'Jordan',
+    isFeatured: true,
+    image: AppImages.jordanLogo,
+    productsCount: 100,
+  ),
+  BrandModel(
+    id: '5',
+    name: 'Puma',
+    isFeatured: true,
+    image: AppImages.pumaLogo,
+    productsCount: 110,
+  ),
+  BrandModel(
+    id: '6',
+    name: 'Zara',
+    isFeatured: false,
+    image: AppImages.zaraLogo,
+    productsCount: 90,
+  ),
+  BrandModel(
+    id: '7',
+    name: 'Kenwood',
+    isFeatured: false,
+    image: AppImages.kenwoodLogo,
+    productsCount: 70,
+  ),
+  BrandModel(
+    id: '8',
+    name: 'Herman Miller',
+    isFeatured: true,
+    image: AppImages.hermanMillerLogo,
+    productsCount: 50,
+  ),
+  BrandModel(
+    id: '9',
+    name: 'Ikea',
+    isFeatured: true,
+    image: AppImages.ikeaLogo,
+    productsCount: 200,
+  ),
+  BrandModel(
+    id: '10',
+    name: 'Acer',
+    isFeatured: false,
+    image: AppImages.acerlogo,
+    productsCount: 60,
+  ),
+];
+
 }

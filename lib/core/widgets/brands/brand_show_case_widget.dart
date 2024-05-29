@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../features/shop/domain/entities/brand_entity.dart';
 import '../../../features/shop/presentation/pages/store/widgets/brand_card_widget.dart';
 import '../../utils/constants/colors.dart';
 import '../../utils/constants/sizes.dart';
@@ -10,8 +11,11 @@ class BrandShowCaseWidget extends StatelessWidget {
   const BrandShowCaseWidget({
     super.key,
     required this.images,
+    required this.brand,
+
   });
   final List<String> images;
+  final BrandEntity brand;
   @override
   Widget build(BuildContext context) {
     return RoundedContainerWidget(
@@ -23,7 +27,7 @@ class BrandShowCaseWidget extends StatelessWidget {
       child: Column(
         children: [
           // brand with product count
-          const BrandCardWidget(),
+           BrandCardWidget(brand: brand),
 
           const SizedBox(
             height: AppSizes.spaceBtwItems,

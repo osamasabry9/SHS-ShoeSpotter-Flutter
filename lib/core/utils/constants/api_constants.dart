@@ -1,15 +1,19 @@
 // ignore_for_file: constant_identifier_names
 
 class FirebaseConst {
-  static const String USERS_COLLECTION = "USERS_COLLECTION";
   static const String PATH_IMAGE_USER_COLLECTION = "Users/Images/Profile/";
   static const String PATH_IMAGE_BANNERS_COLLECTION = "Banners";
   static const String PATH_IMAGE_CATEGORY_COLLECTION = "Categories";
+  static const String PATH_IMAGE_BRAND_COLLECTION = "Brands";
+  static const String PATH_IMAGE_PRODUCT_COLLECTION = "Products";
+
+  static const String USERS_COLLECTION = "USERS_COLLECTION";
   static const String ORDERS_COLLECTION = "ORDERS_COLLECTION";
   static const String PRODUCTS_COLLECTION = "PRODUCTS_COLLECTION";
   static const String CART_COLLECTION = "CART_COLLECTION";
   static const String CATEGORIES_COLLECTION = "CATEGORIES_COLLECTION";
   static const String BANNERS_COLLECTION = "BANNERS_COLLECTION";
+  static const String BRANDS_COLLECTION = "BRANDS_COLLECTION";
   static const String SUBCATEGORIES_COLLECTION = "SUBCATEGORIES_COLLECTION";
   static const String REVIEWS_COLLECTION = "REVIEWS_COLLECTION";
   static const String SHOPS_COLLECTION = "SHOPS_COLLECTION";
