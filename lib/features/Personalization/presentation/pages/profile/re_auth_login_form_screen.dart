@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'widgets/re_auth_form_widget.dart';
 
 import '../../../../../core/utils/constants/sizes.dart';
+import 'widgets/re_auth_form_widget.dart';
 
 class ReAuthLoginFormScreen extends StatelessWidget {
   const ReAuthLoginFormScreen({super.key});
