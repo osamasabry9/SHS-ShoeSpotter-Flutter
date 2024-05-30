@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import '../../../domain/usecases/sign_with_google_usecase.dart';
 
+import '../../../../../app/di.dart' as di;
 import '../../../../../core/repositories/authentication/authentication_repository.dart';
 import '../../../../../core/utils/constants/api_constants.dart';
 import '../../../../../core/utils/constants/image_strings.dart';
 import '../../../../../core/utils/helpers/network_manager.dart';
 import '../../../../../core/utils/popups/full_screen_loader.dart';
-import '../../../../../app/di.dart' as di;
 import '../../../../../core/utils/popups/loaders.dart';
 import '../../../../Personalization/presentation/controllers/user/user_controller.dart';
 import '../../../domain/usecases/login_user_usecase.dart';
+import '../../../domain/usecases/sign_with_google_usecase.dart';
 
 class LoginController extends GetxController {
   static LoginController get instance => Get.find();
