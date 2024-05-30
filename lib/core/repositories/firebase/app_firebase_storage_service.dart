@@ -4,6 +4,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+
 import '../../../app/di.dart' as di;
 import '../../utils/exceptions/firebase_exception.dart';
 import '../../utils/exceptions/format_exception.dart';
