@@ -37,6 +37,20 @@ class BrandModel extends BrandEntity{
     }
   }
 
+    factory BrandModel.fromJ( Map<String, dynamic> data) {
+    if(data.isNotEmpty) {
+      return BrandModel(
+      id: data['id'] ?? '',
+      name: data['name'] ?? '',
+      image: data['image'] ?? '',
+      productsCount: data['productsCount'] ?? 0,
+      isFeatured: data['isFeatured'] ?? false
+    );
+    }else {
+      return BrandModel.empty();
+    }
+  }
+
   Map<String, dynamic> toJson() {
     return {
       "id": id,
