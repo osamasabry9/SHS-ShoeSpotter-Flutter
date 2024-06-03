@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
+import '../../../../features/shop/data/models/product_model.dart';
 import '../../../routing/routes.dart';
 import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/image_strings.dart';
@@ -78,15 +79,15 @@ class ProductCardHorizontalWidget extends StatelessWidget {
                 ),
               ),
 
-              const SizedBox(
+               SizedBox(
                 width: 172,
                 child: Padding(
-                  padding: EdgeInsets.only(left: AppSizes.sm, top: AppSizes.sm),
+                  padding: const EdgeInsets.only(left: AppSizes.sm, top: AppSizes.sm),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       /// Details
-                      Column(
+                      const Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           ProductTitleTextWidget(
@@ -95,10 +96,10 @@ class ProductCardHorizontalWidget extends StatelessWidget {
                           BrandTitleWithVerifiedIcon(title: " Nike"),
                         ],
                       ),
-                      Spacer(),
+                      const Spacer(),
 
                       /// Price & Add to cart
-                      PriceAndAddToCartWidget(),
+                      PriceAndAddToCartWidget( price: '256' , product: ProductModel.empty()),
                     ],
                   ),
                 ),
