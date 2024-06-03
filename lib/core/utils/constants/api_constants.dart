@@ -5,7 +5,7 @@ class FirebaseConst {
   static const String PATH_IMAGE_BANNERS_COLLECTION = "Banners";
   static const String PATH_IMAGE_CATEGORY_COLLECTION = "Categories";
   static const String PATH_IMAGE_BRAND_COLLECTION = "Brands";
-  static const String PATH_IMAGE_PRODUCT_COLLECTION = "Products";
+  static const String PATH_IMAGE_PRODUCTS_COLLECTION = "Products";
 
   static const String USERS_COLLECTION = "USERS_COLLECTION";
   static const String ORDERS_COLLECTION = "ORDERS_COLLECTION";
