@@ -36,6 +36,15 @@ class BrandModel extends BrandEntity{
       return BrandModel.empty();
     }
   }
+    factory BrandModel.fromJson(Map<String, dynamic> json) {
+    return BrandModel(
+    id: json['id'] ?? '',
+    name: json['name'] ?? '',
+    image: json['image'] ?? '',
+    productsCount: json['productsCount'] ?? 0,
+    isFeatured: json['isFeatured'] ?? false
+  );
+    }
 
   Map<String, dynamic> toJson() {
     return {
