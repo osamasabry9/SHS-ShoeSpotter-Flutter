@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
 
 import '../../../../app/di.dart' as di;
-
 import '../../../../core/repositories/firebase/app_firebase_storage_service.dart';
 import '../../../../core/utils/constants/api_constants.dart';
 import '../../../../core/utils/popups/loaders.dart';
