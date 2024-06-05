@@ -3,31 +3,34 @@ import 'package:readmore/readmore.dart';
 
 import '../../../../../../core/utils/constants/sizes.dart';
 import '../../../../../../core/widgets/texts/section_heading.dart';
+import '../../../../domain/entities/product_entity.dart';
 
 class ProductDescriptionWidget extends StatelessWidget {
   const ProductDescriptionWidget({
     super.key,
+    required this.product
   });
+  final ProductEntity product;
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return  Column(
       children: [
-        SectionHeading(
+        const SectionHeading(
           title: "Description",
           showActionButton: false,
         ),
-        SizedBox(height: AppSizes.spaceBtwItems),
+        const SizedBox(height: AppSizes.spaceBtwItems),
         ReadMoreText(
-          "This is a product description for blue nike sleeve less vest. There more things that can be added but i am only adding this for testing purposes. This is a product description for blue Nike sleeve less vest. There more things that can be added but i am only adding this for testing purposes.",
+          product.description ?? "",
           trimLines: 2,
           trimMode: TrimMode.Line,
           trimCollapsedText: 'Show more',
           trimExpandedText: 'Less',
-          moreStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
-          lessStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
+          moreStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
+          lessStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
         ),
-        Divider(),
+        const Divider(),
       ],
     );
   }
