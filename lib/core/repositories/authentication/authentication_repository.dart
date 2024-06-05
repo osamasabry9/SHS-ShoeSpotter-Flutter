@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
 import '../../../../../app/di.dart' as di;
-
 import '../../../features/Personalization/domain/usecases/logout_user_usecase.dart';
 import '../../routing/routes.dart';
 import '../../utils/constants/api_constants.dart';

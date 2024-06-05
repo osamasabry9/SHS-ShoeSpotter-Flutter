@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import '../../utils/constants/colors.dart';
 
+import '../../utils/constants/colors.dart';
 import '../../utils/constants/sizes.dart';
 
 class AppAnimationLoaderWidget extends StatelessWidget {

@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../../features/shop/domain/entities/product_entity.dart';
-import '../../../../features/shop/presentation/controllers/product_controller.dart';
+import '../../../../features/shop/presentation/controllers/product/product_controller.dart';
 import '../../../routing/routes.dart';
 import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/sizes.dart';
