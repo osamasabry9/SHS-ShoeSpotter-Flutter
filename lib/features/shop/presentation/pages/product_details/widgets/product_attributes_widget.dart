@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../../../../core/utils/constants/colors.dart';
 import '../../../../../../core/utils/constants/sizes.dart';
@@ -8,132 +9,145 @@ import '../../../../../../core/widgets/custom_shapes/containers/rounded_containe
 import '../../../../../../core/widgets/texts/product_price_text_widget.dart';
 import '../../../../../../core/widgets/texts/product_title_text_widget.dart';
 import '../../../../../../core/widgets/texts/section_heading.dart';
+import '../../../../domain/entities/product_entity.dart';
+import '../../../controllers/product/variation_controller.dart';
 
 class ProductAttributesWidget extends StatelessWidget {
-  const ProductAttributesWidget({
-    super.key,
-  });
+  const ProductAttributesWidget({super.key, required this.product});
+  final ProductEntity product;
 
   @override
   Widget build(BuildContext context) {
+    final variationController = Get.put(VariationController());
     final dark = AppHelperFunctions.isDarkMode(context);
-    return Column(
-      children: [
-        /// Selected Attributes pricing and description
-        RoundedContainerWidget(
-          padding: const EdgeInsets.all(AppSizes.md),
-          backgroundColor: dark ? AppColors.darkerGrey : AppColors.grey,
-          child: Column(
-            children: [
-              /// title and price and stock status
-              Row(
+    return Obx(
+      () => Column(
+        children: [
+          /// Selected Attributes pricing and description
+          /// Display selected attributes
+          if (variationController.selectedVariation.value.id.isNotEmpty)
+            RoundedContainerWidget(
+              padding: const EdgeInsets.all(AppSizes.md),
+              backgroundColor: dark ? AppColors.darkerGrey : AppColors.grey,
+              child: Column(
                 children: [
-                  const SectionHeading(
-                      title: 'Variation', showActionButton: false),
-                  const SizedBox(width: AppSizes.spaceBtwItems),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  /// title and price and stock status
+                  Row(
                     children: [
-                      /// Price
-                      Row(
+                      const SectionHeading(
+                          title: 'Variation', showActionButton: false),
+                      const SizedBox(width: AppSizes.spaceBtwItems),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const ProductTitleTextWidget(
-                              title: 'Price', smallSize: true),
-                          const SizedBox(width: AppSizes.spaceBtwItems),
+                          /// Price
+                          Row(
+                            children: [
+                              const ProductTitleTextWidget(
+                                  title: 'Price', smallSize: true),
+                              const SizedBox(width: AppSizes.spaceBtwItems),
 
-                          /// Actual price
-                          Text(
-                            "\$25",
-                            style: Theme.of(context)
-                                .textTheme
-                                .titleSmall!
-                                .apply(decoration: TextDecoration.lineThrough),
+                              /// Actual price
+                              if (variationController
+                                      .selectedVariation.value.salePrice >
+                                  0)
+                                Text(
+                                  "\$${variationController.selectedVariation.value.price}",
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .titleSmall!
+                                      .apply(
+                                          decoration:
+                                              TextDecoration.lineThrough),
+                                ),
+
+                              /// Sale price
+                              const SizedBox(width: AppSizes.spaceBtwItems),
+                              ProductPriceTextWidget(
+                                  price:
+                                      variationController.getVariationPrice()),
+                            ],
                           ),
 
-                          /// Sale price
-                          const SizedBox(width: AppSizes.spaceBtwItems),
-                          const ProductPriceTextWidget(price: '20'),
-                        ],
-                      ),
+                          /// Stock
+                          Row(
+                            children: [
+                              const ProductTitleTextWidget(
+                                  title: 'Stock', smallSize: true),
+                              const SizedBox(width: AppSizes.spaceBtwItems),
 
-                      /// Stock
-                      Row(
-                        children: [
-                          const ProductTitleTextWidget(
-                              title: 'Stock', smallSize: true),
-                          const SizedBox(width: AppSizes.spaceBtwItems),
-
-                          /// In Stock
-                          Text(
-                            "In Stock",
-                            style: Theme.of(context).textTheme.titleMedium,
+                              /// In Stock
+                              Text(
+                                variationController.variationStockStatus.value,
+                                style: Theme.of(context).textTheme.titleMedium,
+                              ),
+                            ],
                           ),
                         ],
                       ),
                     ],
                   ),
+
+                  /// Variation Description
+                  ProductTitleTextWidget(
+                      title: variationController
+                              .selectedVariation.value.description ??
+                          '',
+                      smallSize: true,
+                      maxLines: 4),
                 ],
               ),
-
-              /// Variation Description
-              const ProductTitleTextWidget(
-                  title:
-                      "This is the description of the product and it can go up to max 4 line.",
-                  smallSize: true,
-                  maxLines: 4),
-            ],
-          ),
-        ),
-        const SizedBox(height: AppSizes.spaceBtwItems),
-
-        /// Attributes
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SectionHeading(title: "Colors", showActionButton: false),
-            const SizedBox(height: AppSizes.spaceBtwItems / 2),
-            Wrap(
-              spacing: 8,
-              children: [
-                ChoiceChipWidget(
-                    selected: true, text: "Green", onSelected: (value) {}),
-                ChoiceChipWidget(
-                    selected: false, text: "Blue", onSelected: (value) {}),
-                ChoiceChipWidget(
-                    selected: false, text: "Yellow", onSelected: (value) {}),
-                ChoiceChipWidget(
-                    selected: false, text: "Red", onSelected: (value) {}),
-                ChoiceChipWidget(
-                    selected: false, text: "Purple", onSelected: (value) {}),
-                ChoiceChipWidget(
-                    selected: false, text: "Orange", onSelected: (value) {}),
-              ],
             ),
-          ],
-        ),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SectionHeading(title: "Sizes", showActionButton: false),
-            const SizedBox(height: AppSizes.spaceBtwItems / 2),
-            Wrap(
-              spacing: 8,
-              children: [
-                ChoiceChipWidget(
-                    selected: true, text: "EU 39", onSelected: (value) {}),
-                ChoiceChipWidget(
-                    selected: false, text: "EU 40", onSelected: (value) {}),
-                ChoiceChipWidget(
-                    selected: false, text: "EU 41", onSelected: (value) {}),
-                ChoiceChipWidget(
-                    selected: false, text: "EU 42", onSelected: (value) {}),
-                ChoiceChipWidget(
-                    selected: false, text: "EU 43", onSelected: (value) {}),
-              ],
-            ),
-          ],
-        ),
-      ],
+          const SizedBox(height: AppSizes.spaceBtwItems),
+
+          /// Attributes
+          Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: product.productAttributes!
+                  .map(
+                    (attribute) => Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SectionHeading(
+                            title: attribute.name ?? '',
+                            showActionButton: false),
+                        const SizedBox(height: AppSizes.spaceBtwItems / 2),
+                        Obx(
+                          () => Wrap(
+                              spacing: 8,
+                              children: attribute.values!.map((attributeValue) {
+                                final isSelected = variationController
+                                        .selectedAttributes[attribute.name] ==
+                                    attributeValue;
+                                final available = variationController
+                                    .getAttributeAvailabilityInVariation(
+                                        product.productVariations!,
+                                        attribute.name!)
+                                    .contains(attributeValue);
+                                return ChoiceChipWidget(
+                                    selected: isSelected,
+                                    text: attributeValue,
+                                    onSelected: available
+                                        ? (selected) {
+                                            if (selected && available) {
+                                              variationController
+                                                  .onAttributeSelected(
+                                                      product,
+                                                      attribute.name ?? '',
+                                                      attributeValue);
+                                            }
+                                          }
+                                        : null);
+                              }).toList()),
+                        ),
+                      ],
+                    ),
+                  )
+                  .toList())
+        ],
+      ),
     );
   }
+  
+  
 }

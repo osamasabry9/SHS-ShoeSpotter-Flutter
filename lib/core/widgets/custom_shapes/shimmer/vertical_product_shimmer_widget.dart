@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:shoe_spotter/core/utils/constants/sizes.dart';
-import 'package:shoe_spotter/core/widgets/custom_shapes/shimmer/app_shimmer_effect.dart';
-import 'package:shoe_spotter/core/widgets/layouts/grid_layout_widget.dart';
+import '../../../utils/constants/sizes.dart';
+import 'app_shimmer_effect.dart';
+import '../../layouts/grid_layout_widget.dart';
 
 class VerticalProductShimmerWidget extends StatelessWidget {
   const VerticalProductShimmerWidget({

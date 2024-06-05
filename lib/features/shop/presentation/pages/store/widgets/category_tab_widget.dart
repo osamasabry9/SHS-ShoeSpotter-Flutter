@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../data/models/product_model.dart';
 
 import '../../../../../../core/utils/constants/image_strings.dart';
 import '../../../../../../core/utils/constants/sizes.dart';
@@ -48,7 +49,7 @@ class CategoryTabWidget extends StatelessWidget {
               GridLayoutWidget(
                   itemCount: 4,
                   itemBuilder: (_, index) {
-                    return const ProductCardVerticalWidget();
+                    return  ProductCardVerticalWidget(product: ProductModel.empty(), );
                   }),
 
               const SizedBox(

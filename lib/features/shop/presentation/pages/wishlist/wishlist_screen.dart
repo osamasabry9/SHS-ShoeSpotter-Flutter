@@ -8,6 +8,7 @@ import '../../../../../core/widgets/appBar/custom_app_bar.dart';
 import '../../../../../core/widgets/icons/circular_icon_widget.dart';
 import '../../../../../core/widgets/layouts/grid_layout_widget.dart';
 import '../../../../../core/widgets/products/products_card/product_card_vertical_widget.dart';
+import '../../../data/models/product_model.dart';
 
 class WishlistScreen extends StatelessWidget {
   const WishlistScreen({super.key});
@@ -32,7 +33,9 @@ class WishlistScreen extends StatelessWidget {
                 GridLayoutWidget(
                     itemCount: 4,
                     itemBuilder: (_, index) {
-                      return const ProductCardVerticalWidget();
+                      return  ProductCardVerticalWidget(
+                        product: ProductModel.empty(),
+                      );
                     })
               ]))),
     );
