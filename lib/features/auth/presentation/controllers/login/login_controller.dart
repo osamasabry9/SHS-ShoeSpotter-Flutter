@@ -26,11 +26,18 @@ class LoginController extends GetxController {
 
   @override
   void onInit() {
-    emailController.text =
-        di.getIt<GetStorage>().read(AppPrefsKeys.PREFS_KEY_REMEMBER_ME_EMAIL);
-    passwordController.text = di
-        .getIt<GetStorage>()
-        .read(AppPrefsKeys.PREFS_KEY_REMEMBER_ME_PASSWORD);
+    final storage = di.getIt<GetStorage>();
+    const emailKey = AppPrefsKeys.PREFS_KEY_REMEMBER_ME_EMAIL;
+    const passwordKey = AppPrefsKeys.PREFS_KEY_REMEMBER_ME_PASSWORD;
+
+    final rememberedEmail = storage.read(emailKey);
+    final rememberedPassword = storage.read(passwordKey);
+
+    if (rememberedEmail != null && rememberedPassword != null) {
+      emailController.text = rememberedEmail;
+      passwordController.text = rememberedPassword;
+    }
+
     super.onInit();
   }
 
