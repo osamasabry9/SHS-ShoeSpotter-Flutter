@@ -6,6 +6,6 @@ class GetFeaturedProductsUseCase {
 
   GetFeaturedProductsUseCase({required this.repository});
 
-  Future<List<ProductModel>> call() async =>
-      await repository.getFeaturedProducts();
+  Future<List<ProductModel>> call({required int limit}) async =>
+      await repository.getFeaturedProducts(limit);
 }

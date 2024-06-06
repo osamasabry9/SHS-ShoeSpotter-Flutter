@@ -47,7 +47,7 @@ class ProductCardHorizontalWidget extends StatelessWidget {
                       width: 120,
                       height: 120,
                       child: RoundedImageWidget(
-                        imageUrl: AppImages.productImage1,
+                        imageUrl: AppImages.promoBanner1,
                         applyImageRadius: true,
                       ),
                     ),
@@ -79,10 +79,11 @@ class ProductCardHorizontalWidget extends StatelessWidget {
                 ),
               ),
 
-               SizedBox(
+              SizedBox(
                 width: 172,
                 child: Padding(
-                  padding: const EdgeInsets.only(left: AppSizes.sm, top: AppSizes.sm),
+                  padding: const EdgeInsets.only(
+                      left: AppSizes.sm, top: AppSizes.sm),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -99,7 +100,8 @@ class ProductCardHorizontalWidget extends StatelessWidget {
                       const Spacer(),
 
                       /// Price & Add to cart
-                      PriceAndAddToCartWidget( price: '256' , product: ProductModel.empty()),
+                      PriceAndAddToCartWidget(
+                          price: '256', product: ProductModel.empty()),
                     ],
                   ),
                 ),

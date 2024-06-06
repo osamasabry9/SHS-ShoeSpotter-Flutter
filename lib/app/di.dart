@@ -47,7 +47,7 @@ import '../features/shop/domain/repositories/product_repository.dart';
 import '../features/shop/domain/usecases/get_all_banners_usecase.dart';
 import '../features/shop/domain/usecases/get_all_brands_usecase.dart';
 import '../features/shop/domain/usecases/get_all_categories_usecase.dart';
-import '../features/shop/domain/usecases/get_all_products_usecase.dart';
+import '../features/shop/domain/usecases/get_products_by_query_usecase.dart';
 import '../features/shop/domain/usecases/get_brand_by_id_usecase.dart';
 import '../features/shop/domain/usecases/get_category_by_id_usecase.dart';
 import '../features/shop/domain/usecases/get_featured_categories_usecase.dart';
@@ -147,7 +147,7 @@ Future<void> initAppModule() async {
   //+++++++++++++++++++++++  Product Use Cases +++++++++++++++++++++++
 
   getIt.registerLazySingleton(
-      () => GetAllProductsUseCase(repository: getIt.call()));
+      () => GetProductsByQueryUseCase(repository: getIt.call()));
 
   getIt.registerLazySingleton(
       () => GetFeaturedProductsUseCase(repository: getIt.call()));
@@ -211,7 +211,6 @@ Future<void> initAppModule() async {
   getIt.registerLazySingleton<ProductRemoteDataSource>(
       () => ProductRemoteDataSourceImpl(firebaseFirestore: getIt.call()));
 
-      
   //--------------------------- Externals-----------------------------------
 
   final firebaseFirestore = FirebaseFirestore.instance;

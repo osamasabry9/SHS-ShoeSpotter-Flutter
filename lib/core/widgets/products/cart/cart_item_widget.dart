@@ -20,7 +20,7 @@ class CartItemWidget extends StatelessWidget {
     return Row(children: [
       /// image
       RoundedImageWidget(
-        imageUrl: AppImages.productImage1,
+        imageUrl: AppImages.promoBanner1,
         width: 60,
         height: 60,
         padding: const EdgeInsets.all(AppSizes.sm),
