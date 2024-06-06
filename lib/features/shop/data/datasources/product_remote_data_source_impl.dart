@@ -13,14 +13,11 @@ class ProductRemoteDataSourceImpl implements ProductRemoteDataSource {
   ProductRemoteDataSourceImpl({required this.firebaseFirestore});
 
   @override
-  Future<List<ProductModel>> getAllProducts() async {
+  Future<List<ProductModel>> getProductsByQuery(Query query) async {
     try {
-      final response = await firebaseFirestore
-          .collection(FirebaseConst.PRODUCTS_COLLECTION)
-          .get();
-
-      final listProducts = response.docs
-          .map((document) => ProductModel.fromSnapshot(document))
+      final querySnapshot = await query.get();
+      final listProducts = querySnapshot.docs
+          .map((document) => ProductModel.fromQuerySnapshot(document))
           .toList();
 
       return listProducts;
@@ -52,13 +49,19 @@ class ProductRemoteDataSourceImpl implements ProductRemoteDataSource {
   }
 
   @override
-  Future<List<ProductModel>> getFeaturedProducts() async {
+  Future<List<ProductModel>> getFeaturedProducts(int limit) async {
     try {
-      final response = await firebaseFirestore
-          .collection(FirebaseConst.PRODUCTS_COLLECTION)
-          .where('isFeatured', isEqualTo: true)
-          .limit(4)
-          .get();
+      final response = limit > 0
+          ? await firebaseFirestore
+              .collection(FirebaseConst.PRODUCTS_COLLECTION)
+              .where('isFeatured', isEqualTo: true)
+              .limit(limit)
+              .get()
+          : await firebaseFirestore
+              .collection(FirebaseConst.PRODUCTS_COLLECTION)
+              .where('isFeatured', isEqualTo: true)
+              .get();
+
       final listProducts = response.docs
           .map((document) => ProductModel.fromSnapshot(document))
           .toList();
