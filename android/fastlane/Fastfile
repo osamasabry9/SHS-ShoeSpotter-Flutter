@@ -1,17 +1,27 @@
 default_platform(:android)
 
+
 platform :android do
   desc "Lane for Android firebase app distribution"
   lane :firebase_distribution do
     sh "flutter clean"
-    sh "flutter build apk --release --flavor production --target lib/main_production.dart --no-tree-shake-icons" 
-    firebase_app_distribution(
-    app: "1:410563000793:android:99f4e8b2383040f9d401c8",
-    firebase_cli_token:ENV["FIREBASE_CLI_TOKEN"],
-    android_artifact_type:"APK",
-    android_artifact_path: "../build/app/outputs/flutter-apk/app-production-release.apk",
-    testers:"osamaerhy32@gmail.com",
-    release_notes:"Testing something with GitHub Actions, trying to push directly to firebase distribution",
-  )
+    sh "flutter build apk --release --flavor production --target lib/main_production.dart --no-tree-shake-icons"
+
+    begin
+      firebase_app_distribution(
+        app: "1:410563000793:android:99f4e8b2383040f9d401c8",
+        firebase_cli_token: ENV["FIREBASE_CLI_TOKEN"],
+        android_artifact_type: "APK",
+        android_artifact_path: "../build/app/outputs/flutter-apk/app-production-release.apk",
+        testers: "osamaerhy32@gmail.com",
+        timeout: 1000, # Increased timeout
+        release_notes: "Testing something with GitHub Actions, trying to push directly to firebase distribution"
+      )
+    rescue => error
+      UI.error("Error during Firebase App Distribution: #{error.message}")
+      UI.important("Retrying upload...")
+      sleep(30) # Wait for 30 seconds before retrying
+      retry
+    end
   end
 end
