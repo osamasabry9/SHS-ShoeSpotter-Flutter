@@ -33,6 +33,8 @@ class AppHelperFunctions {
       return Colors.teal;
     } else if (value == 'Indigo') {
       return Colors.indigo;
+    } else if (value == 'Gold') {
+      return Colors.yellow[200];
     } else {
       return null;
     }

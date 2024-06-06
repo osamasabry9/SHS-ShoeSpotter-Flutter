@@ -1,5 +1,11 @@
-
 class AppValidator {
+  static String? validateName(String filedName , String? value) {
+    if (value == null || value.isEmpty) {
+      return '$filedName is required.';
+    }
+    return null;
+  }
+
   static String? validateEmail(String? value) {
     if (value == null || value.isEmpty) {
       return 'Email is required.';

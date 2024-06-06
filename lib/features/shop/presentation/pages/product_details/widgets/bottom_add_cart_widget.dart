@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-import '../../../../../../core/widgets/icons/circular_icon_widget.dart';
 
 import '../../../../../../core/utils/constants/colors.dart';
 import '../../../../../../core/utils/constants/sizes.dart';
 import '../../../../../../core/utils/helpers/helper_functions.dart';
+import '../../../../../../core/widgets/icons/circular_icon_widget.dart';
 
 class BottomAddCartWidget extends StatelessWidget {
   const BottomAddCartWidget({

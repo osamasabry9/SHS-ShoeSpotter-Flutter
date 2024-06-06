@@ -1,26 +1,28 @@
 import 'package:flutter/material.dart';
-import '../store/widgets/brand_card_widget.dart';
 
 import '../../../../../core/utils/constants/sizes.dart';
 import '../../../../../core/widgets/appBar/custom_app_bar.dart';
 import '../../../../../core/widgets/products/sortable/sortable_products.dart';
+import '../../../domain/entities/brand_entity.dart';
+import '../store/widgets/brand_card_widget.dart';
 
 class BrandProductsScreen extends StatelessWidget {
-  const BrandProductsScreen({super.key});
+  final BrandEntity brand;
+  const BrandProductsScreen({super.key , required this.brand});
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      appBar: CustomAppBar(showBackArrow: true, title: Text("Nike")),
+    return  Scaffold(
+      appBar: const CustomAppBar(showBackArrow: true, title: Text("Nike")),
       body: Padding(
-        padding: EdgeInsets.all(AppSizes.defaultSpace),
+        padding: const EdgeInsets.all(AppSizes.defaultSpace),
         child: SingleChildScrollView(
           child: Column(
             children: [
               /// Heading
-              BrandCardWidget(showBorder: true),
-              SizedBox(height: AppSizes.spaceBtwSections),
-              SortableProducts(),
+              BrandCardWidget(brand: brand, showBorder: true),
+              const SizedBox(height: AppSizes.spaceBtwSections),
+              const SortableProducts(products: []),
             ],
           ),
         ),

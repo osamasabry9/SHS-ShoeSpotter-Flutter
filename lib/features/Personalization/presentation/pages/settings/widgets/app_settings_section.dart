@@ -20,7 +20,7 @@ class AppSettingsSection extends StatelessWidget {
         icon: Iconsax.document_upload,
         title: "Load Data",
         subTitle: "Upload data to your cloud firebase",
-        onTap: () {},
+        onTap: () {}
       ),
       SettingsMenuTile(
         icon: Iconsax.location,

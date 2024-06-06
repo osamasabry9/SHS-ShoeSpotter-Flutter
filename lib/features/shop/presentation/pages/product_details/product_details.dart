@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+
+import '../../../../../core/utils/constants/enums.dart';
 import '../../../../../core/utils/constants/sizes.dart';
+import '../../../domain/entities/product_entity.dart';
 import 'widgets/bottom_add_cart_widget.dart';
 import 'widgets/product_attributes_widget.dart';
 import 'widgets/product_checkout_widget.dart';
@@ -10,47 +13,49 @@ import 'widgets/product_reviews_widget.dart';
 import 'widgets/rating_and_share_widget.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
-  const ProductDetailsScreen({super.key});
+  const ProductDetailsScreen({super.key, required this.product});
+  final ProductEntity product;
 
   @override
   Widget build(BuildContext context) {
-    return  const Scaffold(
-      bottomNavigationBar: BottomAddCartWidget(),
+    return Scaffold(
+      bottomNavigationBar: const BottomAddCartWidget(),
       body: SingleChildScrollView(
         child: Column(
           children: [
             /// Product images slider
-            ProductImagesSliderWidget(),
+            ProductImagesSliderWidget(product: product),
 
             /// Product details
             Padding(
-                padding: EdgeInsets.only(
+                padding: const EdgeInsets.only(
                     right: AppSizes.defaultSpace,
                     left: AppSizes.defaultSpace,
                     bottom: AppSizes.defaultSpace),
                 child: Column(
                   children: [
                     /// Rating and share button
-                    RatingAndShareWidget(),
+                    const RatingAndShareWidget(),
 
                     /// Price, title, stock, brand
-                    ProductMetaDataWidget(),
+                    ProductMetaDataWidget(product: product),
 
                     /// Attributes
-                    ProductAttributesWidget(),
-                    SizedBox(height: AppSizes.spaceBtwSections),
+                    if (product.productType == ProductType.variable.toString())
+                      ProductAttributesWidget(product: product),
+                    const SizedBox(height: AppSizes.spaceBtwSections),
 
                     /// checkout Button
-                    ProductCheckoutWidget(),
-                    SizedBox(height: AppSizes.spaceBtwSections),
+                    const ProductCheckoutWidget(),
+                    const SizedBox(height: AppSizes.spaceBtwSections),
 
                     /// Description
-                    ProductDescriptionWidget(),
-                    SizedBox(height: AppSizes.spaceBtwItems),
+                    ProductDescriptionWidget(product: product),
+                    const SizedBox(height: AppSizes.spaceBtwItems),
 
                     /// Reviews
-                    ProductReviewsWidget(),
-                    SizedBox(height: AppSizes.spaceBtwSections),
+                    const ProductReviewsWidget(),
+                    const SizedBox(height: AppSizes.spaceBtwSections),
                   ],
                 ))
           ],

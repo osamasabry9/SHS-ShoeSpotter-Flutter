@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../core/routing/app_router.dart';
 import '../core/routing/routes.dart';
 import '../core/utils/constants/text_strings.dart';
 import '../core/utils/theme/theme.dart';
+import 'general_bindings.dart';
 
 class TShoeSpotterApp extends StatelessWidget {
   // const ShoeSpotterApp({super.key}); // default constructor
@@ -18,14 +20,15 @@ class TShoeSpotterApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: AppTexts.appName,
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.system,
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
+      initialBinding: GeneralBindings(),
       onGenerateRoute: AppRouter.onGenerateRoute,
-      initialRoute: Routes.onBoardingScreen,
+      initialRoute: Routes.loaderScreen,
     );
   }
 }

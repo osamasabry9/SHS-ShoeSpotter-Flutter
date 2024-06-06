@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 import '../../utils/constants/sizes.dart';
 import '../../utils/constants/text_strings.dart';
@@ -6,7 +7,6 @@ import '../../utils/helpers/extensions.dart';
 import '../../utils/helpers/helper_functions.dart';
 import '../../utils/models/success_items_model.dart';
 import '../../utils/styles/spacing_styles.dart';
-
 
 class SuccessScreen extends StatelessWidget {
   final SuccessItemsModel itemsModel;
@@ -24,38 +24,25 @@ class SuccessScreen extends StatelessWidget {
           child: Column(
             children: [
               // Image
-              Image(
-                image: AssetImage(itemsModel.image),
-                width: AppHelperFunctions.screenWidth(context) * 0.6,
-                // height: AppHelperFunctions.screenHeight(context) * 0.5,
-              ),
-              const SizedBox(
-                height: AppSizes.spaceBtwSections,
-              ),
+              Lottie.asset(itemsModel.image,
+                  width: AppHelperFunctions.screenWidth(context) * 0.6),
+              const SizedBox(height: AppSizes.spaceBtwSections),
 
               // title and subtitle
-              Text(
-                itemsModel.title,
-                style: Theme.of(context).textTheme.headlineMedium,
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(
-                height: AppSizes.spaceBtwItems,
-              ),
+              Text(itemsModel.title,
+                  style: Theme.of(context).textTheme.headlineMedium,
+                  textAlign: TextAlign.center),
+              const SizedBox(height: AppSizes.spaceBtwItems),
 
-              Text(
-                itemsModel.subtitle,
-                style: Theme.of(context).textTheme.labelMedium,
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(
-                height: AppSizes.spaceBtwSections,
-              ),
+              Text(itemsModel.subtitle,
+                  style: Theme.of(context).textTheme.labelMedium,
+                  textAlign: TextAlign.center),
+              const SizedBox(height: AppSizes.spaceBtwSections),
               // button
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: (){
+                  onPressed: () {
                     context.pushReplacementNamed(itemsModel.routeName);
                   },
                   child: const Text(AppTexts.tContinue),

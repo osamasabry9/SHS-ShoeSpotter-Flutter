@@ -29,7 +29,7 @@ class BrandTitleWithVerifiedIcon extends StatelessWidget {
       children: [
         Flexible(
             child: BrandTitleText(
-          title: "Nike",
+          title: title,
           maxLine: maxLine,
           color: textColor,
           textAlign: textAlign,
