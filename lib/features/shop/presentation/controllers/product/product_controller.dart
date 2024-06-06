@@ -26,12 +26,13 @@ class ProductController extends GetxController {
     super.onInit();
   }
 
-  Future<void> fetchFeaturedProducts() async {
+  Future<void> fetchFeaturedProducts({int limit = 4}) async {
     try {
       // show loading while fetching products
       isLoading.value = true;
 
-      final products = await di.getIt<GetFeaturedProductsUseCase>().call();
+      final products =
+          await di.getIt<GetFeaturedProductsUseCase>().call(limit: limit);
 
       featuredProducts.assignAll(products);
     } catch (e) {
@@ -41,27 +42,44 @@ class ProductController extends GetxController {
     }
   }
 
+  Future<List<ProductEntity>> fetchAllFeaturedProducts() async {
+    try {
+      // i selected limit 0 because i want to fetch all the products
+      final products =
+          await di.getIt<GetFeaturedProductsUseCase>().call(limit: 0);
+
+      return products;
+    } catch (e) {
+      AppLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+      return [];
+    }
+  }
+
 // Get the product price or price range for variations
-String getVariationPrice(ProductEntity product) {
-  // if no variations exist, return the simple price or sale price
-  if (product.productType == ProductType.single.toString()) {
-    return product.salePrice > 0 ? product.salePrice.toString() : product.price.toString();
+  String getVariationPrice(ProductEntity product) {
+    // if no variations exist, return the simple price or sale price
+    if (product.productType == ProductType.single.toString()) {
+      return product.salePrice > 0
+          ? product.salePrice.toString()
+          : product.price.toString();
+    }
+
+    double smallestPrice = double.infinity;
+    double largestPrice = double.negativeInfinity;
+
+    for (var variation in product.productVariations!) {
+      final priceToConsider =
+          variation.salePrice > 0.0 ? variation.salePrice : variation.price;
+
+      smallestPrice = min(smallestPrice, priceToConsider);
+      largestPrice = max(largestPrice, priceToConsider);
+    }
+
+    // if the smallest and largest prices are the same, return the price, else return the price range
+    return smallestPrice == largestPrice
+        ? largestPrice.toString()
+        : '$smallestPrice - $largestPrice';
   }
-
-  double smallestPrice = double.infinity;
-  double largestPrice = double.negativeInfinity;
-
-  for (var variation in product.productVariations!) {
-    final priceToConsider = variation.salePrice > 0.0 ? variation.salePrice : variation.price;
-
-    smallestPrice = min(smallestPrice, priceToConsider);
-    largestPrice = max(largestPrice, priceToConsider);
-  }
-
-  // if the smallest and largest prices are the same, return the price, else return the price range
-  return smallestPrice == largestPrice ? largestPrice.toString() : '$smallestPrice - $largestPrice';
-}
-
 
 // Calculate the discount percentage
   String getDiscountPercentage(double originalPrice, double? salePrice) {
@@ -133,7 +151,7 @@ String getVariationPrice(ProductEntity product) {
         return product;
       });
 
-    // Store categories in the Firestore in parallel
+      // Store categories in the Firestore in parallel
       await Future.wait(futures.map((future) async {
         final product =
             await future; // Await the future to get the ProductModel
