@@ -31,9 +31,9 @@ class CategoryTabWidget extends StatelessWidget {
             children: [
               // Brands
               BrandShowCaseWidget(images: const [
-                AppImages.productImage1,
-                AppImages.productImage2,
-                AppImages.productImage3
+                AppImages.promoBanner1,
+                AppImages.promoBanner1,
+                AppImages.promoBanner1
               ], brand: brand),
               const SizedBox(
                 height: AppSizes.spaceBtwItems,

@@ -22,7 +22,7 @@ class BrandProductsScreen extends StatelessWidget {
               /// Heading
               BrandCardWidget(brand: brand, showBorder: true),
               const SizedBox(height: AppSizes.spaceBtwSections),
-              const SortableProducts(),
+              const SortableProducts(products: []),
             ],
           ),
         ),
