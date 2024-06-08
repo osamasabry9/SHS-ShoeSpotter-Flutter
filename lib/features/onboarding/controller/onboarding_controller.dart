@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import '../../../core/routing/routes.dart';
 
 import '../../../app/di.dart';
+import '../../../core/routing/routes.dart';
 import '../../../core/utils/constants/api_constants.dart';
 
 class OnBoardingController extends GetxController {
