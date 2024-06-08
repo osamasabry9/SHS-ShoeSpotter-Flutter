@@ -18,7 +18,7 @@ class BrandSectionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final brandController = BrandController.instance;
+    final brandController = Get.put(BrandController());
     return Padding(
       padding: const EdgeInsets.all(AppSizes.defaultSpace),
       child: ListView(
