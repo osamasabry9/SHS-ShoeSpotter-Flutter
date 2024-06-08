@@ -17,7 +17,6 @@ class BrandRemoteDataSourceImpl implements BrandRemoteDataSource {
     try {
       final response = await firebaseFirestore
           .collection(FirebaseConst.BRANDS_COLLECTION)
-          .where("isFeatured", isEqualTo: true)
           .get();
 
       final listCategories = response.docs
