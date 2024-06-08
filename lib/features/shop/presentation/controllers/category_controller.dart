@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:shoe_spotter/features/shop/data/models/product_model.dart';
 
 import '../../../../app/di.dart' as di;
 import '../../../../core/repositories/firebase/app_firebase_storage_service.dart';
@@ -6,6 +7,7 @@ import '../../../../core/utils/constants/api_constants.dart';
 import '../../../../core/utils/popups/loaders.dart';
 import '../../data/models/category_model.dart';
 import '../../domain/usecases/get_all_categories_usecase.dart';
+import '../../domain/usecases/get_products_for_category_usecase.dart';
 import '../../domain/usecases/upload_category_usecase.dart';
 
 class CategoryController extends GetxController {
@@ -55,6 +57,19 @@ class CategoryController extends GetxController {
   ///
   /// Get category or sub-category products.
   ///
+  Future<List<ProductModel>> getProductsForCategory(
+      {required String categoryId, int limit = 4}) async {
+    try {
+      final products = await di
+          .getIt<GetProductsForCategoryUseCase>()
+          .call(categoryId: categoryId, limit: limit);
+
+      return products;
+    } catch (e) {
+      AppLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+      return [];
+    }
+  }
 
   /// Upload categories to the cloud firestore
   Future<void> uploadDummyDataCategories(List<CategoryModel> categories) async {
@@ -73,13 +88,11 @@ class CategoryController extends GetxController {
             imageUrl,
             category.image);
 
-            // Assign URL to category name attribute
-            category.image = imageUrlUploaded;
+        // Assign URL to category name attribute
+        category.image = imageUrlUploaded;
 
-            // store category in the firestore
-            await di
-                .getIt<UploadCategoryUseCase>()
-                .call(category: category);
+        // store category in the firestore
+        await di.getIt<UploadCategoryUseCase>().call(category: category);
       }
     } catch (e) {
       AppLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());

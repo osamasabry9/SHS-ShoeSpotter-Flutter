@@ -47,12 +47,15 @@ import '../features/shop/domain/repositories/product_repository.dart';
 import '../features/shop/domain/usecases/get_all_banners_usecase.dart';
 import '../features/shop/domain/usecases/get_all_brands_usecase.dart';
 import '../features/shop/domain/usecases/get_all_categories_usecase.dart';
+import '../features/shop/domain/usecases/get_brand_for_category_usecase.dart';
 import '../features/shop/domain/usecases/get_products_by_query_usecase.dart';
 import '../features/shop/domain/usecases/get_brand_by_id_usecase.dart';
 import '../features/shop/domain/usecases/get_category_by_id_usecase.dart';
 import '../features/shop/domain/usecases/get_featured_categories_usecase.dart';
 import '../features/shop/domain/usecases/get_featured_products_usecase.dart';
 import '../features/shop/domain/usecases/get_product_by_id_usecase.dart';
+import '../features/shop/domain/usecases/get_products_for_brand_usecase.dart';
+import '../features/shop/domain/usecases/get_products_for_category_usecase.dart';
 import '../features/shop/domain/usecases/get_sub_categories_usecase.dart';
 import '../features/shop/domain/usecases/upload_banner_usecase.dart';
 import '../features/shop/domain/usecases/upload_brand_usecase.dart';
@@ -143,6 +146,10 @@ Future<void> initAppModule() async {
 
   getIt.registerLazySingleton(
       () => UploadBrandUseCase(repository: getIt.call()));
+  
+  getIt.registerLazySingleton(
+      () => GetBrandForCategoryUseCase(repository: getIt.call()));
+  
 
   //+++++++++++++++++++++++  Product Use Cases +++++++++++++++++++++++
 
@@ -156,6 +163,12 @@ Future<void> initAppModule() async {
 
   getIt.registerLazySingleton(
       () => UploadProductUseCase(repository: getIt.call()));
+
+  getIt.registerLazySingleton(
+      () => GetProductsForBrandUseCase(repository: getIt.call()));
+
+  getIt.registerLazySingleton(
+      () => GetProductsForCategoryUseCase(repository: getIt.call()));
 
   // -----------------------------Repository-----------------------
   getIt.registerLazySingleton<AuthRepository>(

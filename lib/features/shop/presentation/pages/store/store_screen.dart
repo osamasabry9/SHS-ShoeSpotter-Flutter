@@ -7,8 +7,6 @@ import '../../../../../core/utils/helpers/helper_functions.dart';
 import '../../../../../core/widgets/appBar/custom_app_bar.dart';
 import '../../../../../core/widgets/appBar/custom_tab_bar.dart';
 import '../../../../../core/widgets/products/cart/cart_menu_icon.dart';
-import '../../../data/models/brand_model.dart';
-import '../../controllers/brand_controller.dart';
 import '../../controllers/category_controller.dart';
 import 'widgets/brand_section_widget.dart';
 import 'widgets/category_tab_widget.dart';
@@ -19,7 +17,6 @@ class StoreScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final categoryController = CategoryController.instance.featuredCategories;
-    final brandController = Get.put(BrandController());
     return DefaultTabController(
       length: categoryController.length,
       child: Scaffold(
@@ -50,12 +47,7 @@ class StoreScreen extends StatelessWidget {
                 ],
             body: TabBarView(
                 children: categoryController
-                    .map((category) => CategoryTabWidget(
-                          categoryModel: category,
-                          brand: brandController.allBrands.firstWhere(
-                              (brand) => brand.name == category.name,
-                              orElse: () => BrandModel.empty()),
-                        ))
+                    .map((category) => CategoryTabWidget(category: category))
                     .toList())),
       ),
     );

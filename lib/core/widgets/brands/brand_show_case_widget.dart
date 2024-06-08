@@ -1,7 +1,11 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:shoe_spotter/core/widgets/custom_shapes/shimmer/app_shimmer_effect.dart';
 
 import '../../../features/shop/domain/entities/brand_entity.dart';
 import '../../../features/shop/presentation/pages/store/widgets/brand_card_widget.dart';
+import '../../routing/routes.dart';
 import '../../utils/constants/colors.dart';
 import '../../utils/constants/sizes.dart';
 import '../../utils/helpers/helper_functions.dart';
@@ -12,34 +16,34 @@ class BrandShowCaseWidget extends StatelessWidget {
     super.key,
     required this.images,
     required this.brand,
-
   });
   final List<String> images;
   final BrandEntity brand;
   @override
   Widget build(BuildContext context) {
-    return RoundedContainerWidget(
-      showBorder: true,
-      borderColor: AppColors.darkGrey,
-      backgroundColor: Colors.transparent,
-      padding: const EdgeInsets.all(AppSizes.sm),
-      margin: const EdgeInsets.only(bottom: AppSizes.spaceBtwItems),
-      child: Column(
-        children: [
-          // brand with product count
-           BrandCardWidget(brand: brand),
+    return InkWell(
+      onTap: () => Get.toNamed(Routes.brandProductsScreen, arguments: brand),
+      child: RoundedContainerWidget(
+        showBorder: true,
+        borderColor: AppColors.darkGrey,
+        backgroundColor: Colors.transparent,
+        padding: const EdgeInsets.all(AppSizes.sm),
+        margin: const EdgeInsets.only(bottom: AppSizes.spaceBtwItems),
+        child: Column(
+          children: [
+            // brand with product count
+            BrandCardWidget(brand: brand),
 
-          const SizedBox(
-            height: AppSizes.spaceBtwItems,
-          ),
+            const SizedBox(height: AppSizes.spaceBtwItems),
 
-          // brand top 3 products
-          Row(
-            children: images
-                .map((image) => brandTopProductImageWidget(context, image))
-                .toList(),
-          )
-        ],
+            // brand top 3 products
+            Row(
+              children: images
+                  .map((image) => brandTopProductImageWidget(context, image))
+                  .toList(),
+            )
+          ],
+        ),
       ),
     );
   }
@@ -53,9 +57,12 @@ class BrandShowCaseWidget extends StatelessWidget {
             : AppColors.light,
         padding: const EdgeInsets.all(AppSizes.md),
         margin: const EdgeInsets.only(right: AppSizes.sm),
-        child: Image(
+        child: CachedNetworkImage(
+          imageUrl: image,
           fit: BoxFit.contain,
-          image: AssetImage(image),
+          progressIndicatorBuilder: (_, __, downloadProgress) =>
+              const AppShimmerEffectWidget(width: 100, height: 100),
+          errorWidget: (context, url, error) => const Icon(Icons.error),
         ),
       ),
     );

@@ -16,4 +16,8 @@ class BrandRepositoryImpl implements BrandRepository {
   @override
   Future<void> uploadBrand(BrandModel brand) async =>
       await brandRemoteDataSource.uploadBrand(brand);
+
+  @override
+  Future<List<BrandModel>> getBrandForCategory(String categoryId) async =>
+      await brandRemoteDataSource.getBrandForCategory(categoryId);
 }

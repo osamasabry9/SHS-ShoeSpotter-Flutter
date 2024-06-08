@@ -22,4 +22,12 @@ class ProductRepositoryImpl implements ProductRepository {
   @override
   Future<void> uploadProduct(ProductModel product) async =>
       await productRemoteDataSource.uploadProduct(product);
+
+  @override
+  Future<List<ProductModel>> getProductsForBrand(String brandId, int limit) async =>
+      await productRemoteDataSource.getProductsForBrand(brandId, limit);
+
+  @override
+  Future<List<ProductModel>> getProductsForCategory(String categoryId, int limit) async =>
+      await productRemoteDataSource.getProductsForCategory(categoryId, limit);
 }

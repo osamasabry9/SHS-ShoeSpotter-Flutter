@@ -1,26 +1,27 @@
 import 'package:flutter/material.dart';
-import '../../../../data/models/product_model.dart';
+import 'package:get/get.dart';
+import '../../../../../../core/utils/helpers/cloud_helper_functions.dart';
 
-import '../../../../../../core/utils/constants/image_strings.dart';
 import '../../../../../../core/utils/constants/sizes.dart';
-import '../../../../../../core/widgets/brands/brand_show_case_widget.dart';
+import '../../../../../../core/widgets/custom_shapes/shimmer/vertical_product_shimmer_widget.dart';
 import '../../../../../../core/widgets/layouts/grid_layout_widget.dart';
 import '../../../../../../core/widgets/products/products_card/product_card_vertical_widget.dart';
 import '../../../../../../core/widgets/texts/section_heading.dart';
 import '../../../../data/models/category_model.dart';
-import '../../../../domain/entities/brand_entity.dart';
+import '../../../controllers/category_controller.dart';
+import '../../all_products/all_products_screen.dart';
+import 'category_brand_widget.dart';
 
 class CategoryTabWidget extends StatelessWidget {
   const CategoryTabWidget({
     super.key,
-    required this.categoryModel,
-    required this.brand,
+    required this.category,
   });
-  final CategoryModel categoryModel;
-  final BrandEntity brand;
+  final CategoryModel category;
 
   @override
   Widget build(BuildContext context) {
+    final categoryController = CategoryController.instance;
     return ListView(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
@@ -30,31 +31,47 @@ class CategoryTabWidget extends StatelessWidget {
           child: Column(
             children: [
               // Brands
-              BrandShowCaseWidget(images: const [
-                AppImages.promoBanner1,
-                AppImages.promoBanner1,
-                AppImages.promoBanner1
-              ], brand: brand),
-              const SizedBox(
-                height: AppSizes.spaceBtwItems,
-              ),
+              CategoryBrandWidget(category: category),
+              const SizedBox(height: AppSizes.spaceBtwItems),
               // products
-              SectionHeading(
-                title: 'You might like',
-                onPressed: () {},
-              ),
-              const SizedBox(
-                height: AppSizes.spaceBtwItems,
-              ),
-              GridLayoutWidget(
-                  itemCount: 4,
-                  itemBuilder: (_, index) {
-                    return  ProductCardVerticalWidget(product: ProductModel.empty(), );
+              FutureBuilder(
+                  future: categoryController.getProductsForCategory(
+                      categoryId: category.id),
+                  builder: (context, snapshot) {
+                    // helper functions to check the state of the snapshot
+
+                    const loader = VerticalProductShimmerWidget(itemCount: 4);
+                    final widget =
+                        AppCloudHelperFunctions.checkMultiRecordState(
+                            snapshot: snapshot, loader: loader);
+
+                    if (widget != null) return widget;
+
+                    final products = snapshot.data!;
+
+                    return Column(
+                      children: [
+                        SectionHeading(
+                          title: 'You might like',
+                          onPressed: () => Get.to(() => AllProductsScreen(
+                              title: category.name,
+                              futureMethod:
+                                  categoryController.getProductsForCategory(
+                                      categoryId: category.id, limit: -1))),
+                        ),
+                        const SizedBox(height: AppSizes.spaceBtwItems),
+                        // show products here in grid view layout
+                        GridLayoutWidget(
+                            itemCount: products.length,
+                            itemBuilder: (_, index) {
+                              return ProductCardVerticalWidget(
+                                  product: products[index]);
+                            }),
+                      ],
+                    );
                   }),
 
-              const SizedBox(
-                height: AppSizes.spaceBtwSections,
-              )
+              const SizedBox(height: AppSizes.spaceBtwSections)
             ],
           ),
         ),
