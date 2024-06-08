@@ -1,5 +1,5 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
+import 'package:shoe_spotter/features/shop/domain/usecases/get_brand_for_category_usecase.dart';
 
 import '../../../../app/di.dart' as di;
 import '../../../../core/repositories/firebase/app_firebase_storage_service.dart';
@@ -10,7 +10,7 @@ import '../../domain/entities/brand_entity.dart';
 import '../../domain/entities/product_entity.dart';
 import '../../domain/usecases/get_all_brands_usecase.dart';
 import '../../domain/usecases/get_brand_by_id_usecase.dart';
-import '../../domain/usecases/get_products_by_query_usecase.dart';
+import '../../domain/usecases/get_products_for_brand_usecase.dart';
 import '../../domain/usecases/upload_brand_usecase.dart';
 
 class BrandController extends GetxController {
@@ -67,24 +67,36 @@ class BrandController extends GetxController {
     }
   }
 
-// Get products by brand id
-  Future<List<ProductEntity>> getProductsByBrandId(String id) async {
+// Get Brand for category
+  Future<List<BrandEntity>> getBrandsByCategoryId(String id) async {
     try {
+      final brands =
+          await di.getIt<GetBrandForCategoryUseCase>().call(categoryId: id);
 
-      // fetch brands from data source
-      final query = di
-          .getIt<FirebaseFirestore>()
-          .collection(FirebaseConst.PRODUCTS_COLLECTION)
-          .where('brand.id', isEqualTo: id);
+      return brands;
+    } catch (e) {
+      AppLoaders.errorSnackBar(
+          title: 'Oh Snap! when getting brands by category',
+          message: e.toString());
+      return [];
+    }
+  }
 
-      final products =
-          await di.getIt<GetProductsByQueryUseCase>().call(query: query);
+// Get products by brand id
+  Future<List<ProductEntity>> getProductsByBrandId(
+      {required String brandId, int limit = -1}) async {
+    try {
+      final products = await di
+          .getIt<GetProductsForBrandUseCase>()
+          .call(brandId: brandId, limit: limit);
 
       return products;
     } catch (e) {
-      AppLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+      AppLoaders.errorSnackBar(
+          title: 'Oh Snap! when getting products by brand',
+          message: e.toString());
       return [];
-    } 
+    }
   }
 
   /// Upload Brands to the cloud firestore
