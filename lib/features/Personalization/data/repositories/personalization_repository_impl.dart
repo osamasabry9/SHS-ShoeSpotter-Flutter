@@ -1,9 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:image_picker/image_picker.dart';
-import '../datasources/personalization_remote_data_source.dart';
-import '../../../auth/data/models/user_model.dart';
 
+import '../../../auth/data/models/user_model.dart';
 import '../../domain/repositories/personalization_repository.dart';
+import '../datasources/personalization_remote_data_source.dart';
 
 class PersonalizationRepositoryImpl implements PersonalizationRepository {
   final PersonalizationRemoteDataSource personalizationRemoteDataSource;

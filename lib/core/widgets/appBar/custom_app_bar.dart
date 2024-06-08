@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import '../../utils/helpers/extensions.dart';
 
 import '../../utils/constants/sizes.dart';
 import '../../utils/device/device_utility.dart';
@@ -28,7 +28,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         automaticallyImplyLeading: false,
         leading: showBackArrow
             ? IconButton(
-                onPressed: () => Get.back(),
+                onPressed: () => context.pop(),
                 icon: const Icon(Iconsax.arrow_left))
             : leadingIcon != null
                 ? IconButton(

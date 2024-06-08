@@ -2,24 +2,23 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import '../../../../../core/utils/constants/sizes.dart';
-import '../../../../auth/domain/usecases/sign_with_google_usecase.dart';
 
+import '../../../../../app/di.dart' as di;
 import '../../../../../core/routing/routes.dart';
 import '../../../../../core/utils/constants/api_constants.dart';
 import '../../../../../core/utils/constants/image_strings.dart';
+import '../../../../../core/utils/constants/sizes.dart';
 import '../../../../../core/utils/helpers/network_manager.dart';
 import '../../../../../core/utils/popups/full_screen_loader.dart';
 import '../../../../../core/utils/popups/loaders.dart';
 import '../../../../auth/data/models/user_model.dart';
+import '../../../../auth/domain/usecases/sign_with_google_usecase.dart';
 import '../../../domain/usecases/delete_user_account_usecase.dart';
 import '../../../domain/usecases/fetch_user_details_usecase.dart';
 import '../../../domain/usecases/logout_user_usecase.dart';
 import '../../../domain/usecases/re_authenticate_email_and_password_usecase.dart';
 import '../../../domain/usecases/save_user_data_usecase.dart';
 import '../../../domain/usecases/save_user_record_in_firestore_usecase.dart';
-
-import '../../../../../app/di.dart' as di;
 import '../../../domain/usecases/update_single_field_usecase.dart';
 import '../../../domain/usecases/upload_image_usecase.dart';
 

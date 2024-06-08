@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 
 import '../../../../app/di.dart' as di;
@@ -6,15 +7,18 @@ import '../../../../core/utils/constants/api_constants.dart';
 import '../../../../core/utils/popups/loaders.dart';
 import '../../data/models/brand_model.dart';
 import '../../domain/entities/brand_entity.dart';
+import '../../domain/entities/product_entity.dart';
 import '../../domain/usecases/get_all_brands_usecase.dart';
 import '../../domain/usecases/get_brand_by_id_usecase.dart';
+import '../../domain/usecases/get_products_by_query_usecase.dart';
 import '../../domain/usecases/upload_brand_usecase.dart';
 
 class BrandController extends GetxController {
   static BrandController get instance => Get.find();
   final isLoading = false.obs;
   RxList<BrandEntity> allBrands = <BrandEntity>[].obs;
-  Rx<BrandEntity> selectedBrand = BrandModel.empty().obs;
+  RxList<BrandEntity> featuredBrands = <BrandEntity>[].obs;
+  Rx<BrandEntity?> selectedBrand = Rx<BrandEntity?>(null);
 
   @override
   void onInit() {
@@ -33,6 +37,10 @@ class BrandController extends GetxController {
 
       // Update the Brands List
       allBrands.assignAll(brands);
+
+      // filter featured brands
+      featuredBrands
+          .assignAll(brands.where((brand) => brand.isFeatured!).take(4));
     } catch (e) {
       AppLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
     } finally {
@@ -57,6 +65,26 @@ class BrandController extends GetxController {
       // remove loading
       isLoading.value = false;
     }
+  }
+
+// Get products by brand id
+  Future<List<ProductEntity>> getProductsByBrandId(String id) async {
+    try {
+
+      // fetch brands from data source
+      final query = di
+          .getIt<FirebaseFirestore>()
+          .collection(FirebaseConst.PRODUCTS_COLLECTION)
+          .where('brand.id', isEqualTo: id);
+
+      final products =
+          await di.getIt<GetProductsByQueryUseCase>().call(query: query);
+
+      return products;
+    } catch (e) {
+      AppLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+      return [];
+    } 
   }
 
   /// Upload Brands to the cloud firestore

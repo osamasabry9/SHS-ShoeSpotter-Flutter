@@ -5,7 +5,7 @@ import '../../../../../../core/routing/routes.dart';
 import '../../../../../../core/utils/constants/colors.dart';
 import '../../../../../../core/utils/constants/sizes.dart';
 import '../../../../../../core/widgets/custom_shapes/containers/custom_search_container.dart';
-import '../../../../../../core/widgets/custom_shapes/shimmer/app_shimmer_effect.dart';
+import '../../../../../../core/widgets/custom_shapes/shimmer/brand_shimmer_widget.dart';
 import '../../../../../../core/widgets/layouts/grid_layout_widget.dart';
 import '../../../../../../core/widgets/texts/section_heading.dart';
 import '../../../controllers/brand_controller.dart';
@@ -44,26 +44,23 @@ class BrandSectionWidget extends StatelessWidget {
 
           Obx(() {
             if (brandController.isLoading.value) {
-              return GridLayoutWidget(
-                  itemCount: 4,
-                  mainAxisExtent: 80,
-                  itemBuilder: (_, __) => const AppShimmerEffectWidget(
-                      width: 80, height: 80, radius: 10));
+              return const BrandShimmerWidget();
             }
-            if (brandController.allBrands.isEmpty) {
+            if (brandController.featuredBrands.isEmpty) {
               return const Center(
                 child: Text("No Data found!",
                     style: TextStyle(color: AppColors.white)),
               );
             }
             return GridLayoutWidget(
-                itemCount: 4,
+                itemCount: brandController.featuredBrands.length,
                 mainAxisExtent: 80,
                 itemBuilder: (_, index) {
                   return BrandCardWidget(
-                      brand: brandController.allBrands[index],
+                      brand: brandController.featuredBrands[index],
                       showBorder: true,
-                      onTap: () => Get.toNamed(Routes.brandProductsScreen));
+                      onTap: () => Get.toNamed(Routes.brandProductsScreen,
+                          arguments: brandController.featuredBrands[index]));
                 });
           }),
         ],
