@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+
 import '../../../utils/constants/sizes.dart';
-import 'app_shimmer_effect.dart';
 import '../../layouts/grid_layout_widget.dart';
+import 'app_shimmer_effect.dart';
 
 class VerticalProductShimmerWidget extends StatelessWidget {
   const VerticalProductShimmerWidget({
