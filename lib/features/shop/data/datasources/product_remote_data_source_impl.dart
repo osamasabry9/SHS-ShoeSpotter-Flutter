@@ -90,4 +90,66 @@ class ProductRemoteDataSourceImpl implements ProductRemoteDataSource {
       throw 'Something went wrong. please try again.';
     }
   }
+  
+  @override
+  Future<List<ProductModel>> getProductsForBrand(String brandId, int limit)async {
+    try {
+      final response = limit != -1
+          ? await firebaseFirestore
+              .collection(FirebaseConst.PRODUCTS_COLLECTION)
+              .where('brand.id', isEqualTo: brandId)
+              .limit(limit)
+              .get()
+          : await firebaseFirestore
+              .collection(FirebaseConst.PRODUCTS_COLLECTION)
+              .where('brand.id', isEqualTo: brandId)
+              .get();
+      final listProducts = response.docs
+          .map((document) => ProductModel.fromSnapshot(document))
+          .toList();
+      return listProducts;
+    } on FirebaseException catch (e) {
+      throw AppFirebaseException(e.code).message;
+    } on PlatformException catch (e) {
+      throw AppPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. While fetching products for brand. please try again.';
+    }
+  }
+    @override
+  Future<List<ProductModel>> getProductsForCategory(String categoryId, int limit)async {
+    try {
+      // Query to get all documents where categoryId is equal to categoryId 
+      QuerySnapshot productCategoryQuery = limit != -1
+          ? await firebaseFirestore
+              .collection(FirebaseConst.PRODUCT_CATEGORY_COLLECTION)
+              .where('categoryId', isEqualTo: categoryId)
+              .limit(limit)
+              .get()
+          : await firebaseFirestore
+              .collection(FirebaseConst.PRODUCT_CATEGORY_COLLECTION)
+              .where('categoryId', isEqualTo: categoryId)
+              .get();
+// Extract the productId from each document
+List<String> productIds = productCategoryQuery.docs
+        .map((doc) => doc['productId'] as String)
+        .toList();
+// Query to get all documents where productId is in productIds list , FieldPath.documentId to query by documents in collection
+      final productsQuery = await firebaseFirestore
+          .collection(FirebaseConst.PRODUCTS_COLLECTION)
+          .where(FieldPath.documentId, whereIn: productIds)
+          .get();
+// Convert each document to ProductModel and add to list
+      final listProducts = productsQuery.docs
+          .map((document) => ProductModel.fromSnapshot(document))
+          .toList();
+      return listProducts;
+    } on FirebaseException catch (e) {
+      throw AppFirebaseException(e.code).message;
+    } on PlatformException catch (e) {
+      throw AppPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. While fetching products for category. please try again.';
+    }
+  }
 }
