@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../../../core/widgets/custom_shapes/shimmer/app_shimmer_effect.dart';
 
 import '../../../../../../core/utils/constants/colors.dart';
 import '../../../../../../core/utils/constants/image_strings.dart';
+import '../../../../../../core/widgets/custom_shapes/shimmer/app_shimmer_effect.dart';
 import '../../../../../../core/widgets/images/circular_image_widget.dart';
 import '../../../controllers/user/user_controller.dart';
 

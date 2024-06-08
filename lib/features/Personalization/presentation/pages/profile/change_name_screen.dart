@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import '../../../../../core/utils/constants/sizes.dart';
-import '../../../../../core/widgets/appBar/custom_app_bar.dart';
 
+import '../../../../../core/utils/constants/sizes.dart';
 import '../../../../../core/utils/constants/text_strings.dart';
 import '../../../../../core/utils/validators/validation.dart';
+import '../../../../../core/widgets/appBar/custom_app_bar.dart';
 import '../../controllers/user/update_name_controller.dart';
 
 class ChangeNameScreen extends StatelessWidget {
