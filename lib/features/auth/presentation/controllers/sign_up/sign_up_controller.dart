@@ -1,15 +1,15 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import '../../../../Personalization/presentation/controllers/user/user_controller.dart';
-import '../../../data/models/user_model.dart';
+
+import '../../../../../app/di.dart' as di;
+import '../../../../../core/routing/routes.dart';
 import '../../../../../core/utils/constants/image_strings.dart';
+import '../../../../../core/utils/helpers/network_manager.dart';
 import '../../../../../core/utils/popups/full_screen_loader.dart';
 import '../../../../../core/utils/popups/loaders.dart';
+import '../../../../Personalization/presentation/controllers/user/user_controller.dart';
+import '../../../data/models/user_model.dart';
 import '../../../domain/usecases/sign_up_user_usecase.dart';
-
-import '../../../../../core/routing/routes.dart';
-import '../../../../../core/utils/helpers/network_manager.dart';
-import '../../../../../app/di.dart' as di;
 
 class SignUpController extends GetxController {
   static SignUpController get instance => Get.find();
