@@ -1,10 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../../core/utils/constants/api_constants.dart';
 
 import '../../../../../app/di.dart' as di;
-
+import '../../../../../core/utils/constants/api_constants.dart';
 import '../../../../../core/utils/constants/sizes.dart';
 import '../../../../../core/widgets/custom_shapes/containers/custom_search_container.dart';
 import '../../../../../core/widgets/custom_shapes/containers/primary_header_container.dart';

@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../data/models/brand_model.dart';
 
+import '../../../../../core/routing/routes.dart';
 import '../../../../../core/utils/constants/colors.dart';
 import '../../../../../core/utils/helpers/helper_functions.dart';
 import '../../../../../core/widgets/appBar/custom_app_bar.dart';
 import '../../../../../core/widgets/appBar/custom_tab_bar.dart';
 import '../../../../../core/widgets/products/cart/cart_menu_icon.dart';
+import '../../../data/models/brand_model.dart';
 import '../../controllers/brand_controller.dart';
 import '../../controllers/category_controller.dart';
 import 'widgets/brand_section_widget.dart';
@@ -17,17 +18,17 @@ class StoreScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final categoryController = CategoryController.instance;
+    final categoryController = CategoryController.instance.featuredCategories;
     final brandController = Get.put(BrandController());
     return DefaultTabController(
-      length: categoryController.featuredCategories.length,
+      length: categoryController.length,
       child: Scaffold(
         appBar: CustomAppBar(
           showBackArrow: false,
           title:
               Text("Store", style: Theme.of(context).textTheme.headlineMedium),
           actions: [
-            CartMenuIcon(onPressed: () {}),
+            CartMenuIcon(onPressed: () => Get.toNamed(Routes.cartScreen)),
           ],
         ),
         body: NestedScrollView(
@@ -42,13 +43,13 @@ class StoreScreen extends StatelessWidget {
                     expandedHeight: 440,
                     flexibleSpace: const BrandSectionWidget(),
                     bottom: CustomTabBar(
-                        tabs: categoryController.featuredCategories
+                        tabs: categoryController
                             .map((category) => Tab(child: Text(category.name)))
                             .toList()),
                   ),
                 ],
             body: TabBarView(
-                children: categoryController.featuredCategories
+                children: categoryController
                     .map((category) => CategoryTabWidget(
                           categoryModel: category,
                           brand: brandController.allBrands.firstWhere(

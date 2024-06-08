@@ -1,11 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../../core/widgets/custom_shapes/shimmer/vertical_product_shimmer_widget.dart';
 
 import '../../../../../core/utils/constants/sizes.dart';
 import '../../../../../core/utils/helpers/cloud_helper_functions.dart';
 import '../../../../../core/widgets/appBar/custom_app_bar.dart';
+import '../../../../../core/widgets/custom_shapes/shimmer/vertical_product_shimmer_widget.dart';
 import '../../../../../core/widgets/products/sortable/sortable_products.dart';
 import '../../../domain/entities/product_entity.dart';
 import '../../controllers/product/all_products_controller.dart';
