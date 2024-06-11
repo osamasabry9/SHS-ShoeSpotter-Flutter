@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
-import '../../../app/di.dart';
 import '../../../core/routing/routes.dart';
 import '../../../core/utils/constants/api_constants.dart';
 
@@ -10,13 +9,14 @@ class OnBoardingController extends GetxController {
   static OnBoardingController get instance => Get.find();
 
   /// Variables
+  final deviceStorage = GetStorage();
   RxInt currentIndex = 0.obs;
   final pageController = PageController();
 
   @override
   void onInit() {
-    getIt<GetStorage>()
-        .write(AppPrefsKeys.PREFS_KEY_ONBOARDING_SCREEN_VIEWED, true);
+          // local storage
+      deviceStorage.write(AppPrefsKeys.PREFS_KEY_ONBOARDING_SCREEN_VIEWED, true);
     super.onInit();
   }
 

@@ -8,8 +8,8 @@ import '../../../../../../core/utils/constants/sizes.dart';
 import '../../../../../../core/utils/helpers/helper_functions.dart';
 import '../../../../../../core/widgets/appBar/custom_app_bar.dart';
 import '../../../../../../core/widgets/custom_shapes/curved/curved_edge_widget.dart';
-import '../../../../../../core/widgets/icons/circular_icon_widget.dart';
 import '../../../../../../core/widgets/images/rounded_image_widget.dart';
+import '../../../../../../core/widgets/products/favorite_icon/favorite_icon.dart';
 import '../../../../domain/entities/product_entity.dart';
 import '../../../controllers/product/images_controller.dart';
 import '../../../controllers/product/variation_controller.dart';
@@ -97,12 +97,7 @@ class ProductImagesSliderWidget extends StatelessWidget {
                 Get.back();
                 VariationController.instance.resetSelectedAttributes();
               },
-              actions: const [
-                CircularIconWidget(
-                  icon: Iconsax.heart5,
-                  color: Colors.red,
-                ),
-              ],
+              actions: [FavoriteIconWidget(productId: product.id)],
             ),
           ])),
     );
