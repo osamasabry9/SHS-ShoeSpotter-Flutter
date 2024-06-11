@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
 
 import '../../../../features/shop/data/models/product_model.dart';
 import '../../../routing/routes.dart';
@@ -9,10 +8,10 @@ import '../../../utils/constants/sizes.dart';
 import '../../../utils/helpers/extensions.dart';
 import '../../../utils/helpers/helper_functions.dart';
 import '../../custom_shapes/containers/rounded_container_widget.dart';
-import '../../icons/circular_icon_widget.dart';
 import '../../images/rounded_image_widget.dart';
 import '../../texts/brand_title_with_verified_icon.dart';
 import '../../texts/product_title_text_widget.dart';
+import '../favorite_icon/favorite_icon.dart';
 import 'price_and_add_to_cart_widget.dart';
 
 class ProductCardHorizontalWidget extends StatelessWidget {
@@ -69,11 +68,10 @@ class ProductCardHorizontalWidget extends StatelessWidget {
                     ),
 
                     /// Wishlist icon
-                    const Positioned(
+                     const Positioned(
                       top: 0,
                       right: 0,
-                      child: CircularIconWidget(
-                          icon: Iconsax.heart5, color: Colors.red),
+                      child: FavoriteIconWidget(productId: "", )
                     ),
                   ],
                 ),
