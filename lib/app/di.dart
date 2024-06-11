@@ -4,7 +4,6 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:get_storage/get_storage.dart';
 
-import '../core/local_storage/storage_utility.dart';
 import '../features/Personalization/data/datasources/personalization_remote_data_source.dart';
 import '../features/Personalization/data/datasources/personalization_remote_data_source_impl.dart';
 import '../features/Personalization/data/repositories/personalization_repository_impl.dart';
@@ -69,8 +68,7 @@ Future<void> initAppModule() async {
   await GetStorage.init();
   getIt.registerLazySingleton<GetStorage>(() => GetStorage());
 
-  // app prefs instance
-  getIt.registerLazySingleton<AppLocalStorage>(() => AppLocalStorage());
+
 
   // --------------------------Use Cases--------------------
 
