@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../../../core/utils/helpers/extensions.dart';
 
 import '../../../../../../core/routing/routes.dart';
 import '../../../../../../core/utils/constants/colors.dart';
@@ -37,13 +36,7 @@ class HomeCategoriesSection extends StatelessWidget {
               return const AppCategoryShimmerWidget();
             }
             if (categoryController.featuredCategories.isEmpty) {
-              return Center(
-                child: Text("No Data found!",
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyMedium!
-                        .apply(color: AppColors.white)),
-              );
+              return const Center(child: Text("No Data found!"));
             }
 
             return SizedBox(
@@ -57,7 +50,8 @@ class HomeCategoriesSection extends StatelessWidget {
                   return VerticalImageTextWidget(
                     image: category.image,
                     title: category.name,
-                    onTap: () => context.pushNamed(Routes.subCategoriesScreen),
+                    onTap: () => Get.toNamed(Routes.subCategoriesScreen,
+                        arguments: category),
                   );
                 },
               ),
