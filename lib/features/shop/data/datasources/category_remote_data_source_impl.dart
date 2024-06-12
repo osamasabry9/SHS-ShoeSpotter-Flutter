@@ -83,9 +83,7 @@ class CategoryRemoteDataSourceImpl implements CategoryRemoteDataSource {
   Future<List<CategoryModel>> getSubCategories(String id) async {
     try {
       final response = await firebaseFirestore
-          .collection(FirebaseConst.CATEGORIES_COLLECTION)
-          .doc(id)
-          .collection(FirebaseConst.SUBCATEGORIES_COLLECTION)
+          .collection(FirebaseConst.CATEGORIES_COLLECTION).where("parentId", isEqualTo: id)
           .get();
       final listCategories = response.docs
           .map((document) => CategoryModel.fromSnapshot(document))
