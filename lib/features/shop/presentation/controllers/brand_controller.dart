@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:shoe_spotter/features/shop/domain/usecases/get_brand_for_category_usecase.dart';
+import '../../domain/usecases/get_brand_for_category_usecase.dart';
 
 import '../../../../app/di.dart' as di;
 import '../../../../core/repositories/firebase/app_firebase_storage_service.dart';

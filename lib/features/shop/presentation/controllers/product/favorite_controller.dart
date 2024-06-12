@@ -4,8 +4,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import '../../../../../app/di.dart' as di;
 
 import 'package:get/get.dart';
-import 'package:shoe_spotter/core/local_storage/storage_utility.dart';
-import 'package:shoe_spotter/core/utils/popups/loaders.dart';
+import '../../../../../core/local_storage/storage_utility.dart';
+import '../../../../../core/utils/popups/loaders.dart';
 
 import '../../../../../core/utils/constants/api_constants.dart';
 import '../../../domain/entities/product_entity.dart';

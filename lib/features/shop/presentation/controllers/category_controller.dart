@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:shoe_spotter/features/shop/data/models/product_model.dart';
+import '../../data/models/product_model.dart';
 
 import '../../../../app/di.dart' as di;
 import '../../../../core/repositories/firebase/app_firebase_storage_service.dart';

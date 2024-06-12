@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:shoe_spotter/core/widgets/loaders/animation_loader.dart';
+import '../../../../../core/widgets/loaders/animation_loader.dart';
 
 import '../../../../../core/routing/routes.dart';
 import '../../../../../core/utils/constants/image_strings.dart';
