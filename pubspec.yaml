@@ -42,7 +42,7 @@ dependencies:
   capped_progress_indicator: ^0.0.2
   carousel_slider: ^4.2.1
   get: ^4.6.6
-  connectivity_plus: ^6.0.1
+  connectivity_plus: ^6.0.3
 
   # Local Storage
   get_storage: ^2.1.1
@@ -60,7 +60,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  flutter_lints: ^3.0.1
+  flutter_lints: ^4.0.0
 
 flutter:
   uses-material-design: true
