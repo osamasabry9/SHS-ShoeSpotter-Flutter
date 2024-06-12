@@ -48,7 +48,7 @@ class LoginController extends GetxController {
           "Logging you in...", AppImages.docerAnimation);
 
       // check internet connection
-      final isConnected = await NetworkManager.instance.isConnected();
+      final isConnected = NetworkManager.instance.isConnected;
       if (!isConnected) {
         // Remove loading
         AppFullScreenLoader.closeLoadingDialog();
@@ -96,7 +96,7 @@ class LoginController extends GetxController {
           "Logging you in...", AppImages.docerAnimation);
 
       // check internet connection
-      final isConnected = await NetworkManager.instance.isConnected();
+      final isConnected =  NetworkManager.instance.isConnected;
       if (!isConnected) {
         // Remove loading
         AppFullScreenLoader.closeLoadingDialog();

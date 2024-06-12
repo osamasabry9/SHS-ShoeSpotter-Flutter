@@ -37,7 +37,7 @@ class UpdateUserNameController extends GetxController {
           "Updating...", AppImages.docerAnimation);
 
       // check internet connection
-      final isConnected = await NetworkManager.instance.isConnected();
+      final isConnected =  NetworkManager.instance.isConnected;
       if (!isConnected) {
         // Remove loading
         AppFullScreenLoader.closeLoadingDialog();
