@@ -12,6 +12,7 @@ import '../../features/auth/presentation/pages/reset_password_screen.dart';
 import '../../features/auth/presentation/pages/sign_up_screen.dart';
 import '../../features/onboarding/presentation/pages/onboarding_screen.dart';
 import '../../features/shop/domain/entities/brand_entity.dart';
+import '../../features/shop/domain/entities/category_entity.dart';
 import '../../features/shop/domain/entities/product_entity.dart';
 import '../../features/shop/presentation/pages/all_products/all_products_screen.dart';
 import '../../features/shop/presentation/pages/brand/all_brands_screen.dart';
@@ -88,7 +89,9 @@ class AppRouter {
         );
       case Routes.subCategoriesScreen:
         return MaterialPageRoute(
-          builder: (context) => const SubCategoriesScreen(),
+          builder: (context) => args is CategoryEntity
+              ? SubCategoriesScreen(category: args)
+              : const NotFoundPage(),
         );
       case Routes.allBrandsScreen:
         return MaterialPageRoute(
@@ -102,7 +105,9 @@ class AppRouter {
         );
       case Routes.productDetailsScreen:
         return MaterialPageRoute(
-          builder: (context) => args is ProductEntity ? ProductDetailsScreen(product : args) : const NotFoundPage(),
+          builder: (context) => args is ProductEntity
+              ? ProductDetailsScreen(product: args)
+              : const NotFoundPage(),
         );
       case Routes.productReviewsScreen:
         return MaterialPageRoute(
