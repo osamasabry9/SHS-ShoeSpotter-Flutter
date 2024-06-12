@@ -151,7 +151,7 @@ class UserController extends GetxController {
           "Processing...", AppImages.docerAnimation);
 
       // check internet connection
-      final isConnected = await NetworkManager.instance.isConnected();
+      final isConnected = NetworkManager.instance.isConnected;
       if (!isConnected) {
         // Remove loading
         AppFullScreenLoader.closeLoadingDialog();
@@ -197,7 +197,7 @@ class UserController extends GetxController {
 
         user.value.profileUrl = imageUrl;
         user.refresh();
-        
+
         AppLoaders.successSnackBar(
             title: "Success", message: "Profile picture updated successfully");
       }
