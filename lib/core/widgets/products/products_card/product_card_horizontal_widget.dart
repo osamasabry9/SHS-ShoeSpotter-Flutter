@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-import '../../../../features/shop/data/models/product_model.dart';
+import '../../../../features/shop/domain/entities/product_entity.dart';
+import '../../../../features/shop/presentation/controllers/product/product_controller.dart';
 import '../../../routing/routes.dart';
 import '../../../utils/constants/colors.dart';
-import '../../../utils/constants/image_strings.dart';
 import '../../../utils/constants/sizes.dart';
-import '../../../utils/helpers/extensions.dart';
 import '../../../utils/helpers/helper_functions.dart';
 import '../../custom_shapes/containers/rounded_container_widget.dart';
 import '../../images/rounded_image_widget.dart';
@@ -17,14 +17,21 @@ import 'price_and_add_to_cart_widget.dart';
 class ProductCardHorizontalWidget extends StatelessWidget {
   const ProductCardHorizontalWidget({
     super.key,
+    required this.product,
   });
+
+  final ProductEntity product;
 
   @override
   Widget build(BuildContext context) {
+    final productController = ProductController.instance;
+    final salePercentage = productController.getDiscountPercentage(
+        product.price, product.salePrice);
     final dark = AppHelperFunctions.isDarkMode(context);
 
     return GestureDetector(
-        onTap: () => context.pushNamed(Routes.productDetailsScreen),
+        onTap: () =>
+            Get.toNamed(Routes.productDetailsScreen, arguments: product),
         child: Container(
           width: 310,
           padding: const EdgeInsets.all(1),
@@ -42,37 +49,37 @@ class ProductCardHorizontalWidget extends StatelessWidget {
                 child: Stack(
                   children: [
                     /// Thumbnail Image
-                    const SizedBox(
+                    SizedBox(
                       width: 120,
                       height: 120,
                       child: RoundedImageWidget(
-                        imageUrl: AppImages.promoBanner1,
-                        applyImageRadius: true,
-                      ),
+                          imageUrl: product.thumbnail,
+                          isNetworkImage: true,
+                          applyImageRadius: true),
                     ),
 
                     /// Discount tag
-                    Positioned(
-                      top: 12,
-                      child: RoundedContainerWidget(
-                        borderRadius: AppSizes.sm,
-                        backgroundColor: AppColors.secondary.withOpacity(0.8),
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: AppSizes.sm, vertical: AppSizes.xs),
-                        child: Text('10%',
-                            style: Theme.of(context)
-                                .textTheme
-                                .labelLarge!
-                                .apply(color: AppColors.black)),
+                    if (salePercentage != null)
+                      Positioned(
+                        top: 12,
+                        child: RoundedContainerWidget(
+                          borderRadius: AppSizes.sm,
+                          backgroundColor: AppColors.secondary.withOpacity(0.8),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: AppSizes.sm, vertical: AppSizes.xs),
+                          child: Text(salePercentage,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .labelLarge!
+                                  .apply(color: AppColors.black)),
+                        ),
                       ),
-                    ),
 
                     /// Wishlist icon
-                     const Positioned(
-                      top: 0,
-                      right: 0,
-                      child: FavoriteIconWidget(productId: "", )
-                    ),
+                    Positioned(
+                        top: 0,
+                        right: 0,
+                        child: FavoriteIconWidget(productId: product.id)),
                   ],
                 ),
               ),
@@ -86,20 +93,23 @@ class ProductCardHorizontalWidget extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       /// Details
-                      const Column(
+                      Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           ProductTitleTextWidget(
-                              title: 'Green Nike Air Shoes', smallSize: true),
-                          SizedBox(height: AppSizes.spaceBtwItems / 2),
-                          BrandTitleWithVerifiedIcon(title: " Nike"),
+                              title: product.title, smallSize: true),
+                          const SizedBox(height: AppSizes.spaceBtwItems / 2),
+                          BrandTitleWithVerifiedIcon(
+                            title: product.brand!.name,
+                          ),
                         ],
                       ),
                       const Spacer(),
 
                       /// Price & Add to cart
                       PriceAndAddToCartWidget(
-                          price: '256', product: ProductModel.empty()),
+                          price: productController.getVariationPrice(product),
+                          product: product),
                     ],
                   ),
                 ),

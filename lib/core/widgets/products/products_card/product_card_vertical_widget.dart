@@ -58,7 +58,8 @@ class ProductCardVerticalWidget extends StatelessWidget {
                   ),
 
                   /// Discount tag
-                  Positioned(
+                  if (salePercentage != null)
+                   Positioned(
                     top: 12,
                     child: RoundedContainerWidget(
                       borderRadius: AppSizes.sm,
