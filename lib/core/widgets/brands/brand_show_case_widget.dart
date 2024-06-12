@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shoe_spotter/core/widgets/custom_shapes/shimmer/app_shimmer_effect.dart';
+import '../custom_shapes/shimmer/app_shimmer_effect.dart';
 
 import '../../../features/shop/domain/entities/brand_entity.dart';
 import '../../../features/shop/presentation/pages/store/widgets/brand_card_widget.dart';
