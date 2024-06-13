@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:shoe_spotter/features/shop/domain/usecases/get_sub_categories_usecase.dart';
 import '../../data/models/product_model.dart';
 
 import '../../../../app/di.dart' as di;
@@ -6,6 +7,7 @@ import '../../../../core/repositories/firebase/app_firebase_storage_service.dart
 import '../../../../core/utils/constants/api_constants.dart';
 import '../../../../core/utils/popups/loaders.dart';
 import '../../data/models/category_model.dart';
+import '../../domain/entities/category_entity.dart';
 import '../../domain/usecases/get_all_categories_usecase.dart';
 import '../../domain/usecases/get_products_for_category_usecase.dart';
 import '../../domain/usecases/upload_category_usecase.dart';
@@ -53,6 +55,17 @@ class CategoryController extends GetxController {
   ///
   /// -- Load selected category data
   ///
+  Future<List<CategoryEntity>> getSubCategories(String categoryId) async {
+    try {
+      final categories =
+          await di.getIt<GetSubCategoriesUseCase>().call(id: categoryId);
+
+      return categories;
+    } catch (e) {
+      AppLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+      return [];
+    }
+  }
 
   ///
   /// Get category or sub-category products.

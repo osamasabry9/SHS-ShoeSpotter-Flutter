@@ -82,9 +82,9 @@ class ProductController extends GetxController {
   }
 
 // Calculate the discount percentage
-  String getDiscountPercentage(double originalPrice, double? salePrice) {
+  String? getDiscountPercentage(double originalPrice, double? salePrice) {
     if (salePrice == null || salePrice == 0.0 || originalPrice <= 0.0) {
-      return '0%';
+      return null;
     }
 
     double discount = originalPrice - salePrice;

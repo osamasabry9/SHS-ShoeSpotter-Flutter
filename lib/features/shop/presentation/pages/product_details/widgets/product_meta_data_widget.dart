@@ -29,17 +29,18 @@ class ProductMetaDataWidget extends StatelessWidget {
         /// price & sale price
         Row(children: [
           /// sale Tag
-          RoundedContainerWidget(
-            borderRadius: AppSizes.sm,
-            backgroundColor: AppColors.secondary.withOpacity(0.8),
-            padding: const EdgeInsets.symmetric(
-                horizontal: AppSizes.sm, vertical: AppSizes.xs),
-            child: Text(salePercentage,
-                style: Theme.of(context)
-                    .textTheme
-                    .labelLarge!
-                    .apply(color: AppColors.black)),
-          ),
+          if (salePercentage != null)
+            RoundedContainerWidget(
+              borderRadius: AppSizes.sm,
+              backgroundColor: AppColors.secondary.withOpacity(0.8),
+              padding: const EdgeInsets.symmetric(
+                  horizontal: AppSizes.sm, vertical: AppSizes.xs),
+              child: Text(salePercentage,
+                  style: Theme.of(context)
+                      .textTheme
+                      .labelLarge!
+                      .apply(color: AppColors.black)),
+            ),
           const SizedBox(width: AppSizes.spaceBtwItems),
 
           /// price
