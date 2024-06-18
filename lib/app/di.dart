@@ -4,17 +4,26 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:get_storage/get_storage.dart';
 
+
+import '../features/Personalization/data/datasources/address_remote_data_source.dart';
+import '../features/Personalization/data/datasources/address_remote_data_source_impl.dart';
 import '../features/Personalization/data/datasources/personalization_remote_data_source.dart';
 import '../features/Personalization/data/datasources/personalization_remote_data_source_impl.dart';
+import '../features/Personalization/data/repositories/address_repository_impl.dart';
 import '../features/Personalization/data/repositories/personalization_repository_impl.dart';
+import '../features/Personalization/domain/repositories/address_repository.dart';
 import '../features/Personalization/domain/repositories/personalization_repository.dart';
 import '../features/Personalization/domain/usecases/delete_user_account_usecase.dart';
+import '../features/Personalization/domain/usecases/delete_user_address_usecase.dart';
+import '../features/Personalization/domain/usecases/fetch_user_address_usecase.dart';
 import '../features/Personalization/domain/usecases/fetch_user_details_usecase.dart';
 import '../features/Personalization/domain/usecases/logout_user_usecase.dart';
 import '../features/Personalization/domain/usecases/re_authenticate_email_and_password_usecase.dart';
+import '../features/Personalization/domain/usecases/save_user_address_usecase.dart';
 import '../features/Personalization/domain/usecases/save_user_data_usecase.dart';
 import '../features/Personalization/domain/usecases/save_user_record_in_firestore_usecase.dart';
 import '../features/Personalization/domain/usecases/update_single_field_usecase.dart';
+import '../features/Personalization/domain/usecases/update_user_address_usecase.dart';
 import '../features/Personalization/domain/usecases/update_user_details_usecase.dart';
 import '../features/Personalization/domain/usecases/upload_image_usecase.dart';
 import '../features/auth/data/data_sources/auth_remote_data_source.dart';
@@ -168,6 +177,19 @@ Future<void> initAppModule() async {
   getIt.registerLazySingleton(
       () => GetProductsForCategoryUseCase(repository: getIt.call()));
 
+     //+++++++++++++++++++++++  Address Use Cases +++++++++++++++++++++++
+
+  getIt.registerLazySingleton(
+      () => FetchUserAddressUseCase(addressRepository: getIt.call()));
+
+  getIt.registerLazySingleton(
+      () => SaveUserAddressUseCase(addressRepository: getIt.call()));
+  getIt.registerLazySingleton(
+      () => DeleteUserAddressUseCase(addressRepository: getIt.call()));
+
+  getIt.registerLazySingleton(
+      () => UpdateUserAddressUseCase(addressRepository: getIt.call()));   
+
   // -----------------------------Repository-----------------------
   getIt.registerLazySingleton<AuthRepository>(
     () => AuthRepositoryImpl(userRemoteDataSource: getIt.call()),
@@ -191,6 +213,10 @@ Future<void> initAppModule() async {
     () => ProductRepositoryImpl(productRemoteDataSource: getIt.call()),
   );
 
+  getIt.registerLazySingleton<AddressRepository>(
+    () => AddressRepositoryImpl(addressRemoteDataSource: getIt.call()),
+  );
+
   // -------------------------------- Remote Data Source
   getIt.registerLazySingleton<AuthRemoteDataSource>(
       () => AuthRemoteDataSourceImpl(
@@ -205,6 +231,14 @@ Future<void> initAppModule() async {
             firebaseAuth: getIt.call(),
             firebaseStorage: getIt.call(),
           ));
+
+  getIt.registerLazySingleton<AddressRemoteDataSource>(
+      () => AddressRemoteDataSourceImpl(
+            firebaseFirestore: getIt.call(),
+            firebaseAuth: getIt.call(),
+            firebaseStorage: getIt.call(),
+          ));
+
 
   getIt.registerLazySingleton<CategoryRemoteDataSource>(
       () => CategoryRemoteDataSourceImpl(
