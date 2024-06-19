@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 
 import '../../../data/models/product_variation_model.dart';
 import '../../../domain/entities/product_entity.dart';
+import '../cart/cart_controller.dart';
 import 'images_controller.dart';
 
 class VariationController extends GetxController {
@@ -33,8 +34,22 @@ class VariationController extends GetxController {
       ImagesController.instance.selectedProductImage.value =
           selectedVariation.image;
     }
+
+    // Show selected variation quantity already added in cart
+    if (selectedVariation.id.isNotEmpty) {
+      final cartController = CartController.instance;
+      // if product has variations
+      cartController.updateAlreadyAddedProductCount(product);
+      // Get quantity in cart
+      cartController.productQuantityInCart.value = cartController
+          .getVariationQuantityInCart(product.id, selectedVariation.id);
+    }
+
 // assign the selected variation
     this.selectedVariation.value = selectedVariation;
+
+    // Update the variation stock status
+    getProductVariationStockStatus();
   }
 
   // Check if selected attributes matches any variation attributes
