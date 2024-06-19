@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../../../../core/routing/routes.dart';
 import '../../../../../../core/utils/constants/sizes.dart';
-import '../../../../../../core/utils/helpers/extensions.dart';
+import '../../../controllers/cart/cart_controller.dart';
 
 class CheckoutCartButtonWidget extends StatelessWidget {
   const CheckoutCartButtonWidget({
@@ -11,11 +12,13 @@ class CheckoutCartButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cartController = CartController.instance;
     return Padding(
       padding: const EdgeInsets.all(AppSizes.defaultSpace),
       child: ElevatedButton(
-          onPressed: () => context.pushNamed(Routes.checkoutScreen),
-          child: const Text("Checkout \$265.0")),
+          onPressed: () => Get.toNamed(Routes.checkoutScreen),
+          child: Obx(
+              () => Text("Checkout \$${cartController.totalCartPrice.value}"))),
     );
   }
 }
