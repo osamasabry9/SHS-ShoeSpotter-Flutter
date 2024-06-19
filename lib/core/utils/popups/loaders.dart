@@ -48,4 +48,17 @@ class AppLoaders {
       icon: const Icon(Iconsax.warning_2, color: Colors.white),
     );
   }
+
+  static void customToast({title = '', required String message}) {
+    Get.snackbar(
+      title,
+      message,
+      isDismissible: true,
+      colorText: Colors.white,
+      backgroundColor: AppColors.darkGrey,
+      snackPosition: SnackPosition.BOTTOM,
+      duration: const Duration(seconds: 3),
+      margin: const EdgeInsets.all(40),
+    );
+  }
 }
