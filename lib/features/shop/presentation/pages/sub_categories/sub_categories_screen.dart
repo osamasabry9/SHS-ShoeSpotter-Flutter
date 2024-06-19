@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shoe_spotter/features/shop/presentation/pages/all_products/all_products_screen.dart';
+import '../all_products/all_products_screen.dart';
 
 import '../../../../../core/utils/constants/image_strings.dart';
 import '../../../../../core/utils/constants/sizes.dart';
