@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shoe_spotter/core/utils/popups/full_screen_loader.dart';
-import 'package:shoe_spotter/features/Personalization/domain/usecases/save_user_address_usecase.dart';
-import 'package:shoe_spotter/features/Personalization/domain/usecases/update_user_address_usecase.dart';
+import '../../../../../core/utils/popups/full_screen_loader.dart';
+import '../../../domain/usecases/save_user_address_usecase.dart';
+import '../../../domain/usecases/update_user_address_usecase.dart';
 
 import '../../../../../app/di.dart' as di;
 

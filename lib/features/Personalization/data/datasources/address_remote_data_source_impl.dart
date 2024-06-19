@@ -2,8 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/services.dart';
-import 'package:shoe_spotter/core/utils/constants/api_constants.dart';
-import 'package:shoe_spotter/features/Personalization/data/models/address_model.dart';
+import '../../../../core/utils/constants/api_constants.dart';
+import '../models/address_model.dart';
 
 import '../../../../core/utils/exceptions/firebase_exception.dart';
 import '../../../../core/utils/exceptions/format_exception.dart';

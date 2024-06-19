@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:shoe_spotter/core/utils/helpers/cloud_helper_functions.dart';
+import '../../../../../core/utils/helpers/cloud_helper_functions.dart';
 
 import '../../../../../core/routing/routes.dart';
 import '../../../../../core/utils/constants/colors.dart';
