@@ -21,26 +21,31 @@ class AppAnimationLoaderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-      Lottie.asset(animation, width: MediaQuery.sizeOf(context).width * 0.8),
-      const SizedBox(height: AppSizes.defaultSpace),
-      Text(text,
-          style: Theme.of(context).textTheme.bodyMedium,
-          textAlign: TextAlign.center),
-      const SizedBox(height: AppSizes.defaultSpace),
-      showAction
-          ? SizedBox(
-              width: MediaQuery.sizeOf(context).width * 0.7,
-              child: OutlinedButton(
-                onPressed: onActionTap,
-                style:
-                    OutlinedButton.styleFrom(backgroundColor: AppColors.dark),
-                child: Text(actionText!,
-                    style: Theme.of(context).textTheme.bodyMedium!.apply(
-                          color: AppColors.light,
-                        )),
-              ))
-          : const SizedBox(),
-    ]);
+    return Center(
+      child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Lottie.asset(animation,
+                width: MediaQuery.sizeOf(context).width * 0.8),
+            const SizedBox(height: AppSizes.defaultSpace),
+            Text(text,
+                style: Theme.of(context).textTheme.bodyMedium,
+                textAlign: TextAlign.center),
+            const SizedBox(height: AppSizes.defaultSpace),
+            showAction
+                ? SizedBox(
+                    width: MediaQuery.sizeOf(context).width * 0.7,
+                    child: OutlinedButton(
+                      onPressed: onActionTap,
+                      style: OutlinedButton.styleFrom(
+                          backgroundColor: AppColors.dark),
+                      child: Text(actionText!,
+                          style: Theme.of(context).textTheme.bodyMedium!.apply(
+                                color: AppColors.light,
+                              )),
+                    ))
+                : const SizedBox(),
+          ]),
+    );
   }
 }

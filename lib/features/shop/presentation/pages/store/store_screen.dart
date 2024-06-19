@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
-import '../../../../../core/routing/routes.dart';
 import '../../../../../core/utils/constants/colors.dart';
 import '../../../../../core/utils/helpers/helper_functions.dart';
 import '../../../../../core/widgets/appBar/custom_app_bar.dart';
@@ -24,9 +22,7 @@ class StoreScreen extends StatelessWidget {
           showBackArrow: false,
           title:
               Text("Store", style: Theme.of(context).textTheme.headlineMedium),
-          actions: [
-            CartMenuIcon(onPressed: () => Get.toNamed(Routes.cartScreen)),
-          ],
+          actions: const [CartMenuIcon()],
         ),
         body: NestedScrollView(
             headerSliverBuilder: (_, innerBoxIsScrolled) => [

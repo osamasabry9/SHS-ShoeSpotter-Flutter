@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:shoe_spotter/features/shop/domain/usecases/get_sub_categories_usecase.dart';
+import '../../domain/usecases/get_sub_categories_usecase.dart';
 import '../../data/models/product_model.dart';
 
 import '../../../../app/di.dart' as di;
