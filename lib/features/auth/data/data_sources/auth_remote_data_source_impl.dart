@@ -5,12 +5,10 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-
 import '../../../../core/utils/exceptions/firebase_auth_exception.dart';
 import '../../../../core/utils/exceptions/firebase_exception.dart';
 import '../../../../core/utils/exceptions/format_exception.dart';
 import '../../../../core/utils/exceptions/platform_exception.dart';
-
 import 'auth_remote_data_source.dart';
 
 class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
