@@ -45,14 +45,18 @@ import '../features/shop/data/datasources/order_remote_data_source.dart';
 import '../features/shop/data/datasources/order_remote_data_source_impl.dart';
 import '../features/shop/data/datasources/product_remote_data_source.dart';
 import '../features/shop/data/datasources/product_remote_data_source_impl.dart';
+import '../features/shop/data/datasources/stripe_remote_data_source.dart';
+import '../features/shop/data/datasources/stripe_remote_data_source_impl.dart';
 import '../features/shop/data/repositories/banner_repository_imp.dart';
 import '../features/shop/data/repositories/brand_repository_imp.dart';
 import '../features/shop/data/repositories/category_repository_imp.dart';
+import '../features/shop/data/repositories/ckeckout_repository_impl.dart';
 import '../features/shop/data/repositories/order_repository_impl.dart';
 import '../features/shop/data/repositories/product_repository_imp.dart';
 import '../features/shop/domain/repositories/banner_repository.dart';
 import '../features/shop/domain/repositories/brand_repository.dart';
 import '../features/shop/domain/repositories/category_repository.dart';
+import '../features/shop/domain/repositories/checkout_repository.dart';
 import '../features/shop/domain/repositories/order_repository.dart';
 import '../features/shop/domain/repositories/product_repository.dart';
 import '../features/shop/domain/usecases/get_all_banners_usecase.dart';
@@ -69,6 +73,7 @@ import '../features/shop/domain/usecases/get_products_for_brand_usecase.dart';
 import '../features/shop/domain/usecases/get_products_for_category_usecase.dart';
 import '../features/shop/domain/usecases/get_sub_categories_usecase.dart';
 import '../features/shop/domain/usecases/get_user_orders_usecase.dart';
+import '../features/shop/domain/usecases/make_payment_usecase.dart';
 import '../features/shop/domain/usecases/save_order_usecase.dart';
 import '../features/shop/domain/usecases/upload_banner_usecase.dart';
 import '../features/shop/domain/usecases/upload_brand_usecase.dart';
@@ -199,7 +204,10 @@ Future<void> initAppModule() async {
 
   getIt.registerLazySingleton(
       () => SaveOrderUseCase(orderRepository: getIt.call()));
+  //+++++++++++++++++++++++  Checkout Use Cases +++++++++++++++++++++++
 
+  getIt.registerLazySingleton(
+      () => MakePaymentUseCase(checkoutRepository: getIt.call()));
   // -----------------------------Repository-----------------------
   getIt.registerLazySingleton<AuthRepository>(
     () => AuthRepositoryImpl(userRemoteDataSource: getIt.call()),
@@ -230,7 +238,9 @@ Future<void> initAppModule() async {
   getIt.registerLazySingleton<OrderRepository>(
     () => OrderRepositoryImpl(orderRemoteDataSource: getIt.call()),
   );
-
+  getIt.registerLazySingleton<CheckoutRepository>(
+    () => CheckoutRepositoryImpl(stripeRemoteDataSource: getIt.call()),
+  );
   // -------------------------------- Remote Data Source
   getIt.registerLazySingleton<AuthRemoteDataSource>(
       () => AuthRemoteDataSourceImpl(
@@ -272,6 +282,8 @@ Future<void> initAppModule() async {
   getIt.registerLazySingleton<ProductRemoteDataSource>(
       () => ProductRemoteDataSourceImpl(firebaseFirestore: getIt.call()));
 
+  getIt.registerLazySingleton<StripeRemoteDataSource>(
+      () => StripeRemoteDataSourceImpl());
   //--------------------------- Externals-----------------------------------
 
   final firebaseFirestore = FirebaseFirestore.instance;
