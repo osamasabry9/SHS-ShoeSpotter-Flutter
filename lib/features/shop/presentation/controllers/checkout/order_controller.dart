@@ -12,6 +12,7 @@ import '../../../../../core/utils/popups/full_screen_loader.dart';
 import '../../../../../core/utils/popups/loaders.dart';
 import '../../../../Personalization/presentation/controllers/address/address_controller.dart';
 import '../../../data/models/order_model.dart';
+import '../../../data/models/stripe_models/payment_intent_input_model.dart';
 import '../../../domain/usecases/get_user_orders_usecase.dart';
 import '../../../domain/usecases/save_order_usecase.dart';
 import '../cart/cart_controller.dart';
@@ -40,14 +41,15 @@ class OrderController extends GetxController {
 
   // add methods for order processing
 
-  Future<void> processOrder(double totalAmount) async{
+  Future<void> processOrder(double totalAmount) async {
     try {
       // start loading
       AppFullScreenLoader.openLoadingDialog(
           "Processing your order", AppImages.docerAnimation);
 
       // Get user auth id
-      final userId = di.getIt<FirebaseAuth>().currentUser!.uid;
+      final user = di.getIt<FirebaseAuth>().currentUser;
+      final userId = user!.uid;
       if (userId.isEmpty) return;
 
       // add Details to order
@@ -65,7 +67,13 @@ class OrderController extends GetxController {
       );
 
       // save order
-    await  di.getIt<SaveOrderUseCase>().call(order: order);
+      await di.getIt<SaveOrderUseCase>().call(order: order);
+
+      await checkoutController.makePayment(
+          paymentIntentInputModel: PaymentIntentInputModel(
+              customerId: userId,
+              amount: totalAmount.toString(),
+              currency: 'USD'));
 
       // Update the cart status
       cartController.clearCart();

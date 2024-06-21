@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../../../../../core/utils/popups/loaders.dart';
 import '../../../../../core/widgets/texts/section_heading.dart';
+import '../../../data/models/stripe_models/payment_intent_input_model.dart';
+import '../../../domain/usecases/make_payment_usecase.dart';
 import '../../pages/checkout/widgets/payment_tile_widegt.dart';
 
 import '../../../../../core/utils/constants/image_strings.dart';
 import '../../../../../core/utils/constants/sizes.dart';
 import '../../../data/models/payment_method_model.dart';
+
+import '../../../../../app/di.dart' as di;
 
 class CheckoutController extends GetxController {
   static CheckoutController get instance => Get.find();
@@ -62,5 +68,24 @@ class CheckoutController extends GetxController {
         ),
       ),
     );
+  }
+
+// make payment with stripe
+
+  Future<void> makePayment({
+    required PaymentIntentInputModel paymentIntentInputModel,
+  }) async {
+    try {
+      if (selectedPaymentMethod.value.name == 'Credit Card') {
+        await di
+            .getIt<MakePaymentUseCase>()
+            .call(paymentIntentInputModel: paymentIntentInputModel);
+        AppLoaders.successSnackBar(
+            title: 'Payment Successful',
+            message: 'Thank you for shopping with us!');
+      }
+    } catch (e) {
+      throw 'Something went wrong while making payment. please try again.';
+    }
   }
 }
