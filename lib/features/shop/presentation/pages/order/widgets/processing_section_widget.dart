@@ -3,11 +3,14 @@ import 'package:iconsax/iconsax.dart';
 
 import '../../../../../../core/utils/constants/colors.dart';
 import '../../../../../../core/utils/constants/sizes.dart';
+import '../../../../data/models/order_model.dart';
 
 class ProcessingSectionWidget extends StatelessWidget {
   const ProcessingSectionWidget({
     super.key,
+    required this.order,
   });
+  final OrderModel order;
 
   @override
   Widget build(BuildContext context) {
@@ -24,13 +27,13 @@ class ProcessingSectionWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Processing",
+                order.orderStatusText,
                 style: Theme.of(context)
                     .textTheme
                     .bodyLarge!
                     .apply(color: AppColors.primary, fontWeightDelta: 1),
               ),
-              Text("25 Apr 2024",
+              Text(order.formattedOrderDate,
                   style: Theme.of(context).textTheme.headlineSmall),
             ],
           ),
