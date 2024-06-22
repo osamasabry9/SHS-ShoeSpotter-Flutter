@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
+import '../../../../../core/utils/constants/api_keys.dart';
 import '../../../../../core/utils/constants/enums.dart';
 
 import '../../../../../app/di.dart' as di;
@@ -68,11 +69,10 @@ class OrderController extends GetxController {
 
       // save order
       await di.getIt<SaveOrderUseCase>().call(order: order);
-
       await checkoutController.makePayment(
           paymentIntentInputModel: PaymentIntentInputModel(
-              customerId: userId,
-              amount: totalAmount.toString(),
+              customerId: AppKeys.customerId,
+              amount: (totalAmount * 100).toString().split('.')[0],
               currency: 'USD'));
 
       // Update the cart status
@@ -87,6 +87,7 @@ class OrderController extends GetxController {
             routeName: Routes.mainScreen),
       );
     } catch (e) {
+      AppFullScreenLoader.closeLoadingDialog();
       AppLoaders.warningSnackBar(title: 'Oh Snap!', message: e.toString());
     }
   }
