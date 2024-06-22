@@ -8,6 +8,7 @@ version: 1.0.5+1
 environment:
   sdk: ">=3.2.3 <4.0.0"
 
+# Define your build configurations
 dependencies:
   flutter:
     sdk: flutter
@@ -98,3 +99,10 @@ flutter:
           weight: 600
         - asset: assets/fonts/Poppins-Bold.ttf
           weight: 800
+targets:
+  main_development:
+    sources:
+      - lib/main_development.dart
+  main_production:
+    sources:
+      - lib/main_production.dart
