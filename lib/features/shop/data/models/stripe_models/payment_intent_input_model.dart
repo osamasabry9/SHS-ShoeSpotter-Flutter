@@ -9,11 +9,6 @@ class PaymentIntentInputModel {
     required this.customerId,
   });
 
-  Map<String, dynamic> toJson() => {
-        'amount': (int.parse(amount) * 100).toString(),
-        'currency': currency,
-        'customer': customerId
-        // 'receipt_email': customerEmail
-        // 'customer_name': customerName
-      };
+  Map<String, dynamic> toJson() =>
+      {'amount': amount, 'currency': currency, 'customer': customerId};
 }
