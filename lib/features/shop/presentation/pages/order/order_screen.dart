@@ -12,8 +12,8 @@ class OrderScreen extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(
         showBackArrow: true,
-        title: Text("My Orders",
-            style: Theme.of(context).textTheme.headlineSmall),
+        title:
+            Text("My Orders", style: Theme.of(context).textTheme.headlineSmall),
       ),
       body: const Padding(
         padding: EdgeInsets.all(AppSizes.defaultSpace),

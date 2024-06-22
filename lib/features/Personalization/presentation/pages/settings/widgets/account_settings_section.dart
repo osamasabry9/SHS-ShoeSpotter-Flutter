@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../../../../core/routing/routes.dart';
 import '../../../../../../core/utils/constants/sizes.dart';
-import '../../../../../../core/utils/helpers/extensions.dart';
 import '../../../../../../core/widgets/list_tiles/settings_menu_tile.dart';
 import '../../../../../../core/widgets/texts/section_heading.dart';
 
@@ -24,19 +24,19 @@ class AccountSettingsSection extends StatelessWidget {
         icon: Iconsax.safe_home,
         title: "My Addresses",
         subTitle: "Set shopping delivery address",
-        onTap: () => context.pushNamed(Routes.addressesScreen),
+        onTap: () => Get.toNamed(Routes.addressesScreen),
       ),
       SettingsMenuTile(
         icon: Iconsax.shopping_cart,
         title: "My Cart",
         subTitle: "Add, remove products and move to checkout",
-        onTap: () {},
+        onTap: () => Get.toNamed(Routes.cartScreen),
       ),
       SettingsMenuTile(
         icon: Iconsax.bag_tick,
         title: "My Orders",
         subTitle: "In-progress, completed and cancelled orders",
-        onTap: () => context.pushNamed(Routes.orderScreen),
+        onTap: () => Get.toNamed(Routes.orderScreen),
       ),
       SettingsMenuTile(
         icon: Iconsax.bank,

@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../../core/utils/popups/full_screen_loader.dart';
-import '../../../domain/usecases/save_user_address_usecase.dart';
-import '../../../domain/usecases/update_user_address_usecase.dart';
 
 import '../../../../../app/di.dart' as di;
-
+import '../../../../../core/routing/routes.dart';
 import '../../../../../core/utils/constants/image_strings.dart';
+import '../../../../../core/utils/constants/sizes.dart';
+import '../../../../../core/utils/helpers/cloud_helper_functions.dart';
 import '../../../../../core/utils/helpers/network_manager.dart';
+import '../../../../../core/utils/popups/full_screen_loader.dart';
 import '../../../../../core/utils/popups/loaders.dart';
+import '../../../../../core/widgets/texts/section_heading.dart';
 import '../../../data/models/address_model.dart';
 import '../../../domain/usecases/fetch_user_address_usecase.dart';
+import '../../../domain/usecases/save_user_address_usecase.dart';
+import '../../../domain/usecases/update_user_address_usecase.dart';
+import '../../pages/address/widgets/single_address_widget.dart';
 
 class AddressController extends GetxController {
   static AddressController get instance => Get.find();
@@ -43,6 +47,13 @@ class AddressController extends GetxController {
 
   Future<void> selectAddress(AddressModel newSelectedAddress) async {
     try {
+      Get.defaultDialog(
+          title: '',
+          onWillPop: () async => false,
+          barrierDismissible: false,
+          backgroundColor: Colors.transparent,
+          content: const CircularProgressIndicator());
+
       // Clear the selected address filed
       final selectedAddressId = selectedAddress.value.id;
       if (selectedAddressId.isNotEmpty) {
@@ -59,7 +70,10 @@ class AddressController extends GetxController {
       await di
           .getIt<UpdateUserAddressUseCase>()
           .call(addressId: selectedAddress.value.id, selectedAddress: true);
+
+      Get.back();
     } catch (e) {
+      Get.back();
       AppLoaders.errorSnackBar(
           title: "Error in selection", message: e.toString());
     }
@@ -112,7 +126,7 @@ class AddressController extends GetxController {
           title: "Address saved successfully!",
           message: "Your address has been saved successfully");
 
-     // refresh addresses data
+      // refresh addresses data
       refreshData.toggle();
       // reset fields
       resetFormFields();
@@ -127,6 +141,53 @@ class AddressController extends GetxController {
     }
   }
 
+// Show address ModalBottomSheet at checkout page
+  Future<dynamic> selectNewAddressPopup(BuildContext context) {
+    return showModalBottomSheet(
+      context: context,
+      builder: (_) => Container(
+        padding: const EdgeInsets.all(AppSizes.lg),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SectionHeading(
+                  title: 'Select Address', showActionButton: false),
+              FutureBuilder(
+                  future: getAllUserAddresses(),
+                  builder: (_, snapshot) {
+                    // Helper functions : handel loading and error states
+                    final response =
+                        AppCloudHelperFunctions.checkMultiRecordState(
+                            snapshot: snapshot);
+                    if (response != null) return response;
+
+                    return ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: snapshot.data!.length,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemBuilder: (_, index) => SingleAddressWidget(
+                          address: snapshot.data![index],
+                          onTap: () async {
+                            await selectAddress(snapshot.data![index]);
+                            Get.back();
+                          }),
+                    );
+                  }),
+              const SizedBox(height: AppSizes.defaultSpace * 2),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () => Get.toNamed(Routes.addNewAddressScreen),
+                  child: const Text('Add New Address'),
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
 
   void resetFormFields() {
     name.clear();

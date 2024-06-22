@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../../../../core/utils/constants/sizes.dart';
+import '../../../../data/models/order_model.dart';
 
 class ShippingDateWidget extends StatelessWidget {
   const ShippingDateWidget({
     super.key,
+    required this.order,
   });
+  final OrderModel order;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +19,7 @@ class ShippingDateWidget extends StatelessWidget {
           /// 1 - Icon
           const Icon(Iconsax.calendar),
           const SizedBox(width: AppSizes.spaceBtwItems / 2),
-    
+
           /// 2 - status and date
           Expanded(
             child: Column(
@@ -24,8 +27,12 @@ class ShippingDateWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text("Shipping Date",
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
                     style: Theme.of(context).textTheme.labelMedium),
-                Text("29 Apr 2024",
+                Text(order.formattedDeliveryDate,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
                     style: Theme.of(context).textTheme.headlineSmall),
               ],
             ),
