@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:get/get.dart';
@@ -14,6 +15,12 @@ import 'firebase_options.dart';
 Future<void> main() async {
   // Widgets binding
   final WidgetsBinding binding = WidgetsFlutterBinding.ensureInitialized();
+  // Set the system UI overlay style globally
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+    statusBarColor: Colors.black26, // Change this to the desired color
+    statusBarIconBrightness: Brightness.light, // For Android
+    statusBarBrightness: Brightness.light, // For iOS
+  ));
 
   Stripe.publishableKey = AppKeys.publishableKey;
 
