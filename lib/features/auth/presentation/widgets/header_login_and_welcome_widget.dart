@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../../../../core/utils/constants/image_strings.dart';
 import '../../../../core/utils/constants/sizes.dart';
 import '../../../../core/utils/constants/text_strings.dart';
-import '../../../../core/utils/helpers/helper_functions.dart';
 
 class HeaderLoginAndWelcomeWidget extends StatelessWidget {
   const HeaderLoginAndWelcomeWidget({
@@ -12,15 +11,12 @@ class HeaderLoginAndWelcomeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dark = AppHelperFunctions.isDarkMode(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Image(
+        const Image(
           height: AppSizes.imageLogoSize,
-          image: AssetImage(
-            dark ? AppImages.lightAppLogo : AppImages.darkAppLogo,
-          ),
+          image: AssetImage(AppImages.appLogo),
         ),
         Text(
           AppTexts.loginTitle,

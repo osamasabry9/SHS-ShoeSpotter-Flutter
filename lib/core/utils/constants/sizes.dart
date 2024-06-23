@@ -34,7 +34,6 @@ class AppSizes {
   static const double roundedImageHeight = 158;
   static const double roundedImageWidth = 150;
 
-
   // Default spacing between sections
   static const double defaultSpace = 24.0;
   static const double spaceBtwItems = 16.0;

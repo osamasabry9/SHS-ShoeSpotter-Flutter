@@ -5,7 +5,6 @@ import 'package:iconsax/iconsax.dart';
 import '../../../../core/routing/routes.dart';
 import '../../../../core/utils/constants/sizes.dart';
 import '../../../../core/utils/constants/text_strings.dart';
-import '../../../../core/utils/helpers/extensions.dart';
 import '../../../../core/utils/validators/validation.dart';
 import '../controllers/login/login_controller.dart';
 
@@ -69,7 +68,7 @@ class LoginFormWidget extends StatelessWidget {
                 // forget password
                 TextButton(
                   onPressed: () {
-                    context.pushNamed(Routes.forgetPasswordScreen);
+                    Get.toNamed(Routes.forgetPasswordScreen);
                   },
                   child: const Text(AppTexts.forgetPassword),
                 ),
@@ -90,7 +89,7 @@ class LoginFormWidget extends StatelessWidget {
               width: double.infinity,
               child: OutlinedButton(
                 onPressed: () {
-                  context.pushNamed(Routes.signUpScreen);
+                  Get.toNamed(Routes.signUpScreen);
                 },
                 child: const Text(AppTexts.createAccount),
               ),
