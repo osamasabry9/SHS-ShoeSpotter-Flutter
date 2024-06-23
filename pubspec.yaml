@@ -12,16 +12,18 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  # for adapting screen and font size.
+
+  # Adapting screen and font size
   flutter_screenutil: ^5.9.0
+
   # State management
   get: ^4.6.6
-  # Equatable for state management and equality checking
   equatable: ^2.0.5
-  # for dependency injection
+
+  # Dependency injection
   get_it: ^7.6.7
 
-  # Utility Packages
+  # Utility packages
   intl: ^0.19.0
   url_launcher: ^6.2.5
   logger: ^2.2.0
@@ -29,32 +31,36 @@ dependencies:
   smooth_page_indicator: ^1.1.0
   lottie: ^3.1.0
   shimmer: ^3.0.0
+
   # Icons
   iconsax: ^0.0.8
-  # Product Specific
+
+  # Product-specific packages
   readmore: ^3.0.0
   flutter_rating_bar: ^4.0.1
   capped_progress_indicator: ^0.0.2
   carousel_slider: ^4.2.1
 
-  # Local Storage
+  # Local storage
   get_storage: ^2.1.1
+
   # Firebase
   firebase_storage: ^11.5.5
   firebase_core: ^2.27.0
   cloud_firestore: ^4.15.8
   firebase_auth: ^4.17.8
-
   google_sign_in: ^6.2.1
-  # image
+
+  # Image handling
   image_picker: ^1.0.8
   cached_network_image: ^3.3.1
+
+  # Network
   internet_connection_checker: ^1.0.0+1
-  # network
   dio: ^5.4.3+1
-  # payment getaway
+
+  # Payment gateway
   flutter_stripe: ^10.1.1
-  flutter_svg: ^2.0.10+1
 
 dev_dependencies:
   flutter_test:
