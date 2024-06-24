@@ -3,7 +3,7 @@
 /// This class contains all the App Images in String formats.
 class AppImages {
   // -- App Logos
-  static const String appLogo = "assets/logos/SHS_logo_1.png";
+  static const String appLogo = "assets/logos/SHS_logo_11.png";
 
   // -- Social Logos
   static const String google = "assets/logos/google-icon.png";
